@@ -38,7 +38,6 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
         emailTextSignIn = findViewById(R.id.emailTextSignIn);
         passwordTextSignIn = findViewById(R.id.passwordSignIn);
         kaydol = findViewById(R.id.kaydol);
