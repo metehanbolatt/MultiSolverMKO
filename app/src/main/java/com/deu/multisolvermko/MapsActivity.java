@@ -1,17 +1,16 @@
 package com.deu.multisolvermko;
 
 import androidx.fragment.app.FragmentActivity;
+
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
-import com.deu.multisolvermko.problemler.gsmaps.FlyHesaplama;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,7 +25,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     Integer sehirSayisi;
     TextView mapsTextView;
-    ArrayList<String> latArrayList,lonArrayList;
     int a = 0 ;
     int[] distances;
     Python py;
@@ -35,13 +33,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ArrayList<Double> latdouble,londouble;
     ArrayList<Float> goToPy;
     Location loc1,loc2;
-    Integer size ;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        Intent intent = getIntent();
+
+        sehirSayisi = intent.getIntExtra("sehir",1);
 
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(this));
@@ -57,17 +59,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         goToPy = new ArrayList<>();
 
-        size = latdouble.size();
-        distances = new int[size*size];
 
-        Intent intent = getIntent();
-        sehirSayisi = intent.getIntExtra("sehir",1);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        latArrayList = new ArrayList<>();
-        lonArrayList = new ArrayList<>();
+
 
     }
 
@@ -81,18 +78,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapLongClick(LatLng latLng) {
 
         if (a < sehirSayisi ){
-            mMap.addMarker(new MarkerOptions().position(latLng).title("AAA"));
+            String aciklama = a+". Konum";
+            mMap.addMarker(new MarkerOptions().position(latLng).title(aciklama)).showInfoWindow();
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
             Double lat = latLng.latitude;
             Double lon = latLng.longitude;
 
-
-            String latstr = lat.toString();
-            String lonstr = lon.toString();
-
-            latArrayList.add(latstr);
-            lonArrayList.add(lonstr);
+            latdouble.add(lat);
+            londouble.add(lon);
 
 
             if (a == sehirSayisi-1){
@@ -110,11 +104,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                         PyObject obj = pyobj.callAttr("main123", distances);
                         mapsTextView.setText(obj.toString());
-
-
                     }
                 }.start();
-
             }
 
         }else{
@@ -126,8 +117,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void hesapla(){
-        for (int c =1 ; c<=size; c++){
-            for (int d =1; d<=size ; d++){
+        for (int c =1 ; c<=sehirSayisi; c++){
+            for (int d =1; d<=sehirSayisi ; d++){
 
                 loc1 = new Location("");
                 loc1.setLatitude(latdouble.get(c-1));
@@ -144,10 +135,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-//bedele
+
     public void arrayToDizi(){
-        for (int i =0; i<size*size;i++){
+        distances = new int[sehirSayisi*sehirSayisi];
+
+        for (int i =0; i<sehirSayisi*sehirSayisi;i++){
             distances[i]=Math.round(goToPy.get(i));
         }
+
+
     }
 }
