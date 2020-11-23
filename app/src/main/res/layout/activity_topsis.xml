@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".topsis_ahp.topsis.TopsisActivity"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:padding="10dp"
+    android:stretchColumns="1,2,3">
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/editTextTopsis1"
+            android:hint="Ağırlık 1"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"/>
+        <EditText
+            android:id="@+id/editTextTopsis2"
+            android:hint="Ağırlık 2"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"/>
+        <EditText
+            android:id="@+id/editTextTopsis3"
+            android:hint="Ağırlık 3"
+            android:textSize="16dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <Switch
+            android:id="@+id/switch1"
+            android:text="Minimum"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="13sp"
+            android:layout_column="1"
+            android:padding="10dp"/>
+
+        <Switch
+            android:id="@+id/switch2"
+            android:text="Minimum"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="13sp"
+            android:layout_column="1"
+            android:padding="10dp"/>
+
+        <Switch
+            android:id="@+id/switch3"
+            android:text="Minimum"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_column="1"
+            android:padding="10dp"/>
+
+
+    </TableRow>
+    <TableRow>
+        <EditText
+            android:hint="Parametre 1"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:padding="10dp"
+            android:layout_column="1"/>
+        <EditText
+            android:hint="Parametre 2"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:layout_column="1"/>
+        <EditText
+            android:hint="Parametre 3"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"/>
+    </TableRow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"/>
+
+    <Button
+        android:id="@+id/buttonT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ekle"/>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/textVieww"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="wrap_content"
+            android:hint="1. Veri"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="numberDecimal"/>
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:hint="2. Veri"
+            android:gravity="center"
+            android:textColorHint="@color/colorWhite"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="3. Veri"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:inputType="numberDecimal"/>
+
+    </TableRow>
+
+    <TextView
+        android:id="@+id/textViewTopsis"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="En iyi alternatif: "/>
+
+    <Button
+        android:id="@+id/buttonTopsisHesapla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="buttonTopsisHesapla"
+        android:text="Hesapla" />
+
+</TableLayout>

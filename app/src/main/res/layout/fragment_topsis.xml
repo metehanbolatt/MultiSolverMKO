@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".fragments.Topsis_Ahp_Fragment">
+
+    <Button
+        android:id="@+id/buttontopsis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="152dp"
+        android:text="3 Koşullu TOPSIS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/topsisfour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="4 koşullu topsis"
+        app:layout_constraintStart_toStartOf="@+id/buttontopsis"
+        app:layout_constraintTop_toBottomOf="@+id/buttontopsis" />
+
+    <Button
+        android:id="@+id/ahpthree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="47dp"
+        android:text="3 Kriterli AHP"
+        app:layout_constraintStart_toStartOf="@+id/topsisfour"
+        app:layout_constraintTop_toBottomOf="@+id/topsisfour" />
+
+    <Button
+        android:id="@+id/ahpfour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="4 KRİTERLİ AHP"
+        app:layout_constraintStart_toStartOf="@+id/ahpthree"
+        app:layout_constraintTop_toBottomOf="@+id/ahpthree" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

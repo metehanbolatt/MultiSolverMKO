@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="1,2,3,4">
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/fourid_tv"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:layout_column="1"/>
+        <TextView
+            android:id="@+id/fourname_tv"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:layout_column="1"/>
+        <TextView
+            android:id="@+id/fourpayment_tv"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:layout_column="1"/>
+
+        <TextView
+            android:id="@+id/fourpayment1_tv"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:padding="10dp"
+            android:layout_column="1"/>
+
+
+
+
+    </TableRow>
+
+</TableLayout>

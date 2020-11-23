@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Enable Night Mode">
+
+        <CheckBoxPreference
+            android:title="Night Mode"
+            android:key="NOGHT"
+            android:defaultValue="true"
+            android:summaryOn="Enabled"
+            android:summaryOff="Disabled"/>
+
+        <Preference
+            android:title="Yeni ayar"/>
+        <Preference
+            android:title="Yeni ayar"/>
+        <Preference
+            android:title="Yeni ayar"/>
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Enable Night Mode">
+
+        <CheckBoxPreference
+            android:title="Night Mode"
+            android:key="NOGHT"
+            android:defaultValue="true"
+            android:summaryOn="Enabled"
+            android:summaryOff="Disabled"/>
+        <CheckBoxPreference
+            android:title="Night Mode2"
+            android:key="NOGHT"
+            android:defaultValue="true"
+            android:summaryOn="Enabled"
+            android:summaryOff="Disabled"/>
+        <CheckBoxPreference
+            android:title="Night Mode3"
+            android:key="NOGHT"
+            android:defaultValue="true"
+            android:summaryOn="Enabled"
+            android:summaryOff="Disabled"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

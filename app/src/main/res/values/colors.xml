@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#09A6ED</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+
+    <color name="colorPrimaryFirst">#2196F3</color>
+    <color name="colorPrimaryDarkFirst">#1976D2</color>
+    <color name="colorAccentFirst">#FF5252</color>
+    <color name="colorTextPrimary">#1687F8</color>
+    <color name="colorTextSecendory">#FFFFFF</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorOnboardingIndicatorInactive">#72BCF7</color>
+
+    <color name="turkuazmavi">#00BCD4</color>
+
+    <color name="colorNavigationPrimary">#000000</color>
+    <color name="colorNavigationPrimaryDark">#000000</color>
+    <color name="colorNavigationAccent">#FF5252</color>
+    <color name="colorNavigationPrimaryText">#212121</color>
+    <color name="colorNavigationWhite">#FFFFFF</color>
+    <color name="colorNavigationGreen">#32CD32</color>
+
+    <color name="colorPrimaryAlert">#008577</color>
+    <color name="colorPrimaryDarkAlert">#00574B</color>
+    <color name="colorAccentAlert">#D81B60</color>
+    <color name="colorWhiteAlert">#FFFFFF</color>
+    <color name="colorSuccessAlert">#4BB543</color>
+    <color name="colorWarningAlert">#FFCC00</color>
+    <color name="colorNeutralAlert">#434343</color>
+    <color name="colorErrorAlert">#CC0000</color>
+    <color name="colorTextPrimaryAlert">#212121</color>
+
+    <color name="colorToastRed">#7E0A0A</color>
+
+
+
+
+
+</resources>

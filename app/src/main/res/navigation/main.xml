@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@+id/menuProfile">
+
+    <fragment
+        android:id="@+id/menuProfile"
+        android:name="com.deu.multisolvermko.fragments.ProfileFragment"
+        android:label="Profil"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/menuNotification"
+        android:name="com.deu.multisolvermko.fragments.NotificationsFragment"
+        android:label="Bildirimler"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/menuSettings"
+        android:name="com.deu.multisolvermko.fragments.SettingsFragment"
+        android:label="Ayarlar"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/menuProblems"
+        android:name="com.deu.multisolvermko.fragments.ProblemFragment"
+        android:label="Problemler"
+        tools:layout="@layout/fragment_problem" />
+    <fragment
+        android:id="@+id/menuTopsis"
+        android:name="com.deu.multisolvermko.fragments.Topsis_Ahp_Fragment"
+        android:label="AHP / Topsis"
+        tools:layout="@layout/fragment_topsis" />
+    <fragment
+        android:id="@+id/menuLogout"
+        android:name="com.deu.multisolvermko.fragments.LogoutFragment"
+        android:label="Çıkış"
+        tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/menuIletisim"
+        android:name="com.deu.multisolvermko.fragments.YardimFragment"
+        android:label="İletişim"
+        tools:layout="@layout/fragment_iletisim" />
+    <fragment
+        android:id="@+id/menuKullanimKilavuzu"
+        android:name="com.deu.multisolvermko.fragments.KullanimKilavuzuFragment"
+        android:label="Kullanım Kılavuzu"
+        tools:layout="@layout/fragment_kullanim_kilavuzu" />
+
+
+</navigation>

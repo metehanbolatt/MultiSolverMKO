@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "177131838522",
+    "firebase_url": "https://cohesive-photon-296418.firebaseio.com",
+    "project_id": "cohesive-photon-296418",
+    "storage_bucket": "cohesive-photon-296418.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177131838522:android:86c895b4f491eac6e9e903",
+        "android_client_info": {
+          "package_name": "com.deu.multisolvermko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177131838522-2h12pilp6qietl55n6i89ec9snui96eq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS63q3MP2Kh2B4J0cjzRiU2Hrr-HlrNps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177131838522-2h12pilp6qietl55n6i89ec9snui96eq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

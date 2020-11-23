@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menuProfile"
+        android:icon="@drawable/profile"
+        android:title="Profil"/>
+
+    <item android:id="@+id/menuNotification"
+        android:icon="@drawable/notification"
+        android:title="Bildirimler"/>
+
+    <item android:id="@+id/menuOrders"
+        android:icon="@drawable/kitap"
+        android:title="Kütüphane"/>
+
+    <item android:id="@+id/menuProblems"
+        android:icon="@drawable/problem"
+        android:title="Problemler"/>
+
+    <item android:id="@+id/menuTopsis"
+        android:icon="@drawable/topsis"
+        android:title="AHP / Topsis"/>
+
+
+    <item android:title="Diğer"
+        android:id="@+id/others">
+
+        <menu>
+            <item android:id="@+id/menuSettings"
+                android:icon="@drawable/set2"
+                android:title="Ayarlar"/>
+
+            <item android:id="@+id/menuIletisim"
+                android:icon="@drawable/support"
+                android:title="İletişim"/>
+
+            <item android:id="@+id/menuKullanimKilavuzu"
+                android:icon="@drawable/icon4"
+                android:title="Kullanım Kılavuzu"/>
+
+            <item android:id="@+id/menuLogout"
+                android:icon="@drawable/logout"
+                android:title="Çıkış"/>
+
+        </menu>
+
+    </item>
+
+</menu>
