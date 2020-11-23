@@ -32,8 +32,6 @@ public class SignInActivity extends AppCompatActivity {
     public FirebaseAuth firebaseAuth;
     TextView kaydol,textView3;
 
-    //METEMAL
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
