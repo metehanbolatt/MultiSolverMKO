@@ -83,4 +83,4 @@ def main123(distancesFLY):
         iterasyon=iterasyon + 1
 
 
-    return "en iyi çözüm: "+str(cozumeniyi)+"\n" +"en iyi obj: " +str(objeniyi)
+    return "Seçilen Konumlar İçin En İyi Rota:\n"+str(cozumeniyi)+"\n"+"\n"+"Seçilen Konumlar İçin En Kısa Mesafe:\n" +str(objeniyi)+" km"

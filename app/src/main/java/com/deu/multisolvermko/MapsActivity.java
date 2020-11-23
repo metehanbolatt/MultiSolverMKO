@@ -150,13 +150,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 loc2.setLatitude(latdouble.get(d-1));
                 loc2.setLongitude(londouble.get(d-1));
 
-                float distance = loc1.distanceTo(loc2);
+                float distance = (loc1.distanceTo(loc2)/1000);
 
                 goToPy.add(distance);
 
             }
         }
     }
+
 
     public void arrayToDizi(){
         distances = new int[sehirSayisi*sehirSayisi];
