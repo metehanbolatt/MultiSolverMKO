@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.deu.multisolvermko.R;
+
 import com.deu.multisolvermko.homepage.RealMainActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -48,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if (firebaseUser != null){
-            Intent intent = new Intent(getApplicationContext(),RealMainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), RealMainActivity.class);
             startActivity(intent);
             finish();
         }
