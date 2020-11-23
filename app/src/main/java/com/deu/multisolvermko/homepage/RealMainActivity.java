@@ -36,7 +36,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 import java.io.IOException;
 
-//deneme
+
 public class RealMainActivity extends AppCompatActivity {
 
     Bitmap selectedImage;
