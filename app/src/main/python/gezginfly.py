@@ -1,11 +1,21 @@
 import numpy as np
 import math
 
-def main1(distances):
-
-    T=1000
+def main123(distancesFLY):
+    
+    T=1000;
+    num1=int(T)
     Tend=0.01
-    sk=0.99
+    sk=0.999
+
+    boyutFLY = len(distancesFLY)
+    boyutflyone = math.sqrt(boyutFLY)
+    boyuttflyone=int(boyutflyone)
+    
+    yenidizi=np.array(distancesFLY)
+    
+    distances = np.reshape(yenidizi, (boyuttflyone,boyuttflyone))
+
 
     _matrix=np.array(distances)
     sehirsayisi=len(_matrix)
@@ -72,4 +82,5 @@ def main1(distances):
 
         iterasyon=iterasyon + 1
 
-    return "en iyi çözüm: \n"+str(cozumeniyi)+"\n" +"en iyi obj: " +str(objeniyi)
+
+    return "en iyi çözüm: "+str(cozumeniyi)+"\n" +"en iyi obj: " +str(objeniyi)

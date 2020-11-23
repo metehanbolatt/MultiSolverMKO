@@ -10,7 +10,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
@@ -53,10 +52,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapLongClick(LatLng latLng) {
 
         if (a < sehirSayisi ){
-            String aciklama = a + ". Şehir";
-            mMap.addMarker(new MarkerOptions().position(latLng).title(aciklama)).showInfoWindow();
+            mMap.addMarker(new MarkerOptions().position(latLng).title("AAA"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
 
             Double lat = latLng.latitude;
             Double lon = latLng.longitude;

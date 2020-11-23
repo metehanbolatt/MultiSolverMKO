@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.deu.multisolvermko.R;
-
 import com.deu.multisolvermko.homepage.RealMainActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -61,6 +60,7 @@ public class SignInActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         animationStart();
         animationStart2();
         animationStart3();

@@ -62,7 +62,7 @@ public class FlyHesaplama extends AppCompatActivity {
         }
 
         Python py = Python.getInstance();
-        final PyObject pyobj = py.getModule("denemes");
+        final PyObject pyobj = py.getModule("gezginfly");
 
         flyhesaplabutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +71,6 @@ public class FlyHesaplama extends AppCompatActivity {
                 textViewfly.setText(obj.toString());
             }
         });
-
     }
 
     public void hesapla(){
@@ -97,8 +96,6 @@ public class FlyHesaplama extends AppCompatActivity {
     public void arrayToDizi(){
         for (int i =0; i<size*size;i++){
             distances[i]=Math.round(goToPy.get(i));
-            System.out.println("Distances Float Dizi");
-            System.out.println(distances[i]);
         }
     }
 }
