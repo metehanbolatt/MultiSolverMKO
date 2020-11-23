@@ -14,9 +14,6 @@ import com.deu.multisolvermko.mainactivity.FirstMainActivity;
 
 public class KullanimKilavuzuFragment extends Fragment {
 
-
-    //selamlarrrr    ben kutayyy sizin geldim
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
