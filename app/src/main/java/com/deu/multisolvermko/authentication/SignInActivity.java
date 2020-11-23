@@ -33,7 +33,7 @@ public class SignInActivity extends AppCompatActivity {
     public FirebaseAuth firebaseAuth;
     TextView kaydol,textView3;
 
-    //METE <3 KUTAY
+    //BEDEL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
