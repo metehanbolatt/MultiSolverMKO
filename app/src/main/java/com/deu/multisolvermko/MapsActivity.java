@@ -144,7 +144,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-
+//bedele
     public void arrayToDizi(){
         for (int i =0; i<size*size;i++){
             distances[i]=Math.round(goToPy.get(i));
