@@ -2,9 +2,15 @@ package com.deu.multisolvermko;
 
 import androidx.fragment.app.FragmentActivity;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
 import com.deu.multisolvermko.problemler.gsmaps.FlyHesaplama;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,9 +25,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     Integer sehirSayisi;
-
+    TextView mapsTextView;
     ArrayList<String> latArrayList,lonArrayList;
     int a = 0 ;
+    int[] distances;
+    Python py;
+    PyObject pyobj;
+
+    ArrayList<Double> latdouble,londouble;
+    ArrayList<Float> goToPy;
+    Location loc1,loc2;
+    Integer size ;
 
 
     @Override
@@ -29,12 +43,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        if (!Python.isStarted()) {
+            Python.start(new AndroidPlatform(this));
+        }
+
+        py = Python.getInstance();
+        pyobj = py.getModule("gezginfly");
+
+        mapsTextView = findViewById(R.id.maps_textView);
+
+        latdouble = new ArrayList<>();
+        londouble = new ArrayList<>();
+
+        goToPy = new ArrayList<>();
+
+        size = latdouble.size();
+        distances = new int[size*size];
+
         Intent intent = getIntent();
         sehirSayisi = intent.getIntExtra("sehir",1);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         latArrayList = new ArrayList<>();
@@ -75,12 +104,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     @Override
                     public void onFinish() {
+                        hesapla();
+                        arrayToDizi();
 
-                        Intent intent = new Intent(getApplicationContext(), FlyHesaplama.class);
-                        intent.putStringArrayListExtra("latstr",latArrayList);
-                        intent.putStringArrayListExtra("lonstr",lonArrayList);
-                        intent.putExtra("deneme",5);
-                        startActivity(intent);
+                        PyObject obj = pyobj.callAttr("main123", distances);
+                        mapsTextView.setText(obj.toString());
+
 
                     }
                 }.start();
@@ -93,5 +122,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         a=a+1;
 
+    }
+
+    public void hesapla(){
+        for (int c =1 ; c<=size; c++){
+            for (int d =1; d<=size ; d++){
+
+                loc1 = new Location("");
+                loc1.setLatitude(latdouble.get(c-1));
+                loc1.setLongitude(londouble.get(c-1));
+
+                loc2 = new Location("");
+                loc2.setLatitude(latdouble.get(d-1));
+                loc2.setLongitude(londouble.get(d-1));
+
+                float distance = loc1.distanceTo(loc2);
+
+                goToPy.add(distance);
+
+            }
+        }
+    }
+
+    public void arrayToDizi(){
+        for (int i =0; i<size*size;i++){
+            distances[i]=Math.round(goToPy.get(i));
+        }
     }
 }
