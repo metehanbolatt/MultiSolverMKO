@@ -1,7 +1,6 @@
 package com.deu.multisolvermko.topsis_ahp.ahp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,9 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.deu.multisolvermko.R;
-
 import java.text.DecimalFormat;
 
 public class AhpFourProcess extends AppCompatActivity {

@@ -1,27 +1,18 @@
 package com.deu.multisolvermko.homepage;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.TextAppearanceSpan;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,29 +24,17 @@ import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
-
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.authentication.SignInActivity;
-import com.deu.multisolvermko.settings.SettingsActivity;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.resources.TextAppearance;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
-
-import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Objects;
 
 public class RealMainActivity extends AppCompatActivity {
 
@@ -68,7 +47,6 @@ public class RealMainActivity extends AppCompatActivity {
     Uri imageData;
     String currentUser;
     String downloadUrl;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

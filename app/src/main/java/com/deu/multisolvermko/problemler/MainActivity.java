@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.problemler.gsmaps.GsFly;
 import com.deu.multisolvermko.problemler.python.GezginSatici;

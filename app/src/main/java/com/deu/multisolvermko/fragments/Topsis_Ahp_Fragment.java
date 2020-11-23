@@ -6,11 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.topsis_ahp.ahp.AhpFourProcess;
 import com.deu.multisolvermko.topsis_ahp.ahp.AhpThreeProcess;

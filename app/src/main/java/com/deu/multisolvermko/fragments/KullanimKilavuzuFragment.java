@@ -6,19 +6,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
-
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.mainactivity.FirstMainActivity;
-
 
 public class KullanimKilavuzuFragment extends Fragment {
 

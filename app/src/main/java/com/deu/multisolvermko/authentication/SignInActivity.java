@@ -3,7 +3,6 @@ package com.deu.multisolvermko.authentication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -17,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.homepage.RealMainActivity;
 import com.google.android.gms.tasks.OnFailureListener;

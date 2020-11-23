@@ -1,20 +1,14 @@
 package com.deu.multisolvermko.problemler.gsmaps;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.chaquo.python.PyObject;
-import com.chaquo.python.Python;
-import com.chaquo.python.android.AndroidPlatform;
 import com.deu.multisolvermko.R;
-
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 public class FlyHesaplama extends AppCompatActivity {
 

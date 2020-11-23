@@ -4,27 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.authentication.SignInActivity;
-import com.deu.multisolvermko.homepage.RealMainActivity;
 import com.deu.multisolvermko.mainactivity.adapters.OnboardingAdapter;
 import com.deu.multisolvermko.mainactivity.items.OnboardingItem;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-
 import java.util.ArrayList;
 import java.util.List;
 
