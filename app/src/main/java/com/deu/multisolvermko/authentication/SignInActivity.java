@@ -32,6 +32,8 @@ public class SignInActivity extends AppCompatActivity {
     public FirebaseAuth firebaseAuth;
     TextView kaydol,textView3;
 
+    //METE <3 KUTAY
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
