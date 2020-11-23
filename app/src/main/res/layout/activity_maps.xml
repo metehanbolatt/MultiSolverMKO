@@ -19,13 +19,14 @@
         tools:context=".MapsActivity" />
 
     <ProgressBar
-        android:id="@+id/progressBarMaps"
+        android:id="@+id/progress_bar_maps2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toBottomOf="@+id/map" />
+        map:layout_constraintBottom_toBottomOf="@+id/progress_bar_maps"
+        map:layout_constraintEnd_toEndOf="@+id/progress_bar_maps"
+        map:layout_constraintStart_toStartOf="@+id/progress_bar_maps"
+        map:layout_constraintTop_toTopOf="@+id/progress_bar_maps"
+        map:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/maps_textView"
@@ -34,10 +35,20 @@
         android:hint="Sonuc:"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
-        map:layout_constraintBottom_toBottomOf="@+id/progressBarMaps"
-        map:layout_constraintEnd_toEndOf="@+id/progressBarMaps"
-        map:layout_constraintStart_toStartOf="@+id/progressBarMaps"
-        map:layout_constraintTop_toTopOf="@+id/progressBarMaps" />
+        map:layout_constraintBottom_toTopOf="@+id/progress_bar_maps"
+        map:layout_constraintEnd_toEndOf="@+id/progress_bar_maps"
+        map:layout_constraintStart_toStartOf="@+id/progress_bar_maps" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_maps"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="294dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="92dp"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.495"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/map" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

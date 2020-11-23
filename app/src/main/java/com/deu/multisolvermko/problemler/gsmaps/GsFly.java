@@ -3,7 +3,10 @@ package com.deu.multisolvermko.problemler.gsmaps;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,7 +32,7 @@ public class GsFly extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (editTextFly.getText().toString().equals("")){
-                    Toast.makeText(GsFly.this, "Lütfen şehir sayısı giriniz.", Toast.LENGTH_SHORT).show();
+                    fazlaDeger();
                 }else{
                     Integer city = Integer.parseInt(editTextFly.getText().toString());
 
@@ -40,5 +43,16 @@ public class GsFly extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    public void fazlaDeger() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_layout_gezgin_satici_maps_fly_bos_deger, (ViewGroup) findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM, 0, 50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 }

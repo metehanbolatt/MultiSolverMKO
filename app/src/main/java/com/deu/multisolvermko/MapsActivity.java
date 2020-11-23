@@ -7,7 +7,10 @@ import android.location.Location;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +35,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     int[] distances;
     Python py;
     PyObject pyobj;
-    ProgressBar progressBar;
+    ProgressBar progressBar,progressBar2;
 
     ArrayList<Double> latdouble,londouble;
     ArrayList<Float> goToPy;
@@ -57,20 +60,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         pyobj = py.getModule("gezginfly");
 
         mapsTextView = findViewById(R.id.maps_textView);
-        progressBar = findViewById(R.id.progressBarMaps);
-        progressBar.setVisibility(View.INVISIBLE);
+        progressBar = findViewById(R.id.progress_bar_maps);
+        progressBar2 = findViewById(R.id.progress_bar_maps2);
+
+        progressBar2.setVisibility(View.INVISIBLE);
+
+        progressBar.setMax(100);
+        progressBar.setScaleY(3.f);
 
         latdouble = new ArrayList<>();
         londouble = new ArrayList<>();
 
         goToPy = new ArrayList<>();
 
-
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
 
     }
 
@@ -100,6 +104,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Toast.makeText(MapsActivity.this, "Hesaplanıyor", Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.VISIBLE);
 
+                mapsTextView.setText("0 %");
+                progressAnimation2();
+
                 ExampleThread2 thread2 = new ExampleThread2();
                 thread2.start();
 
@@ -117,6 +124,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     @Override
                     public void afterTextChanged(Editable s) {
                         progressBar.setVisibility(View.INVISIBLE);
+                        progressBar2.setVisibility(View.INVISIBLE);
 
                     }
                 });
@@ -124,11 +132,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
 
         }else{
-            Toast.makeText(this, "Sehir sayisini aştınız.", Toast.LENGTH_SHORT).show();
+            hesaplamadanSonraDeger();
         }
 
         a=a+1;
-
     }
 
     public void hesapla(){
@@ -179,5 +186,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             });
 
         }
+    }
+
+    public void progressAnimation2(){
+        ProgressBarAnimation anim = new ProgressBarAnimation(this,progressBar,progressBar2,mapsTextView,0,100f);
+        anim.setDuration(2000);
+        progressBar.setAnimation(anim);
+    }
+
+    public void fazlaDeger() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_layout_gezgin_satici_maps_fly_deger_fazla, (ViewGroup) findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM, 0, 50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+
+    public void hesaplamadanSonraDeger() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_layout_gezgin_satici_maps_fly_hesaplama_bitti, (ViewGroup) findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM, 0, 50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 }
