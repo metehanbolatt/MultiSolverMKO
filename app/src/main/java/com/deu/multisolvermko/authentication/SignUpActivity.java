@@ -54,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
             String email = signUpEmail.getText().toString();
             String password = signUpPassword.getText().toString();
 
+
             firebaseAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
