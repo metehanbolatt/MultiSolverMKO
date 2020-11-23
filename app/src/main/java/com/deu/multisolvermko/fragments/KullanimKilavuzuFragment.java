@@ -15,7 +15,7 @@ import com.deu.multisolvermko.mainactivity.FirstMainActivity;
 public class KullanimKilavuzuFragment extends Fragment {
 
 
-    //selamlarrrr
+    //selamlarrrr    ben kutayyy sizin geldim
 
     @Nullable
     @Override
