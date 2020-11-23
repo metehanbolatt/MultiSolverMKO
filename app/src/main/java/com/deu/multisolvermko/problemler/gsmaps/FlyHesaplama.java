@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
 import com.deu.multisolvermko.R;
 import java.util.ArrayList;
 
@@ -17,6 +22,7 @@ public class FlyHesaplama extends AppCompatActivity {
     ArrayList<Float> goToPy;
     Location loc1,loc2;
     Integer size ;
+    int[] distances;
 
     TextView textViewfly;
     Button flyhesaplabutton;
@@ -41,14 +47,30 @@ public class FlyHesaplama extends AppCompatActivity {
 
         size = lonstr.size();
 
-        for (int i=0; i < latstr.size();i++){
+        distances = new int[size*size];
 
+        for (int i=0; i < latstr.size();i++){
             latdouble.add(Double.parseDouble(latstr.get(i)));
             londouble.add(Double.parseDouble(lonstr.get(i)));
-
         }
 
         hesapla();
+        arrayToDizi();
+
+        if (!Python.isStarted()) {
+            Python.start(new AndroidPlatform(this));
+        }
+
+        Python py = Python.getInstance();
+        final PyObject pyobj = py.getModule("denemes");
+
+        flyhesaplabutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PyObject obj = pyobj.callAttr("main123", distances);
+                textViewfly.setText(obj.toString());
+            }
+        });
 
     }
 
@@ -69,6 +91,14 @@ public class FlyHesaplama extends AppCompatActivity {
                 goToPy.add(distance);
 
             }
+        }
+    }
+
+    public void arrayToDizi(){
+        for (int i =0; i<size*size;i++){
+            distances[i]=Math.round(goToPy.get(i));
+            System.out.println("Distances Float Dizi");
+            System.out.println(distances[i]);
         }
     }
 }
