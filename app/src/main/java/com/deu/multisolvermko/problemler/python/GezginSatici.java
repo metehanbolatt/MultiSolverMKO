@@ -30,8 +30,6 @@ public class GezginSatici extends AppCompatActivity{
     EditText editText;
     Button button, buttonHesapla, buttonSifirla;
     TextView textView, textViewHesapla, text_progress;
-    AlertDialog.Builder builder;
-    AlertDialog alertDialog;
 
     ProgressBar progressBar,progressBar2;
     int a = 0;
@@ -160,7 +158,6 @@ public class GezginSatici extends AppCompatActivity{
                 progressBar.setMax(100);
                 progressBar.setScaleY(3.f);
                 progressAnimation();
-
 
                 ExampleThread thread = new ExampleThread();
                 thread.start();

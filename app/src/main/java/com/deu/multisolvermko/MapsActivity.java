@@ -5,7 +5,10 @@ import androidx.fragment.app.FragmentActivity;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.chaquo.python.PyObject;
@@ -29,6 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     int[] distances;
     Python py;
     PyObject pyobj;
+    ProgressBar progressBar;
 
     ArrayList<Double> latdouble,londouble;
     ArrayList<Float> goToPy;
@@ -53,6 +57,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         pyobj = py.getModule("gezginfly");
 
         mapsTextView = findViewById(R.id.maps_textView);
+        progressBar = findViewById(R.id.progressBarMaps);
+        progressBar.setVisibility(View.INVISIBLE);
 
         latdouble = new ArrayList<>();
         londouble = new ArrayList<>();
@@ -90,22 +96,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
             if (a == sehirSayisi-1){
-                new CountDownTimer(2000,1000){
 
+                Toast.makeText(MapsActivity.this, "Hesaplanıyor", Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.VISIBLE);
+
+                ExampleThread2 thread2 = new ExampleThread2();
+                thread2.start();
+
+                mapsTextView.addTextChangedListener(new TextWatcher() {
                     @Override
-                    public void onTick(long millisUntilFinished) {
-                        Toast.makeText(MapsActivity.this, "Hesaplanıyor", Toast.LENGTH_SHORT).show();
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
                     }
 
                     @Override
-                    public void onFinish() {
-                        hesapla();
-                        arrayToDizi();
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                        PyObject obj = pyobj.callAttr("main123", distances);
-                        mapsTextView.setText(obj.toString());
                     }
-                }.start();
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        progressBar.setVisibility(View.INVISIBLE);
+
+                    }
+                });
+
             }
 
         }else{
@@ -143,6 +158,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             distances[i]=Math.round(goToPy.get(i));
         }
 
+    }
 
+    class ExampleThread2 extends Thread{
+
+        @Override
+        public void run() {
+
+            hesapla();
+            arrayToDizi();
+            Python py = Python.getInstance();
+            final PyObject pyobj = py.getModule("gezginfly");
+            final PyObject obj = pyobj.callAttr("main123", distances);
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mapsTextView.setText(obj.toString());
+                }
+            });
+
+        }
     }
 }
