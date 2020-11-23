@@ -87,6 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Double lat = latLng.latitude;
             Double lon = latLng.longitude;
 
+
             String latstr = lat.toString();
             String lonstr = lon.toString();
 
