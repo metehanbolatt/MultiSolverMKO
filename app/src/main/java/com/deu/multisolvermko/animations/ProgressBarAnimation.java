@@ -1,4 +1,4 @@
-package com.deu.multisolvermko;
+package com.deu.multisolvermko.animations;
 
 import android.content.Context;
 import android.view.View;

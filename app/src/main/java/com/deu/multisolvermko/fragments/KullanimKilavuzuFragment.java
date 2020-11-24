@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.mainactivity.FirstMainActivity;
+import com.deu.multisolvermko.mainactivity.InformationActivity;
 
 public class KullanimKilavuzuFragment extends Fragment {
 
@@ -24,7 +24,7 @@ public class KullanimKilavuzuFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), FirstMainActivity.class);
+                Intent intent = new Intent(getActivity(), InformationActivity.class);
                 startActivity(intent);
             }
         });

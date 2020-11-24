@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.problemler.gsmaps;
+package com.deu.multisolvermko.problemler.gezginsaticimaps;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.deu.multisolvermko.MapsActivity;
+import com.deu.multisolvermko.problemler.python.MapsActivity;
 import com.deu.multisolvermko.R;
 
 public class GsFly extends AppCompatActivity {

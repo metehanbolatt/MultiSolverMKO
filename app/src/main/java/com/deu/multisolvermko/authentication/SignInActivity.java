@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.homepage.RealMainActivity;
+import com.deu.multisolvermko.homepage.HomepageActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -48,7 +48,7 @@ public class SignInActivity extends AppCompatActivity {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if (firebaseUser != null){
-            Intent intent = new Intent(getApplicationContext(), RealMainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
             startActivity(intent);
             finish();
         }
@@ -94,7 +94,7 @@ public class SignInActivity extends AppCompatActivity {
                 public void onSuccess(AuthResult authResult) {
                     passwordTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
                     emailTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
-                    Intent intent = new Intent(getApplicationContext(), RealMainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
                     startActivity(intent);
                     finish();
                 }

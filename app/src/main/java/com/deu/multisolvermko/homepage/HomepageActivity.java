@@ -46,7 +46,7 @@ import java.io.IOException;
 import java.util.Map;
 
 
-public class RealMainActivity extends AppCompatActivity {
+public class HomepageActivity extends AppCompatActivity {
 
     Bitmap selectedImage;
     public FirebaseAuth firebaseAuth;
@@ -64,7 +64,7 @@ public class RealMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_real_main);
+        setContentView(R.layout.activity_homepage);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
@@ -92,8 +92,8 @@ public class RealMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (ContextCompat.checkSelfPermission(RealMainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(RealMainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
+                if (ContextCompat.checkSelfPermission(HomepageActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(HomepageActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
                 }else{
                     Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intentToGallery,2);
@@ -126,7 +126,7 @@ public class RealMainActivity extends AppCompatActivity {
         newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(RealMainActivity.this).load(uri).into(imageView);
+                Picasso.with(HomepageActivity.this).load(uri).into(imageView);
             }
         });
     }
@@ -178,7 +178,7 @@ public class RealMainActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             downloadUrl = uri.toString();
-                            Picasso.with(RealMainActivity.this).load(uri).into(imageView);
+                            Picasso.with(HomepageActivity.this).load(uri).into(imageView);
                         }
                     });
                 }
@@ -197,7 +197,7 @@ public class RealMainActivity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null){
-                    Toast.makeText(RealMainActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomepageActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
                 if (value != null){
                     for (DocumentSnapshot snapshot: value.getDocuments()){

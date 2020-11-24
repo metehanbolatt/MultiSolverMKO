@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.problemler.gsmaps;
+package com.deu.multisolvermko.problemler.gezginsaticimaps;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;

@@ -21,7 +21,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
-import com.deu.multisolvermko.ProgressBarAnimation;
+import com.deu.multisolvermko.animations.ProgressBarAnimation;
 import com.deu.multisolvermko.R;
 import static java.lang.Math.floor;
 

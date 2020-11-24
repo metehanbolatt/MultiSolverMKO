@@ -1,4 +1,4 @@
-package com.deu.multisolvermko;
+package com.deu.multisolvermko.problemler.python;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
+import com.deu.multisolvermko.animations.ProgressBarAnimation;
+import com.deu.multisolvermko.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
