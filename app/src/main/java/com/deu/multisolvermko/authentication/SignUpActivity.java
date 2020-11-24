@@ -18,62 +18,239 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
 
     public FirebaseAuth firebaseAuth;
-    EditText signUpEmail,signUpPassword;
+    EditText signUpEmail,signUpPassword,signUpName,signUpSurname;
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
+    FirebaseFirestore firebaseFirestore;
+    String name,surname,email,password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseStorage=FirebaseStorage.getInstance();
+        storageReference=firebaseStorage.getReference();
+        firebaseFirestore=FirebaseFirestore.getInstance();
+
         signUpEmail = findViewById(R.id.signUpEmail);
         signUpPassword = findViewById(R.id.signUpPassword);
+        signUpName = findViewById(R.id.signUpName);
+        signUpSurname = findViewById(R.id.signUpSurname);
+
     }
 
     public void signUpButton(View view){
 
-        if (signUpEmail.getText().toString().equals("") && signUpPassword.getText().toString().equals("")){
-            showEmailPasswordTost();
-            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
-            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
-            onShakeBoth();
-        }else if (signUpPassword.getText().toString().equals("")){
-            showPasswordTost();
-            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
-            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
-            onShakePassword();
-        }else if (signUpEmail.getText().toString().equals("")){
+        if (signUpEmail.getText().toString().equals("") && !signUpPassword.getText().toString().equals("") && !signUpName.getText().toString().equals("") && !signUpSurname.getText().toString().equals("")) {
+
             showEmailTost();
             signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
             signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
             onShakeEmail();
-        }else{
-            String email = signUpEmail.getText().toString();
-            String password = signUpPassword.getText().toString();
 
+        }else if (!signUpEmail.getText().toString().equals("") && signUpPassword.getText().toString().equals("") && !signUpName.getText().toString().equals("") && !signUpSurname.getText().toString().equals("")) {
+
+            showPasswordTost();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            onShakePassword();
+
+        }else if (!signUpEmail.getText().toString().equals("") && !signUpPassword.getText().toString().equals("") && signUpName.getText().toString().equals("") && !signUpSurname.getText().toString().equals("")) {
+
+            showNameError();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            onShakeName();
+
+        }else if (!signUpEmail.getText().toString().equals("") && !signUpPassword.getText().toString().equals("") && !signUpName.getText().toString().equals("") && signUpSurname.getText().toString().equals("")) {
+
+            showSurnameError();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            onShakeSurname();
+
+        } else if (signUpEmail.getText().toString().equals("") && signUpPassword.getText().toString().equals("") && !signUpName.getText().toString().equals("") && !signUpSurname.getText().toString().equals("")) {
+
+            showEmailPasswordTost();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            onShakePassword();
+            onShakeEmail();
+
+        } else if (signUpEmail.getText().toString().equals("") && !signUpPassword.getText().toString().equals("") && signUpName.getText().toString().equals("") && !signUpSurname.getText().toString().equals("")) {
+
+            showEmailNameError();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            onShakeName();
+            onShakeEmail();
+
+        } else if (signUpEmail.getText().toString().equals("") && !signUpPassword.getText().toString().equals("") && !signUpName.getText().toString().equals("") && signUpSurname.getText().toString().equals("")) {
+
+            showEmailSurnameError();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            onShakeSurname();
+            onShakeEmail();
+
+        } else if (!signUpEmail.getText().toString().equals("") && signUpPassword.getText().toString().equals("") && signUpName.getText().toString().equals("") && !signUpSurname.getText().toString().equals("")) {
+
+            showPasswordNameError();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            onShakePassword();
+            onShakeName();
+
+        } else if (!signUpEmail.getText().toString().equals("") && signUpPassword.getText().toString().equals("") && !signUpName.getText().toString().equals("") && signUpSurname.getText().toString().equals("")) {
+
+            showPasswordSurnameError();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            onShakePassword();
+            onShakeSurname();
+
+        } else if (!signUpEmail.getText().toString().equals("") && !signUpPassword.getText().toString().equals("") && signUpName.getText().toString().equals("") && signUpSurname.getText().toString().equals("")) {
+
+            showNameSurnameError();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            onShakeName();
+            onShakeSurname();
+
+        }else if (signUpEmail.getText().toString().equals("") && signUpPassword.getText().toString().equals("") && signUpName.getText().toString().equals("") && signUpSurname.getText().toString().equals("")) {
+
+            showAllError();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            onShakeName();
+            onShakeSurname();
+            onShakePassword();
+            onShakeEmail();
+
+        }else if (!signUpEmail.getText().toString().equals("") && signUpPassword.getText().toString().equals("") && signUpName.getText().toString().equals("") && signUpSurname.getText().toString().equals("")) {
+
+            showExceptEmail();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            onShakeName();
+            onShakeSurname();
+            onShakePassword();
+
+        }else if (signUpEmail.getText().toString().equals("") && !signUpPassword.getText().toString().equals("") && signUpName.getText().toString().equals("") && signUpSurname.getText().toString().equals("")) {
+
+            showExceptPassword();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            onShakeName();
+            onShakeSurname();
+            onShakeEmail();
+
+        }else if (signUpEmail.getText().toString().equals("") && signUpPassword.getText().toString().equals("") && !signUpName.getText().toString().equals("") && signUpSurname.getText().toString().equals("")) {
+
+            showExceptName();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            onShakeSurname();
+            onShakePassword();
+            onShakeEmail();
+
+        }else if (signUpEmail.getText().toString().equals("") && signUpPassword.getText().toString().equals("") && signUpName.getText().toString().equals("") && !signUpSurname.getText().toString().equals("")) {
+
+            showExceptSurname();
+            signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border_red, null));
+            signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+            onShakeName();
+            onShakePassword();
+            onShakeEmail();
+
+        }else{
+
+            email = signUpEmail.getText().toString();
+            password = signUpPassword.getText().toString();
+            name = signUpName.getText().toString();
+            surname = signUpSurname.getText().toString();
+
+            final HashMap<String, Object> data = new HashMap<>();
+            data.put("useremail",email);
+            data.put("name",name);
+            data.put("surname",surname);
 
             firebaseAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
+
+                    firebaseFirestore.collection("Users").add(data);
                     signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
                     signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+                    signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+                    signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
                     Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
                     startActivity(intent);
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     if (e.getLocalizedMessage().equals("The email address is badly formatted.")){
+
                         showFirebaseEmailError();
+                        signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
+                        signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+                        signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+                        signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+                        onShakeEmail();
+
                     }else{
+
                         showFirebasePasswordError();
+                        signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
+                        signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+                        signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+                        signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+                        onShakePassword();
+
                     }
-                    signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
-                    signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
-                    onShakeBoth();
                 }
             });
         }
@@ -89,12 +266,17 @@ public class SignUpActivity extends AppCompatActivity {
         shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
         signUpPassword.startAnimation(shake);
     }
-    public void onShakeBoth() {
+    public void onShakeName() {
         Animation shake;
         shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-        signUpEmail.startAnimation(shake);
-        signUpPassword.startAnimation(shake);
+        signUpName.startAnimation(shake);
     }
+    public void onShakeSurname() {
+        Animation shake;
+        shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+        signUpSurname.startAnimation(shake);
+    }
+
     public void showEmailTost(){
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast_layout_email, (ViewGroup)findViewById(R.id.toast_root));
@@ -140,4 +322,113 @@ public class SignUpActivity extends AppCompatActivity {
         toast.setView(layout);
         toast.show();
     }
+    public void showNameError(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_name_error, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showSurnameError(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_surname_error, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showEmailNameError(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_name, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showAllError(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_all_error, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showEmailSurnameError(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_surname_error, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showNameSurnameError(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_name_surname_error, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showPasswordNameError(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_name_error, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showPasswordSurnameError(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_surname_error, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showExceptEmail(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_except_empty, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showExceptPassword(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_except_empty, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showExceptName(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_name_except_empty, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+    public void showExceptSurname(){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_surname_except_empty, (ViewGroup)findViewById(R.id.toast_root));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.BOTTOM,0,50);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+
 }

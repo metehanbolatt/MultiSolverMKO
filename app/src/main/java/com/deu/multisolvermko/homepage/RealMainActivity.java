@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,12 +31,19 @@ import com.deu.multisolvermko.authentication.SignInActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 import java.io.IOException;
+import java.util.Map;
 
 
 public class RealMainActivity extends AppCompatActivity {
@@ -48,6 +57,9 @@ public class RealMainActivity extends AppCompatActivity {
     Uri imageData;
     String currentUser;
     String downloadUrl;
+    FirebaseFirestore firebaseFirestore;
+    String email,name,surName;
+    TextView userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +69,9 @@ public class RealMainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
+        firebaseFirestore=FirebaseFirestore.getInstance();
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,16 +79,15 @@ public class RealMainActivity extends AppCompatActivity {
             }
         });
 
+        getData();
+
         NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null);
-
         View headerView = navigationView.getHeaderView(0);
-        TextView userName = headerView.findViewById(R.id.userName);
-        userName.setText(firebaseAuth.getCurrentUser().getEmail());
+        userName = headerView.findViewById(R.id.userName);
         buttondegistir = headerView.findViewById(R.id.buttondegistir);
 
         imageView = (RoundedImageView) headerView.findViewById(R.id.imageProfile);
-
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +139,6 @@ public class RealMainActivity extends AppCompatActivity {
                 Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intentToGallery,2);
             }
-
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
@@ -174,5 +184,30 @@ public class RealMainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void getData(){
+
+        if (firebaseAuth.getCurrentUser() != null){
+            email = firebaseAuth.getCurrentUser().getEmail();
+        }
+
+        CollectionReference collectionReference = firebaseFirestore.collection("Users");
+        collectionReference.whereEqualTo("useremail",email).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (error != null){
+                    Toast.makeText(RealMainActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+                if (value != null){
+                    for (DocumentSnapshot snapshot: value.getDocuments()){
+                        Map<String,Object> data = snapshot.getData();
+                        name = (String) data.get("name");
+                        surName = (String) data.get("surname");
+                        userName.setText(name+" "+surName);
+                    }
+                }
+            }
+        });
     }
 }
