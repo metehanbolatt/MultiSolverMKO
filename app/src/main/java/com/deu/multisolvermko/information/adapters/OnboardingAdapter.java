@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.mainactivity.adapters;
+package com.deu.multisolvermko.information.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.mainactivity.items.OnboardingItem;
+import com.deu.multisolvermko.information.items.OnboardingItem;
 import java.util.List;
 
 public class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>{

@@ -57,7 +57,7 @@
         <activity android:name=".authentication.SignInActivity" />
         <activity android:name=".topsis_ahp.topsis.TopsisActivity" />
         <activity android:name=".homepage.HomepageActivity" />
-        <activity android:name=".mainactivity.InformationActivity" />
+        <activity android:name=".information.InformationActivity" />
         <activity android:name=".problemler.python.GezginSatici" />
         <activity android:name=".problemler.python.GezginSaticiDistances" />
         <activity android:name=".problemler.ProblemActivity" />

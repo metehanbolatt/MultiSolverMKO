@@ -45,6 +45,11 @@
         android:name="com.deu.multisolvermko.fragments.KullanimKilavuzuFragment"
         android:label="Kullanım Kılavuzu"
         tools:layout="@layout/fragment_kullanim_kilavuzu" />
+    <fragment
+        android:id="@+id/menuLibrary"
+        android:name="com.deu.multisolvermko.fragments.LibraryFragment"
+        android:label="Kütüphane"
+        tools:layout="@layout/fragment_library" />
 
 
 </navigation>

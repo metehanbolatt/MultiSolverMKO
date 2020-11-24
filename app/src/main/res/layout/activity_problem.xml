@@ -33,16 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView2"
-        android:layout_width="321dp"
-        android:layout_height="306dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/earthh"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"

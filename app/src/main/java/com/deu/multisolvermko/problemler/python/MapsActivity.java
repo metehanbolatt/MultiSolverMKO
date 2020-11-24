@@ -1,7 +1,6 @@
 package com.deu.multisolvermko.problemler.python;
 
 import androidx.fragment.app.FragmentActivity;
-
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -27,7 +26,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
-
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
     private GoogleMap mMap;
@@ -42,8 +40,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ArrayList<Double> latdouble,londouble;
     ArrayList<Float> goToPy;
     Location loc1,loc2;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +126,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     }
                 });
-
             }
 
         }else{
@@ -193,7 +188,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void progressAnimation2(){
         ProgressBarAnimation anim = new ProgressBarAnimation(this,progressBar,progressBar2,mapsTextView,0,100f);
-        anim.setDuration(2000);
+        anim.setDuration(4000);
         progressBar.setAnimation(anim);
     }
 

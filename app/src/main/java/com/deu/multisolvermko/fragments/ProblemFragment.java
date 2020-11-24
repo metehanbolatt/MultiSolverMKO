@@ -20,7 +20,7 @@ public class ProblemFragment extends Fragment {
 
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_problem,container,false);
 
-        Button button = viewGroup.findViewById(R.id.button);
+        Button button = viewGroup.findViewById(R.id.gezginSaticiButton);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

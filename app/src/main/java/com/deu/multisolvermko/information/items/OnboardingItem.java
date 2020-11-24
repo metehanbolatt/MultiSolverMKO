@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.mainactivity.items;
+package com.deu.multisolvermko.information.items;
 
 public class OnboardingItem {
 

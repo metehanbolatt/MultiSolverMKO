@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:headerLayout="@layout/layout_navigation_header"
-        android:background="@color/colorBlack"
+        android:background="@drawable/backfragment"
         app:itemTextColor="@color/colorWhite"
         app:itemShapeFillColor="@color/colorNeutralAlert"
         app:menu="@menu/navigation_menu"

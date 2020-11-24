@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.mainactivity;
+package com.deu.multisolvermko.information;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.authentication.SignInActivity;
-import com.deu.multisolvermko.mainactivity.adapters.OnboardingAdapter;
-import com.deu.multisolvermko.mainactivity.items.OnboardingItem;
+import com.deu.multisolvermko.information.adapters.OnboardingAdapter;
+import com.deu.multisolvermko.information.items.OnboardingItem;
 import com.google.android.material.button.MaterialButton;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +69,11 @@ public class InformationActivity extends AppCompatActivity {
 
         List<OnboardingItem> onboardingItems = new ArrayList<>();
 
+        OnboardingItem itemProfile = new OnboardingItem();
+        itemProfile.setTitle("Profil Resmi Değiştirme");
+        itemProfile.setDescription("Profil fotoğrafınızı değiştirmek için sol taraftan açılan menüde fotoğrafınıza uzun tıklayabilirsiniz.");
+        itemProfile.setImage(R.drawable.profile);
+
         OnboardingItem itemPayOnline = new OnboardingItem();
         itemPayOnline.setTitle("Gezgin Satıcı Problemi");
         itemPayOnline.setDescription("Gezgin satıcı problemi 10 şehirden oluşan bir problemdir." +
@@ -86,6 +91,7 @@ public class InformationActivity extends AppCompatActivity {
         itemEatTogether.setDescription("Gelecek problem güncellemeleri ile bu bilgilendirme sayfası artacaktır.");
         itemEatTogether.setImage(R.drawable.pngggg);
 
+        onboardingItems.add(itemProfile);
         onboardingItems.add(itemPayOnline);
         onboardingItems.add(itemOnTheWay);
         onboardingItems.add(itemEatTogether);

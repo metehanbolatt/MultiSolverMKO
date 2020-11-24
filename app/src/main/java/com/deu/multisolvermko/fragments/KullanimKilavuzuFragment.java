@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.mainactivity.InformationActivity;
+import com.deu.multisolvermko.information.InformationActivity;
 
 public class KullanimKilavuzuFragment extends Fragment {
 

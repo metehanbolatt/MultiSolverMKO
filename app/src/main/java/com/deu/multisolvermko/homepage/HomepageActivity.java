@@ -50,7 +50,6 @@ public class HomepageActivity extends AppCompatActivity {
 
     Bitmap selectedImage;
     public FirebaseAuth firebaseAuth;
-    Button buttondegistir;
     ImageView imageView;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
@@ -85,22 +84,23 @@ public class HomepageActivity extends AppCompatActivity {
         navigationView.setItemIconTintList(null);
         View headerView = navigationView.getHeaderView(0);
         userName = headerView.findViewById(R.id.userName);
-        buttondegistir = headerView.findViewById(R.id.buttondegistir);
 
         imageView = (RoundedImageView) headerView.findViewById(R.id.imageProfile);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public boolean onLongClick(View v) {
                 if (ContextCompat.checkSelfPermission(HomepageActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
                     ActivityCompat.requestPermissions(HomepageActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
                 }else{
                     Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intentToGallery,2);
-
                 }
+                return false;
             }
         });
+
+
+
 
         NavController navController = Navigation.findNavController(this, R.id.navHosFragment);
         NavigationUI.setupWithNavController(navigationView,navController);
@@ -152,10 +152,10 @@ public class HomepageActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= 28){
                     ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(),imageData);
                     selectedImage = ImageDecoder.decodeBitmap(source);
-                    buttondegistir.setVisibility(View.VISIBLE);
+                    uploadd();
                 }else{
                     selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(),imageData);
-                    buttondegistir.setVisibility(View.VISIBLE);
+                    uploadd();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -164,8 +164,7 @@ public class HomepageActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void upload(View view){
-        buttondegistir.setVisibility(View.INVISIBLE);
+    public void uploadd(){
         currentUser = firebaseAuth.getCurrentUser().getEmail();
 
         if (imageData != null){

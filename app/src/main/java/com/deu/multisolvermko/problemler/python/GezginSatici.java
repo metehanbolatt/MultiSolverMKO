@@ -210,7 +210,7 @@ public class GezginSatici extends AppCompatActivity{
 
     public void progressAnimation(){
         ProgressBarAnimation anim = new ProgressBarAnimation(this,progressBar,progressBar2,textView,0,100f);
-        anim.setDuration(2000);
+        anim.setDuration(4000);
         progressBar.setAnimation(anim);
     }
 
