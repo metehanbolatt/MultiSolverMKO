@@ -100,8 +100,6 @@ public class HomepageActivity extends AppCompatActivity {
         });
 
 
-
-
         NavController navController = Navigation.findNavController(this, R.id.navHosFragment);
         NavigationUI.setupWithNavController(navigationView,navController);
 

@@ -188,7 +188,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void progressAnimation2(){
         ProgressBarAnimation anim = new ProgressBarAnimation(this,progressBar,progressBar2,mapsTextView,0,100f);
-        anim.setDuration(4000);
+        anim.setDuration(2000);
         progressBar.setAnimation(anim);
     }
 
