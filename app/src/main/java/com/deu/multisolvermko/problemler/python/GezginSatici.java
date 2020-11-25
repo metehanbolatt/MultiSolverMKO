@@ -115,7 +115,7 @@ public class GezginSatici extends AppCompatActivity{
                 ((TextView) view.findViewById(R.id.textMessage)).setText(getResources().getString(R.string.error_title));
                 ((Button) view.findViewById(R.id.buttonYes)).setText("Evet");
                 ((Button) view.findViewById(R.id.buttonNo)).setText("Hayır");
-                ((ImageView) view.findViewById(R.id.imageIcon)).setImageResource(R.drawable.ic_success);
+                ((ImageView) view.findViewById(R.id.imageIcon)).setImageResource(R.drawable.ic_warningg);
 
                 final AlertDialog alertDialog = builder.create();
 
@@ -125,6 +125,7 @@ public class GezginSatici extends AppCompatActivity{
                         a = 0;
                         textView.setVisibility(View.VISIBLE);
                         buttonHesapla.setVisibility(View.INVISIBLE);
+                        editText.setHint("Matris boyutu giriniz..");
                         PyObject obj = pyobj.callAttr("main4");
                         textView.setText(obj.toString());
                         alertDialog.dismiss();

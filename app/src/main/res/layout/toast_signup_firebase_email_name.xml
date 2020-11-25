@@ -12,7 +12,7 @@
         style="style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="    Lütfen Email ve İsim Alanlarını Boş Bırakmayınız    "
+        android:text="    Lütfen İsim ve Email Alanlarını Boş Bırakmayınız    "
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
         android:textSize="14sp"
