@@ -50,6 +50,11 @@
         android:name="com.deu.multisolvermko.fragments.LibraryFragment"
         android:label="Kütüphane"
         tools:layout="@layout/fragment_library" />
+    <fragment
+        android:id="@+id/menuUsers"
+        android:name="com.deu.multisolvermko.fragments.UsersFragment"
+        android:label="fragment_users"
+        tools:layout="@layout/fragment_users" />
 
 
 </navigation>

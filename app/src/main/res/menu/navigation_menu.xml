@@ -13,6 +13,10 @@
         android:icon="@drawable/kitap"
         android:title="Kütüphane"/>
 
+    <item android:id="@+id/menuUsers"
+        android:icon="@drawable/profile"
+        android:title="Kullanıcılar"/>
+
     <item android:id="@+id/menuProblems"
         android:icon="@drawable/problem"
         android:title="Problemler"/>
