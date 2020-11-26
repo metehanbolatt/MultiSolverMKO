@@ -96,7 +96,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             latdouble.add(lat);
             londouble.add(lon);
 
-
             if (a == sehirSayisi-1){
 
                 Toast.makeText(MapsActivity.this, "Hesaplanıyor", Toast.LENGTH_LONG).show();

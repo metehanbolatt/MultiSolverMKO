@@ -53,7 +53,7 @@
     <fragment
         android:id="@+id/menuUsers"
         android:name="com.deu.multisolvermko.fragments.UsersFragment"
-        android:label="fragment_users"
+        android:label="Kullanıcılar"
         tools:layout="@layout/fragment_users" />
 
 
