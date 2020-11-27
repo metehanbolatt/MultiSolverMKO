@@ -1,17 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ProfileFragment"
     android:background="@drawable/background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        android:textColor="@color/colorWhite"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
+    <ScrollView
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".homepage.HomepageActivity"
+        android:background="@color/colorBlack">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="#000000"
+                android:padding="20dp">
+
+                <com.github.siyamed.shapeimageview.CircularImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/profile"
+                    app:siArrowPosition="right"
+                    app:siSquare="true"
+                    app:siBorderWidth="6dp"
+                    app:siBorderColor="#4A4A4A"
+                    />
+                <TextView
+                    android:id="@+id/full_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/profile_image"
+                    android:includeFontPadding="false"
+                    android:text="Kutay Çetinkurt"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"/>
+
+                <TextView
+                    android:id="@+id/nickNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/full_name"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/profile_image"
+                    android:includeFontPadding="false"
+                    android:text="kutay_cetinkurt"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorWhite"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-100dp"
+                android:padding="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nameText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:contextClickable="false"
+                        android:drawableLeft="@drawable/siyahnokta"
+                        android:drawablePadding="10dp"
+                        android:enabled="false"
+                        android:text="Kutay" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Surname">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/surnameText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/siyahnokta"
+                        android:drawablePadding="10dp"
+                        android:text="Çetinkurt"
+                        android:clickable="false"
+                        android:enabled="false"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="e-mail">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/emailText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/siyahnokta"
+                        android:drawablePadding="10dp"
+                        android:text="kutay215@gmail.com"
+                        android:clickable="false"
+                        android:enabled="false"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:text="   "
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/forChangingPasswordText"
+                    android:drawablePadding="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorNavigationGreen"
+                    android:text="Şifrenizi değiştirmek için TIKLAYINIZ"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/clickText"
+                    android:padding="2dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

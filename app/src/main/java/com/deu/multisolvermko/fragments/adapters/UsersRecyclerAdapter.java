@@ -28,8 +28,6 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     ArrayList<String> urlfoto;
     Context context;
 
-    Integer a = 0;
-
     public UsersRecyclerAdapter(ArrayList<String> nameList, ArrayList<String> emailList, ArrayList<String> surnameList, ArrayList<String> urlfoto) {
         this.nameList = nameList;
         this.emailList = emailList;
@@ -62,7 +60,6 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
             }
         });
-
     }
 
     @Override

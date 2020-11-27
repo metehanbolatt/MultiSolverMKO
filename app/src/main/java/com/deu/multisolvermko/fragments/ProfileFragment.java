@@ -1,63 +1,182 @@
 package com.deu.multisolvermko.fragments;
 
+
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import com.deu.multisolvermko.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    FirebaseFirestore firebaseFirestore;
+    FirebaseAuth firebaseAuth;
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
+    String email,name,surName;
+    TextView nameText, surnameText, emailText, full_nameText, nickNameText,newPassword,oldPassword;
+    ImageView userImage;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    FirebaseUser firebaseUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+
+        final ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_profile,container,false);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
+        firebaseFirestore=FirebaseFirestore.getInstance();
+        email = firebaseAuth.getCurrentUser().getEmail();
+
+        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+
+        nameText= viewGroup.findViewById(R.id.nameText);
+        surnameText= viewGroup.findViewById(R.id.surnameText);
+        emailText=viewGroup.findViewById(R.id.emailText);
+        full_nameText=viewGroup.findViewById(R.id.full_name);
+        nickNameText=viewGroup.findViewById(R.id.nickNameText);
+        userImage=viewGroup.findViewById(R.id.profile_image);
+        final TextView clickText=viewGroup.findViewById(R.id.clickText);
+        final ConstraintLayout layoutDialogContainer=viewGroup.findViewById(R.id.layoutDialogContainer);
+
+        clickText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(getContext(),R.style.AlertDialogTheme);
+                final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.change_password_dialog, layoutDialogContainer);
+                builder.setView(viewView);
+
+                final AlertDialog alertDialog = builder.create();
+
+                viewView.findViewById(R.id.buttonChangeOkWithKC).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+
+                        oldPassword=viewView.findViewById(R.id.oldPassword);
+                        String oldPasswordAuth=oldPassword.getText().toString();
+                        System.out.println(oldPassword);
+                        newPassword=viewView.findViewById(R.id.newPassword);
+
+                        if (oldPassword.getText().length()<6 || newPassword.getText().length()<6){
+                            Toast.makeText(getContext(), "Lütfen 6 haneden uzun şifre giriniz", Toast.LENGTH_SHORT).show();
+                        }else {
+
+                            final String newPasswordAuth = newPassword.getText().toString();
+                            System.out.println(newPassword);
+                            AuthCredential credential = EmailAuthProvider.getCredential(email, oldPasswordAuth);
+                            firebaseUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        firebaseUser.updatePassword(newPasswordAuth).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(getContext(), "Şifreniz başarıyla değiştirildi.", Toast.LENGTH_SHORT).show();
+                                                    alertDialog.dismiss();
+                                                } else {
+                                                    Toast.makeText(getContext(), "Şifre değiştirme başarısız", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                    } else {
+                                        Toast.makeText(getContext(), "Doğrulama Hatası", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+
+                viewView.findViewById(R.id.buttonChangeCancelWithKC).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //dialogu kapat
+
+                        Toast.makeText(getContext(), "ŞİFRE DEĞİŞTİRME İŞLEMİNİZ İPTAL EDİLMİŞTİR", Toast.LENGTH_SHORT).show();
+                        alertDialog.dismiss();
+                    }
+                });
+
+                if (alertDialog.getWindow() != null) {
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+
+                alertDialog.show();
+            }
+        });
+
+        storageReference=FirebaseStorage.getInstance().getReference();
+        storageReference.child(email).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(final Uri uri) {
+                Picasso.with(getContext()).load(uri).into(userImage);
+            }
+        });
+
+        CollectionReference collectionReference = firebaseFirestore.collection("Users");
+        collectionReference.whereEqualTo("useremail",email).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (error != null){
+                    Toast.makeText(getContext(), error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+                if (value != null){
+                    for (DocumentSnapshot snapshot: value.getDocuments()){
+                        Map<String,Object> data = snapshot.getData();
+                        name = (String) data.get("name");
+                        surName = (String) data.get("surname");
+                        nameText.setText(name);
+                        surnameText.setText(surName);
+                        full_nameText.setText(name + " " + surName);
+                        nickNameText.setText(name + "_"+ surName);
+                    }
+                }
+            }
+        });
+        emailText.setText(email);
+
+        return viewGroup;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        super.onViewCreated(view, savedInstanceState);
+    }
+
 }

@@ -17,6 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CreateNoteActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".problemler.gezginsaticimaps.FlyHesaplama" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
