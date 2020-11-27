@@ -51,14 +51,18 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
         holder.isimTextView.setText(nameList.get(position));
         holder.surnameTextView.setText(surnameList.get(position));
-        Picasso.with(context).load(urlfoto.get(position)).into(holder.fotoImageView);
+        if (urlfoto.get(position).equals("null")){
+            holder.fotoImageView.setImageResource(R.drawable.profile);
+        }else{
+            Picasso.with(context).load(urlfoto.get(position)).into(holder.fotoImageView);
+        }
         holder.UsersLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("vvvvv");
-                System.out.println(v);
+
             }
         });
+
     }
 
     @Override
