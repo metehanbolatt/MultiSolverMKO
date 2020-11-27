@@ -28,10 +28,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.authentication.SignInActivity;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -59,6 +61,7 @@ public class HomepageActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     String email,name,surName;
     TextView userName;
+    DocumentReference documentReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,6 +178,18 @@ public class HomepageActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             downloadUrl = uri.toString();
+                            documentReference = firebaseFirestore.collection("Users").document(currentUser);
+                            documentReference.update("urlfoto",downloadUrl).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    System.out.println("başarılı");
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    System.out.println("Başaramadık");
+                                }
+                            });
                             Picasso.with(HomepageActivity.this).load(uri).into(imageView);
                         }
                     });

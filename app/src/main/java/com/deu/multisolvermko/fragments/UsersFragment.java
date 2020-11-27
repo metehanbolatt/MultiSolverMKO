@@ -28,6 +28,7 @@ public class UsersFragment extends Fragment {
     ArrayList<String> UsersNameList;
     ArrayList<String> UsersSurnameList;
     ArrayList<String> UsersEmailList;
+    ArrayList<String> UsersUrlList;
 
     UsersRecyclerAdapter usersRecyclerAdapter;
 
@@ -41,6 +42,7 @@ public class UsersFragment extends Fragment {
         UsersNameList = new ArrayList<>();
         UsersSurnameList = new ArrayList<>();
         UsersEmailList = new ArrayList<>();
+        UsersUrlList = new ArrayList<>();
 
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -58,12 +60,15 @@ public class UsersFragment extends Fragment {
                         String name = (String) data.get("name");
                         String surname = (String) data.get("surname");
                         String email = (String) data.get("useremail");
+                        String url = (String) data.get("urlfoto");
 
                         UsersNameList.add(name);
                         UsersSurnameList.add(surname);
                         UsersEmailList.add(email);
-
+                        UsersUrlList.add(url);
                         usersRecyclerAdapter.notifyDataSetChanged();
+
+                        System.out.println(UsersUrlList);
 
                     }
                 }
@@ -72,7 +77,7 @@ public class UsersFragment extends Fragment {
 
         RecyclerView recyclerView = viewGroup.findViewById(R.id.recyclerViewUsers);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext().getApplicationContext()));
-        usersRecyclerAdapter = new UsersRecyclerAdapter(UsersNameList, UsersEmailList,UsersSurnameList);
+        usersRecyclerAdapter = new UsersRecyclerAdapter(UsersNameList, UsersEmailList,UsersSurnameList,UsersUrlList);
         recyclerView.setAdapter(usersRecyclerAdapter);
 
         return viewGroup;

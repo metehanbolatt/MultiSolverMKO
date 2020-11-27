@@ -215,12 +215,13 @@ public class SignUpActivity extends AppCompatActivity {
             data.put("useremail",email);
             data.put("name",name);
             data.put("surname",surname);
+            data.put("urlfoto", "null" );
 
             firebaseAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
 
-                    firebaseFirestore.collection("Users").add(data);
+                    firebaseFirestore.collection("Users").document(signUpEmail.getText().toString()).set(data);
                     signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
                     signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
                     signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));

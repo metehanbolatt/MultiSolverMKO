@@ -25,14 +25,16 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     ArrayList<String> nameList;
     ArrayList<String> emailList;
     ArrayList<String> surnameList;
+    ArrayList<String> urlfoto;
     Context context;
 
     Integer a = 0;
 
-    public UsersRecyclerAdapter(ArrayList<String> nameList, ArrayList<String> emailList, ArrayList<String> surnameList) {
+    public UsersRecyclerAdapter(ArrayList<String> nameList, ArrayList<String> emailList, ArrayList<String> surnameList, ArrayList<String> urlfoto) {
         this.nameList = nameList;
         this.emailList = emailList;
         this.surnameList = surnameList;
+        this.urlfoto = urlfoto;
     }
 
     @NonNull
@@ -49,14 +51,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
         holder.isimTextView.setText(nameList.get(position));
         holder.surnameTextView.setText(surnameList.get(position));
-        StorageReference newReference = FirebaseStorage.getInstance().getReference(emailList.get(position));
-        newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.with(context).load(uri).into(holder.fotoImageView);
-            }
-        });
-
+        Picasso.with(context).load(urlfoto.get(position)).into(holder.fotoImageView);
         holder.UsersLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
