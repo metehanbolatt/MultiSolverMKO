@@ -11,28 +11,28 @@ import java.io.Serializable;
 public class Note implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
 
     @ColumnInfo(name = "title")
-    private String title;
+    public String title;
 
     @ColumnInfo(name = "date_time")
-    private String dateTime;
+    public String dateTime;
 
     @ColumnInfo(name = "subtitle")
-    private String subtitle;
+    public String subtitle;
 
     @ColumnInfo(name = "note_text")
-    private String noteText;
+    public String noteText;
 
     @ColumnInfo(name = "image_path")
-    private String imagePath;
+    public String imagePath;
 
     @ColumnInfo(name = "color")
-    private String color;
+    public String color;
 
     @ColumnInfo(name = "web_link")
-    private String webLink;
+    public String webLink;
 
     public int getId() {
         return id;
