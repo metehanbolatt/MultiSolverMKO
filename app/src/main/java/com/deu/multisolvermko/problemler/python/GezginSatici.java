@@ -1,5 +1,6 @@
 package com.deu.multisolvermko.problemler.python;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -30,13 +31,11 @@ public class GezginSatici extends AppCompatActivity{
     EditText editText;
     Button button, buttonHesapla, buttonSifirla;
     TextView textView, textViewHesapla, text_progress;
-
     ProgressBar progressBar,progressBar2;
     int a = 0;
     int boyut;
     int sutun;
     int satir;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +63,6 @@ public class GezginSatici extends AppCompatActivity{
 
         Python py = Python.getInstance();
         final PyObject pyobj = py.getModule("gezgin2");
-
-
 
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -104,6 +101,7 @@ public class GezginSatici extends AppCompatActivity{
         });
 
         buttonSifirla.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(GezginSatici.this, R.style.AlertDialogTheme);
@@ -210,7 +208,7 @@ public class GezginSatici extends AppCompatActivity{
     }
 
     public void progressAnimation(){
-        ProgressBarAnimation anim = new ProgressBarAnimation(this,progressBar,progressBar2,textView,0,100f);
+        ProgressBarAnimation anim = new ProgressBarAnimation(progressBar,progressBar2,textView,0,100f);
         anim.setDuration(2000);
         progressBar.setAnimation(anim);
     }

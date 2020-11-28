@@ -1,6 +1,8 @@
 package com.deu.multisolvermko.topsis_ahp.ahp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +38,6 @@ public class AhpThreeProcess extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ahp_three_process);
 
-
         threebirbir = findViewById(R.id.threebirbir);
         threebiriki = findViewById(R.id.threebiriki);
         threebiruc = findViewById(R.id.threebiruc);
@@ -46,14 +47,13 @@ public class AhpThreeProcess extends AppCompatActivity {
         threeucbir = findViewById(R.id.threeucbir);
         threeuciki = findViewById(R.id.threeuciki);
         threeucuc = findViewById(R.id.threeucuc);
-
         threenot = findViewById(R.id.threenot);
         threeaciklamatext = findViewById(R.id.threeaciklamatext);
-
         threetablotamamlabutton = findViewById(R.id.threetablotamamlabutton);
         threehesaplabutton = findViewById(R.id.threehesaplabutton);
     }
 
+    @SuppressLint("SetTextI18n")
     public void hesaplaButton(View view){
 
         if (a == 2) {
@@ -63,27 +63,21 @@ public class AhpThreeProcess extends AppCompatActivity {
                 Double ikincisutun = biriki + ikiiki + uciki ;
                 Double ucuncusutun = biruc + ikiuc + ucuc ;
 
-
                 Double abirbir = birbir / birincisutun;
                 Double abiriki = biriki / ikincisutun;
                 Double abiruc = biruc / ucuncusutun;
-
 
                 Double aikibir = ikibir / birincisutun;
                 Double aikiiki = ikiiki / ikincisutun;
                 Double aikiuc = ikiuc / ucuncusutun;
 
-
                 Double aucbir = ucbir / birincisutun;
                 Double auciki = uciki / ikincisutun;
                 Double aucuc = ucuc / ucuncusutun;
 
-
-
                 Double abirincisatir = (abirbir + abiriki + abiruc ) / 3;
                 Double aikincisatir = (aikibir + aikiiki + aikiuc ) / 3;
                 Double aucuncusatir = (aucbir + auciki + aucuc ) / 3;
-
 
                 Double kbirbir = birbir * abirincisatir;
                 Double kikibir = ikibir * abirincisatir;
@@ -101,16 +95,13 @@ public class AhpThreeProcess extends AppCompatActivity {
                 Double kikincisatir = kikibir + kikiiki + kikiuc;
                 Double kucuncusatir = kucbir + kuciki + kucuc ;
 
-
                 Double tcbirincisatir = kbirincisatir / abirincisatir;
                 Double tcikincisatir = kikincisatir / aikincisatir;
                 Double tcucuncusatir = kucuncusatir / aucuncusatir;
 
-                Double tcortalama = (tcbirincisatir + tcikincisatir + tcucuncusatir) / 3;
-
-                Double consistency = (tcortalama - 3) / 2;
-
-                Double sonuc = consistency / 0.58;
+                double tcortalama = (tcbirincisatir + tcikincisatir + tcucuncusatir) / 3;
+                double consistency = (tcortalama - 3) / 2;
+                double sonuc = consistency / 0.58;
 
                 if (sonuc < 0.10) {
                     threenot.setTextColor(Color.parseColor("#32CD32"));
@@ -125,14 +116,10 @@ public class AhpThreeProcess extends AppCompatActivity {
             }else{
                 Toast.makeText(this, "Lütfen Boş Değer Bırakmayınız!!!", Toast.LENGTH_SHORT).show();
             }
-
         }else{
             Toast.makeText(this, "Değerleri Girdikten Sonra Tabloyu Tamamla Butonuna Tıklamanız Gerekmektedir.", Toast.LENGTH_SHORT).show();
         }
-
-
     }
-
 
     public void tablotamamla(View view) {
 
@@ -144,11 +131,9 @@ public class AhpThreeProcess extends AppCompatActivity {
             ikiiki = Double.parseDouble(threeikiiki.getText().toString());
             ucuc = Double.parseDouble(threeucuc.getText().toString());
 
-
             biriki = Double.parseDouble(threebiriki.getText().toString());
             biruc = Double.parseDouble(threebiruc.getText().toString());
             ikiuc = Double.parseDouble(threeikiuc.getText().toString());
-
 
             ikibir = 1 / biriki;
             ucbir = 1 / biruc;
@@ -161,6 +146,4 @@ public class AhpThreeProcess extends AppCompatActivity {
             Toast.makeText(this, "Lütfen Boş Değer Bırakmayınız.", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }

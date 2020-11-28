@@ -15,9 +15,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateNoteActivity"
+        <activity android:name=".createnote.CreateNoteActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".problemler.gezginsaticimaps.FlyHesaplama" />
@@ -52,7 +53,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".topsis_ahp.ahp.AhpFourProcess" />
         <activity android:name=".topsis_ahp.ahp.AhpThreeProcess" />
         <activity android:name=".topsis_ahp.topsis.TopsisFourActivity" />

@@ -1,13 +1,12 @@
 package com.deu.multisolvermko.fragments;
 
-
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import com.deu.multisolvermko.R;
+import com.deu.multisolvermko.authentication.SignInActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -35,41 +35,39 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 import java.util.Map;
 
-
 public class ProfileFragment extends Fragment {
 
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
-    String email,name,surName;
-    TextView nameText, surnameText, emailText, full_nameText, nickNameText,newPassword,oldPassword;
+    String email,name,surname;
+    TextView emailText, full_nameText,profile_cikis;
     ImageView userImage;
 
     FirebaseUser firebaseUser;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        final ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_profile,container,false);
+        final ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_profile, container, false);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
-        firebaseFirestore=FirebaseFirestore.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
         email = firebaseAuth.getCurrentUser().getEmail();
 
-        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        nameText= viewGroup.findViewById(R.id.nameText);
-        surnameText= viewGroup.findViewById(R.id.surnameText);
         emailText=viewGroup.findViewById(R.id.emailText);
         full_nameText=viewGroup.findViewById(R.id.full_name);
-        nickNameText=viewGroup.findViewById(R.id.nickNameText);
-        userImage=viewGroup.findViewById(R.id.profile_image);
-        final TextView clickText=viewGroup.findViewById(R.id.clickText);
-        final ConstraintLayout layoutDialogContainer=viewGroup.findViewById(R.id.layoutDialogContainer);
+        userImage=viewGroup.findViewById(R.id.imageProfile);
+        profile_cikis = viewGroup.findViewById(R.id.profile_cikis);
+
+        final TextView clickText=viewGroup.findViewById(R.id.profile_sifre_degistir);
+        final ConstraintLayout layoutDialogContainer = viewGroup.findViewById(R.id.layoutDialogContainer);
 
         clickText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,12 +82,10 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-
-
-                        oldPassword=viewView.findViewById(R.id.oldPassword);
+                        TextView oldPassword=viewView.findViewById(R.id.oldPassword);
                         String oldPasswordAuth=oldPassword.getText().toString();
                         System.out.println(oldPassword);
-                        newPassword=viewView.findViewById(R.id.newPassword);
+                        TextView newPassword=viewView.findViewById(R.id.newPassword);
 
                         if (oldPassword.getText().length()<6 || newPassword.getText().length()<6){
                             Toast.makeText(getContext(), "Lütfen 6 haneden uzun şifre giriniz", Toast.LENGTH_SHORT).show();
@@ -125,8 +121,6 @@ public class ProfileFragment extends Fragment {
                 viewView.findViewById(R.id.buttonChangeCancelWithKC).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //dialogu kapat
-
                         Toast.makeText(getContext(), "ŞİFRE DEĞİŞTİRME İŞLEMİNİZ İPTAL EDİLMİŞTİR", Toast.LENGTH_SHORT).show();
                         alertDialog.dismiss();
                     }
@@ -135,7 +129,6 @@ public class ProfileFragment extends Fragment {
                 if (alertDialog.getWindow() != null) {
                     alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
                 }
-
                 alertDialog.show();
             }
         });
@@ -159,24 +152,25 @@ public class ProfileFragment extends Fragment {
                     for (DocumentSnapshot snapshot: value.getDocuments()){
                         Map<String,Object> data = snapshot.getData();
                         name = (String) data.get("name");
-                        surName = (String) data.get("surname");
-                        nameText.setText(name);
-                        surnameText.setText(surName);
-                        full_nameText.setText(name + " " + surName);
-                        nickNameText.setText(name + "_"+ surName);
+                        surname = (String) data.get("surname");
+                        full_nameText.setText(name + " " + surname);
                     }
                 }
             }
         });
+
         emailText.setText(email);
 
+        profile_cikis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                Intent intent = new Intent(getActivity(), SignInActivity.class);
+                startActivity(intent);
+                requireActivity().finish();
+            }
+        });
         return viewGroup;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-        super.onViewCreated(view, savedInstanceState);
     }
 
 }

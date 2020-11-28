@@ -10,8 +10,6 @@ import com.deu.multisolvermko.authentication.SignInActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 600;
-
     ImageView imageView2;
 
     @Override
@@ -20,7 +18,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         imageView2 = findViewById(R.id.imageView2);
-        
+
+        int SPLASH_TIME_OUT = 600;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -28,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(homeIntent);
                 finish();
             }
-        },SPLASH_TIME_OUT);
+        }, SPLASH_TIME_OUT);
 
     }
 }

@@ -14,7 +14,6 @@ public class PaymentModelFour {
         this.payment1 = payment1;
     }
 
-
     public String getId() {
         return id;
     }

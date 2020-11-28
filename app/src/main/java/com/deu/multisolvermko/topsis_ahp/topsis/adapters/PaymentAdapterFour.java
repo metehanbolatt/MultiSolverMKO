@@ -37,12 +37,9 @@ public class PaymentAdapterFour extends RecyclerView.Adapter<PaymentAdapterFour.
             holder.fourpayment_tv.setText(fourmodel.getPayment());
             holder.fourpayment1_tv.setText(fourmodel.getPayment1());
 
-
         }else{
             return;
         }
-
-
     }
 
     @Override

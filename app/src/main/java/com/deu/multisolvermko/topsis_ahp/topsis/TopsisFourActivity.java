@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -36,10 +38,10 @@ public class TopsisFourActivity extends AppCompatActivity {
     Button fourbuttonT,fourbuttonHesapla;
     EditText foureditText1,foureditText2,foureditText3,foureditText4,foureditTextTopsis1,foureditTextTopsis2,foureditTextTopsis3,foureditTextTopsis4;
     TextView fourtextViewTopsis;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch fourswitch1,fourswitch2,fourswitch3,fourswitch4;
     Integer sonuc;
     ArrayList<BarEntry> visitors;
-
     List<PaymentModelFour> fourpayment_list;
     PaymentAdapterFour fouradapter;
     List<Double> foursutun1,foursutun2 ,foursutun3 ,foursutun4,fouragirliklisutun1,fouragirliklisutun2,fouragirliklisutun3,fouragirliklisutun4,fourvarti,fourveksi,foursiarti,foursieksi,fourpidegeri;
@@ -67,12 +69,12 @@ public class TopsisFourActivity extends AppCompatActivity {
         fourswitch2 = findViewById(R.id.fourswitch2);
         fourswitch3 = findViewById(R.id.fourswitch3);
         fourswitch4 = findViewById(R.id.fourswitch4);
-
         fourpayment_list = new ArrayList<>();
 
         fourRecyclerView();
 
         fourswitch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -85,6 +87,7 @@ public class TopsisFourActivity extends AppCompatActivity {
         });
 
         fourswitch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -97,6 +100,7 @@ public class TopsisFourActivity extends AppCompatActivity {
         });
 
         fourswitch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -109,6 +113,7 @@ public class TopsisFourActivity extends AppCompatActivity {
         });
 
         fourswitch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -119,12 +124,11 @@ public class TopsisFourActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     public void fourhesapla(View view){
-        Double bir,iki,uc,dort,sonuc;
-        Double newSonuc = 0.0;
+        double bir,iki,uc,dort,sonuc;
+        double newSonuc = 0.0;
 
         if (!foureditTextTopsis1.getText().toString().equals("") && !foureditTextTopsis2.getText().toString().equals("") && !foureditTextTopsis3.getText().toString().equals("") && !foureditTextTopsis4.getText().toString().equals("")) {
             bir = Double.parseDouble(foureditTextTopsis1.getText().toString());
@@ -301,6 +305,7 @@ public class TopsisFourActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void foursonucHesaplama(){
 
         int idx = fourpidegeri.indexOf(Collections.max(fourpidegeri));
@@ -310,6 +315,7 @@ public class TopsisFourActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     public void alertDialogFunction(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(TopsisFourActivity.this, R.style.AlertDialogTheme);
@@ -352,7 +358,5 @@ public class TopsisFourActivity extends AppCompatActivity {
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         }
         alertDialog.show();
-
-
     }
 }

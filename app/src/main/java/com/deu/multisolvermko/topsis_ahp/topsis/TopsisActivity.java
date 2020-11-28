@@ -52,6 +52,7 @@ public class TopsisActivity extends AppCompatActivity {
     ArrayList<Double> pidegeri;
     Integer sonuc;
     ArrayList<BarEntry> visitors;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch switch1,switch2,switch3;
 
     int a = 0;
@@ -78,6 +79,7 @@ public class TopsisActivity extends AppCompatActivity {
         setRecyclerView();
 
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -90,6 +92,7 @@ public class TopsisActivity extends AppCompatActivity {
         });
 
         switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -102,6 +105,7 @@ public class TopsisActivity extends AppCompatActivity {
         });
 
         switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -148,8 +152,8 @@ public class TopsisActivity extends AppCompatActivity {
 
     public void buttonTopsisHesapla(View view){
 
-        Double bir,iki,uc,sonuc;
-        Double newSonuc = 0.0;
+        double bir,iki,uc,sonuc;
+        double newSonuc = 0.0;
 
         if (!editTextTopsis1.getText().toString().equals("") && !editTextTopsis2.getText().toString().equals("") && !editTextTopsis3.getText().toString().equals("") ) {
             bir = Double.parseDouble(editTextTopsis1.getText().toString());
@@ -176,7 +180,6 @@ public class TopsisActivity extends AppCompatActivity {
             sonucHesaplama();
             alertDialogFunction();
         }
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -283,6 +286,7 @@ public class TopsisActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     public void alertDialogFunction(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(TopsisActivity.this, R.style.AlertDialogTheme);

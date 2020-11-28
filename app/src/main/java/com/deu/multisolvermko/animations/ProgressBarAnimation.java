@@ -1,5 +1,6 @@
 package com.deu.multisolvermko.animations;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.view.animation.Animation;
@@ -9,17 +10,14 @@ import android.widget.TextView;
 
 public class ProgressBarAnimation extends Animation {
 
-    private Context context;
-    private ProgressBar progressBar, progressBar2;
-    private TextView textView;
-    private float from;
-    private float to;
+    private final ProgressBar progressBar;
+    private final ProgressBar progressBar2;
+    private final TextView textView;
+    private final float from;
+    private final float to;
 
+    public ProgressBarAnimation(ProgressBar progressBar,ProgressBar progressBar2, TextView textView, float from, float to){
 
-
-    public ProgressBarAnimation(Context context, ProgressBar progressBar,ProgressBar progressBar2, TextView textView, float from, float to){
-
-        this.context = context;
         this.progressBar = progressBar;
         this.textView = textView;
         this.from = from;
@@ -28,6 +26,7 @@ public class ProgressBarAnimation extends Animation {
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation t) {
         super.applyTransformation(interpolatedTime, t);

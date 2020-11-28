@@ -15,11 +15,7 @@
         android:name="com.deu.multisolvermko.fragments.NotificationsFragment"
         android:label="Bildirimler"
         tools:layout="@layout/fragment_notifications" />
-    <fragment
-        android:id="@+id/menuSettings"
-        android:name="com.deu.multisolvermko.fragments.SettingsFragment"
-        android:label="Ayarlar"
-        tools:layout="@layout/fragment_settings" />
+
     <fragment
         android:id="@+id/menuProblems"
         android:name="com.deu.multisolvermko.fragments.ProblemFragment"

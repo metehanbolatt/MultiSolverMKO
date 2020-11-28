@@ -157,18 +157,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void arrayToDizi(){
         distances = new int[sehirSayisi*sehirSayisi];
-
         for (int i =0; i<sehirSayisi*sehirSayisi;i++){
             distances[i]=Math.round(goToPy.get(i));
         }
-
     }
 
     class ExampleThread2 extends Thread{
-
         @Override
         public void run() {
-
             hesapla();
             arrayToDizi();
             Python py = Python.getInstance();
@@ -186,19 +182,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void progressAnimation2(){
-        ProgressBarAnimation anim = new ProgressBarAnimation(this,progressBar,progressBar2,mapsTextView,0,100f);
+        ProgressBarAnimation anim = new ProgressBarAnimation(progressBar,progressBar2,mapsTextView,0,100f);
         anim.setDuration(2000);
         progressBar.setAnimation(anim);
-    }
-
-    public void fazlaDeger() {
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_gezgin_satici_maps_fly_deger_fazla, (ViewGroup) findViewById(R.id.toast_root));
-        Toast toast = new Toast(getApplicationContext());
-        toast.setGravity(Gravity.BOTTOM, 0, 50);
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(layout);
-        toast.show();
     }
 
     public void hesaplamadanSonraDeger() {

@@ -12,7 +12,6 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.deu.multisolvermko.R;
 
-
 public class GezginSaticiDistances extends AppCompatActivity {
 
     EditText editText;

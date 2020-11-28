@@ -17,8 +17,6 @@ public class YardimFragment extends Fragment {
 
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_iletisim,container,false);
 
-
-
         return viewGroup;
     }
 }

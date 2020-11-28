@@ -1,4 +1,4 @@
-package com.deu.multisolvermko;
+package com.deu.multisolvermko.createnote;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

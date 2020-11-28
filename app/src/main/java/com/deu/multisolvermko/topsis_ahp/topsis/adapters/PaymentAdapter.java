@@ -40,7 +40,6 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.ViewHold
         }else{
             return;
         }
-
     }
 
     @Override
@@ -57,8 +56,6 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.ViewHold
             id_tv = itemView.findViewById(R.id.id_tv);
             name_tv = itemView.findViewById(R.id.name_tv);
             payment_tv = itemView.findViewById(R.id.payment_tv);
-
-
 
         }
     }

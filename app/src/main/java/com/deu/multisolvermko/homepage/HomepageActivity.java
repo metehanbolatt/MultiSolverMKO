@@ -1,6 +1,7 @@
 package com.deu.multisolvermko.homepage;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -10,11 +11,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,14 +45,13 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.Map;
-
+import java.util.Objects;
 
 public class HomepageActivity extends AppCompatActivity {
 
     Bitmap selectedImage;
     public FirebaseAuth firebaseAuth;
     ImageView imageView;
-    private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
     Uri imageData;
     String currentUser;
@@ -69,7 +67,7 @@ public class HomepageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseStorage = FirebaseStorage.getInstance();
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
         firebaseFirestore=FirebaseFirestore.getInstance();
 
@@ -102,7 +100,6 @@ public class HomepageActivity extends AppCompatActivity {
             }
         });
 
-
         NavController navController = Navigation.findNavController(this, R.id.navHosFragment);
         NavigationUI.setupWithNavController(navigationView,navController);
 
@@ -122,7 +119,7 @@ public class HomepageActivity extends AppCompatActivity {
             }
         });
 
-        currentUser = firebaseAuth.getCurrentUser().getEmail();
+        currentUser = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail();
         StorageReference newReference = FirebaseStorage.getInstance().getReference(currentUser);
         newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -157,6 +154,7 @@ public class HomepageActivity extends AppCompatActivity {
                 }else{
                     selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(),imageData);
                     uploadd();
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -166,28 +164,28 @@ public class HomepageActivity extends AppCompatActivity {
     }
 
     public void uploadd(){
-        currentUser = firebaseAuth.getCurrentUser().getEmail();
-
+        currentUser = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail();
         if (imageData != null){
+            assert currentUser != null;
             storageReference.child(currentUser).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    StorageReference newReference = FirebaseStorage.getInstance().getReference(currentUser);
+                    final StorageReference newReference = FirebaseStorage.getInstance().getReference(currentUser);
                     newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
+
                             downloadUrl = uri.toString();
                             documentReference = firebaseFirestore.collection("Users").document(currentUser);
                             documentReference.update("urlfoto",downloadUrl).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    System.out.println("başarılı");
+
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    System.out.println("Başaramadık");
+
                                 }
                             });
                             Picasso.with(HomepageActivity.this).load(uri).into(imageView);
@@ -206,6 +204,7 @@ public class HomepageActivity extends AppCompatActivity {
 
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
         collectionReference.whereEqualTo("useremail",email).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null){
@@ -214,6 +213,7 @@ public class HomepageActivity extends AppCompatActivity {
                 if (value != null){
                     for (DocumentSnapshot snapshot: value.getDocuments()){
                         Map<String,Object> data = snapshot.getData();
+                        assert data != null;
                         name = (String) data.get("name");
                         surName = (String) data.get("surname");
                         userName.setText(name+" "+surName);

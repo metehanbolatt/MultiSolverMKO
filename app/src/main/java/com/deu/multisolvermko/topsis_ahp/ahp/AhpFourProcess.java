@@ -69,7 +69,6 @@ public class AhpFourProcess extends AppCompatActivity {
 
     }
 
-
     public void tablotamamla(View view){
 
         if (!fourbiriki.getText().toString().equals("") && !fourbiruc.getText().toString().equals("") && !fourbirdort.getText().toString().equals("")
@@ -106,10 +105,9 @@ public class AhpFourProcess extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Lütfen Boş Değer Bırakmayınız.", Toast.LENGTH_SHORT).show();
         }
-
     }
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint({"ResourceAsColor", "SetTextI18n"})
     public void hesaplaButton(View view){
 
         if (a == 2) {
@@ -176,11 +174,9 @@ public class AhpFourProcess extends AppCompatActivity {
                 Double tcucuncusatir = kucuncusatir / aucuncusatir;
                 Double tcdorduncusatir = kdorduncusatir / adorduncusatir;
 
-                Double tcortalama = (tcbirincisatir + tcikincisatir + tcucuncusatir + tcdorduncusatir) / 4;
-
-                Double consistency = (tcortalama - 4) / 3;
-
-                Double sonuc = consistency / 0.90;
+                double tcortalama = (tcbirincisatir + tcikincisatir + tcucuncusatir + tcdorduncusatir) / 4;
+                double consistency = (tcortalama - 4) / 3;
+                double sonuc = consistency / 0.90;
 
                 if (sonuc < 0.10) {
                     fournot.setTextColor(Color.parseColor("#32CD32"));
@@ -190,7 +186,6 @@ public class AhpFourProcess extends AppCompatActivity {
                     fournot.setTextColor(Color.parseColor("#CC0000"));
                     fournot.setText("Uygulanamaz");
                     fouraciklamatext.setText("Girdiğiniz değerlere göre bulunan sonuç: " + sonuc + "\n" + " 0.10'dan büyüktür. ");
-
                 }
             }else{
                 Toast.makeText(this, "Lütfen Boş Değer Bırakmayınız!!!", Toast.LENGTH_SHORT).show();
@@ -199,7 +194,5 @@ public class AhpFourProcess extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Değerleri Girdikten Sonra Tabloyu Tamamla Butonuna Tıklamanız Gerekmektedir.", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 }

@@ -1,154 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment"
-    android:background="@drawable/background">
+    android:background="@color/colorBlack"
+    tools:context=".fragments.ProfileFragment">
 
-    <ScrollView
-        android:id="@+id/drawerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".homepage.HomepageActivity"
-        android:background="@color/colorBlack">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="40dp"
+        android:scaleType="centerCrop"
+        android:src="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_oval="true" />
 
-        <LinearLayout
+    <TextView
+        android:id="@+id/full_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Metehan Bolat"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
+
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="metehanbolat@gmail.com"
+        android:layout_marginTop="4dp"
+        android:textColor="#07A731"
+        android:textColorHint="#07A731"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/full_name" />
+
+    <LinearLayout
+        android:id="@+id/icon_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailText">
+
+        <ImageView
+            android:id="@+id/twitter_icon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/twitter"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/facebook_icon"
+            app:layout_constraintTop_toTopOf="@+id/facebook_icon"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="153dp" />
+
+        <ImageView
+            android:id="@+id/linkedin_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/linkedin"
+            app:layout_constraintBottom_toBottomOf="@+id/instagram_icon"
+            app:layout_constraintTop_toTopOf="@+id/instagram_icon"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="264dp" />
+
+        <ImageView
+            android:id="@+id/instagram_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/instagram"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/twitter_icon"
+            app:layout_constraintTop_toTopOf="@+id/twitter_icon"
+            tools:layout_editor_absoluteX="211dp" />
+
+        <ImageView
+            android:id="@+id/facebook_icon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/facebook"
+            tools:layout_editor_absoluteX="105dp"
+            tools:layout_editor_absoluteY="258dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/click_textviews_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="80dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icon_layout">
+
+        <TextView
+            android:id="@+id/profile_profile"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="15dp"
+            android:clickable="true"
+            android:text="Profil"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_16sdp"
+            app:drawableStartCompat="@drawable/ic_profile_user"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="367dp"
+            android:focusable="true" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="#000000"
-                android:padding="20dp">
+        <TextView
+            android:id="@+id/profile_arkadaslar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:paddingBottom="15dp"
+            android:text="Arkadaşlar"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_16sdp"
+            app:drawableStartCompat="@drawable/ic_arkadaslar"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="367dp"
+            android:focusable="true" />
 
-                <com.github.siyamed.shapeimageview.CircularImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/profile"
-                    app:siArrowPosition="right"
-                    app:siSquare="true"
-                    app:siBorderWidth="6dp"
-                    app:siBorderColor="#4A4A4A"
-                    />
-                <TextView
-                    android:id="@+id/full_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/profile_image"
-                    android:includeFontPadding="false"
-                    android:text="Kutay Çetinkurt"
-                    android:textSize="20sp"
-                    android:textColor="@color/colorWhite"/>
+        <TextView
+            android:id="@+id/profile_sifre_degistir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:paddingBottom="15dp"
+            android:text="Şifreyi Değiştir"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_16sdp"
+            app:drawableStartCompat="@drawable/ic_lock"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="367dp"
+            android:focusable="true" />
 
-                <TextView
-                    android:id="@+id/nickNameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/full_name"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/profile_image"
-                    android:includeFontPadding="false"
-                    android:text="kutay_cetinkurt"
-                    android:textSize="14sp"
-                    android:textColor="@color/colorWhite"/>
+        <TextView
+            android:id="@+id/profile_ayarlar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:paddingBottom="15dp"
+            android:text="Ayarlar"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_16sdp"
+            app:drawableStartCompat="@drawable/ic_settings"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="367dp"
+            android:focusable="true" />
 
-            </RelativeLayout>
+        <TextView
+            android:id="@+id/profile_cikis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="15dp"
+            android:text="Çıkış"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_16sdp"
+            app:drawableStartCompat="@drawable/ic_cikis"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="367dp"
+            android:focusable="true" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-100dp"
-                android:padding="20dp"/>
+    </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+    <TextView
+        android:id="@+id/babalar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="by MKO"
+        android:textColor="#777272"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Name">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nameText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:contextClickable="false"
-                        android:drawableLeft="@drawable/siyahnokta"
-                        android:drawablePadding="10dp"
-                        android:enabled="false"
-                        android:text="Kutay" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="Surname">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/surnameText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/siyahnokta"
-                        android:drawablePadding="10dp"
-                        android:text="Çetinkurt"
-                        android:clickable="false"
-                        android:enabled="false"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="e-mail">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/emailText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/siyahnokta"
-                        android:drawablePadding="10dp"
-                        android:text="kutay215@gmail.com"
-                        android:clickable="false"
-                        android:enabled="false"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:text="   "
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/forChangingPasswordText"
-                    android:drawablePadding="10dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorNavigationGreen"
-                    android:text="Şifrenizi değiştirmek için TIKLAYINIZ"
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/clickText"
-                    android:padding="2dp"/>
-
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

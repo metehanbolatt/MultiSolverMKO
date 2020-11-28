@@ -1,5 +1,6 @@
 package com.deu.multisolvermko.information;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,9 +23,6 @@ public class InformationActivity extends AppCompatActivity {
     private OnboardingAdapter onboardingAdapter;
     private LinearLayout layoutOnboardingIndicators;
     private MaterialButton buttonOnboardingAction;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +114,7 @@ public class InformationActivity extends AppCompatActivity {
 
         }
     }
+    @SuppressLint("SetTextI18n")
     private void setCurrentOnboardingIndicator(int index){
         int childCount = layoutOnboardingIndicators.getChildCount();
         for (int i = 0; i < childCount; i++){
