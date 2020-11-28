@@ -25,8 +25,9 @@
         android:id="@+id/full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Metehan Bolat"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,8 +38,9 @@
         android:id="@+id/emailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="metehanbolat@gmail.com"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
         android:textColor="#07A731"
         android:textColorHint="#07A731"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,9 +103,9 @@
         android:id="@+id/click_textviews_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:layout_marginEnd="80dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/babalar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon_layout">
@@ -112,24 +114,25 @@
             android:id="@+id/profile_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:drawablePadding="10dp"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
-            android:clickable="true"
             android:text="Profil"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16sdp"
             app:drawableStartCompat="@drawable/ic_profile_user"
             tools:layout_editor_absoluteX="109dp"
-            tools:layout_editor_absoluteY="367dp"
-            android:focusable="true" />
+            tools:layout_editor_absoluteY="367dp" />
 
         <TextView
             android:id="@+id/profile_arkadaslar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
             android:clickable="true"
+            android:drawablePadding="10dp"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
             android:text="Arkadaşlar"
@@ -137,15 +140,15 @@
             android:textSize="@dimen/_16sdp"
             app:drawableStartCompat="@drawable/ic_arkadaslar"
             tools:layout_editor_absoluteX="109dp"
-            tools:layout_editor_absoluteY="367dp"
-            android:focusable="true" />
+            tools:layout_editor_absoluteY="367dp" />
 
         <TextView
             android:id="@+id/profile_sifre_degistir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
             android:clickable="true"
+            android:drawablePadding="10dp"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
             android:text="Şifreyi Değiştir"
@@ -153,15 +156,15 @@
             android:textSize="@dimen/_16sdp"
             app:drawableStartCompat="@drawable/ic_lock"
             tools:layout_editor_absoluteX="109dp"
-            tools:layout_editor_absoluteY="367dp"
-            android:focusable="true" />
+            tools:layout_editor_absoluteY="367dp" />
 
         <TextView
             android:id="@+id/profile_ayarlar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
             android:clickable="true"
+            android:drawablePadding="10dp"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
             android:text="Ayarlar"
@@ -169,8 +172,7 @@
             android:textSize="@dimen/_16sdp"
             app:drawableStartCompat="@drawable/ic_settings"
             tools:layout_editor_absoluteX="109dp"
-            tools:layout_editor_absoluteY="367dp"
-            android:focusable="true" />
+            tools:layout_editor_absoluteY="367dp" />
 
         <TextView
             android:id="@+id/profile_cikis"
@@ -178,6 +180,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:drawablePadding="10dp"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
             android:text="Çıkış"
@@ -185,8 +188,7 @@
             android:textSize="@dimen/_16sdp"
             app:drawableStartCompat="@drawable/ic_cikis"
             tools:layout_editor_absoluteX="109dp"
-            tools:layout_editor_absoluteY="367dp"
-            android:focusable="true" />
+            tools:layout_editor_absoluteY="367dp" />
 
     </LinearLayout>
 
