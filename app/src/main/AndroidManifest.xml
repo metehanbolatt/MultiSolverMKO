@@ -62,7 +62,7 @@
         <activity android:name=".homepage.HomepageActivity" />
         <activity android:name=".information.InformationActivity" />
         <activity android:name=".problemler.python.GezginSatici" />
-        <activity android:name=".problemler.python.GezginSaticiDistances" />
+        <activity android:name=".problemler.python.RoadActivity" />
         <activity android:name=".problemler.ProblemActivity" />
     </application>
 

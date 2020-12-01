@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.problemler.gezginsaticimaps.GsFly;
 import com.deu.multisolvermko.problemler.python.GezginSatici;
-import com.deu.multisolvermko.problemler.python.GezginSaticiDistances;
+import com.deu.multisolvermko.problemler.python.RoadActivity;
 
 public class ProblemActivity extends AppCompatActivity {
 
@@ -26,7 +26,7 @@ public class ProblemActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProblemActivity.this, GezginSaticiDistances.class);
+                Intent intent = new Intent(ProblemActivity.this, RoadActivity.class);
                 startActivity(intent);
             }
         });

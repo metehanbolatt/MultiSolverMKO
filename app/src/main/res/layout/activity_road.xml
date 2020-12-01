@@ -5,46 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".problemler.python.GezginSaticiDistances">
+    tools:context=".problemler.python.RoadActivity">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".problemler.python.MapsActivity" />
 
     <Button
         android:id="@+id/buttonG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/buttonstyle"
         android:text="Hesapla"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewG"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/textViewG"
         app:layout_constraintTop_toBottomOf="@+id/textViewG" />
 
     <TextView
         android:id="@+id/textViewG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sonuç:"
-        android:textAlignment="center"
         android:gravity="center"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.125" />
-
-    <EditText
-        android:id="@+id/editTextG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Değer giriniz.."
-        android:inputType="number"
+        android:text="Sonuç:"
+        android:layout_marginTop="50dp"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonG" />
+        app:layout_constraintTop_toBottomOf="@+id/map" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

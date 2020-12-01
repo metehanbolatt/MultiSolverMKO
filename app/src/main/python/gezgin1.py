@@ -1,22 +1,19 @@
 import numpy as np
 import math
 
-def main1(T):
+def main1(distanceMatrix):
+
+    T=1000
     num1=int(T)
     Tend=0.01
-    sk=0.99
+    sk=0.999
 
-    distances=[[ 0, 24, 17, 30, 11, 19, 18, 26, 26, 14],
-               [24,  0, 20, 19, 23, 25, 26, 16, 24, 24],
-               [17, 20,  0, 14, 13, 20, 30, 17, 22, 15],
-               [30, 19, 14,  0, 26, 16, 21, 24, 28, 30],
-               [11, 23, 13, 26,  0, 21, 13, 13, 16, 27],
-               [19, 25, 20, 16, 21,  0, 16, 27, 15, 29],
-               [18, 26, 30, 21, 13, 16,  0, 17, 14, 16],
-               [26, 16, 17, 24, 13, 27, 17,  0, 23, 20],
-               [26, 24, 22, 28, 16, 15, 14, 23,  0, 18],
-               [14, 24, 15, 30, 27, 29, 16, 20, 18,  0]]
+    distanceMatrixBoyut = len(distanceMatrix)
+    distanceMatrixSplitBoyut = math.sqrt(distanceMatrixBoyut)
+    distanceMatrixSplitBoyutInt = int(distanceMatrixSplitBoyut)
 
+    newDistanceMatrix = np.array(distanceMatrix)
+    distances = np.reshape(newDistanceMatrix,(distanceMatrixSplitBoyutInt,distanceMatrixSplitBoyutInt))
 
     _matrix=np.array(distances)
     sehirsayisi=len(_matrix)

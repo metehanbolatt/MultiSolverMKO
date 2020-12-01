@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.deu.multisolvermko.problemler.python.MapsActivity;
 import com.deu.multisolvermko.R;
+import com.deu.multisolvermko.problemler.python.RoadActivity;
 
 public class GsFly extends AppCompatActivity {
 
@@ -37,6 +38,22 @@ public class GsFly extends AppCompatActivity {
                     Integer city = Integer.parseInt(editTextFly.getText().toString());
 
                     Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                    intent.putExtra("sehir",city);
+                    startActivity(intent);
+
+                }
+            }
+        });
+
+        buttonRoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editTextFly.getText().toString().equals("")){
+                    fazlaDeger();
+                }else{
+                    Integer city = Integer.parseInt(editTextFly.getText().toString());
+
+                    Intent intent = new Intent(getApplicationContext(), RoadActivity.class);
                     intent.putExtra("sehir",city);
                     startActivity(intent);
 
