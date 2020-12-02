@@ -3,7 +3,6 @@ package com.deu.multisolvermko.problemler.gezginsaticimaps;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -139,6 +138,7 @@ public class RoadActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
     }
 

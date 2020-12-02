@@ -13,7 +13,7 @@ import java.util.List;
 
 public class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>{
 
-    private List<OnboardingItem> onboardingItems;
+    private final List<OnboardingItem> onboardingItems;
 
     public OnboardingAdapter(List<OnboardingItem> onboardingItems) {
         this.onboardingItems = onboardingItems;
@@ -40,11 +40,11 @@ public class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.On
         return onboardingItems.size();
     }
 
-    class OnboardingViewHolder extends RecyclerView.ViewHolder{
+    static class OnboardingViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView textTitle;
-        private TextView textDescription;
-        private ImageView imageOnboarding;
+        private final TextView textTitle;
+        private final TextView textDescription;
+        private final ImageView imageOnboarding;
 
         public OnboardingViewHolder(@NonNull View itemView) {
             super(itemView);

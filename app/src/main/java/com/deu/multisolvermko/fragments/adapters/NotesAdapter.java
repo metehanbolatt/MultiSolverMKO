@@ -24,9 +24,9 @@ import java.util.TimerTask;
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder>{
 
     private List<Note> notes;
-    private NotesListener notesListener;
+    private final NotesListener notesListener;
     private Timer timer;
-    private List<Note> notesSource;
+    private final List<Note> notesSource;
 
     public NotesAdapter(List<Note> notes,NotesListener notesListener) {
         this.notes = notes;

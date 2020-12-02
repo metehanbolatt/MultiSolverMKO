@@ -9,7 +9,6 @@ import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.problemler.gezginsaticimaps.GsFly;
 import com.deu.multisolvermko.problemler.gezginsaticimanuel.GezginSatici;
 
-
 public class ProblemActivity extends AppCompatActivity {
 
     Button button2,button3;

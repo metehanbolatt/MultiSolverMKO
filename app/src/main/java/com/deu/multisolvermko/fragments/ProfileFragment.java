@@ -1,5 +1,6 @@
 package com.deu.multisolvermko.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -34,6 +35,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 import java.util.Map;
+import java.util.Objects;
 
 public class ProfileFragment extends Fragment {
 
@@ -57,7 +59,7 @@ public class ProfileFragment extends Fragment {
         storageReference = firebaseStorage.getReference();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        email = firebaseAuth.getCurrentUser().getEmail();
+        email = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail();
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -72,7 +74,7 @@ public class ProfileFragment extends Fragment {
         clickText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(getContext(),R.style.AlertDialogTheme);
+                AlertDialog.Builder builder=new AlertDialog.Builder(requireContext(),R.style.AlertDialogTheme);
                 final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.change_password_dialog, layoutDialogContainer);
                 builder.setView(viewView);
 
@@ -143,6 +145,7 @@ public class ProfileFragment extends Fragment {
 
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
         collectionReference.whereEqualTo("useremail",email).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null){
@@ -151,6 +154,7 @@ public class ProfileFragment extends Fragment {
                 if (value != null){
                     for (DocumentSnapshot snapshot: value.getDocuments()){
                         Map<String,Object> data = snapshot.getData();
+                        assert data != null;
                         name = (String) data.get("name");
                         surname = (String) data.get("surname");
                         full_nameText.setText(name + " " + surname);

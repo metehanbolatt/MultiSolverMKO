@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.deu.multisolvermko.R;
 import java.util.ArrayList;
-
 
 public class FlyHesaplama extends AppCompatActivity {
 

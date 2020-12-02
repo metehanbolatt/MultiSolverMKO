@@ -59,7 +59,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
         return nameList.size();
     }
 
-    class PostHolder extends RecyclerView.ViewHolder {
+    static class PostHolder extends RecyclerView.ViewHolder {
         TextView isimTextView,emailText;
         ImageView fotoImageView;
         ConstraintLayout UsersLayout;

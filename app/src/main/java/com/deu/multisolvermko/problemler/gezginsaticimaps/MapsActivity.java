@@ -79,6 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         goToPy = new ArrayList<>();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
         imageMaps.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +89,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(intent1);
             }
         });
-
     }
 
     @Override
@@ -141,11 +141,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 });
             }
-
         }else{
             hesaplamadanSonraDeger();
         }
-
         a=a+1;
     }
 

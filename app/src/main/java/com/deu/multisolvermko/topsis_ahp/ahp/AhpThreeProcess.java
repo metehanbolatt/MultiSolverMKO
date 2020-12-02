@@ -1,7 +1,6 @@
 package com.deu.multisolvermko.topsis_ahp.ahp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;

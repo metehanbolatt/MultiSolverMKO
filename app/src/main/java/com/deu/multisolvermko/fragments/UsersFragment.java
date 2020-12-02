@@ -23,7 +23,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -109,6 +108,7 @@ public class UsersFragment extends Fragment {
                             for (DocumentSnapshot snapshot : value.getDocuments()) {
 
                                 final Map<String, Object> data = snapshot.getData();
+                                assert data != null;
                                 String name = (String) data.get("name");
                                 String surname = (String) data.get("surname");
                                 String email = (String) data.get("useremail");

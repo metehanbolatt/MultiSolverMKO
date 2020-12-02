@@ -30,15 +30,12 @@ public class PaymentAdapterFour extends RecyclerView.Adapter<PaymentAdapterFour.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (fourpayment_list != null && fourpayment_list.size()>0){
+        if (fourpayment_list != null && fourpayment_list.size()>0) {
             PaymentModelFour fourmodel = fourpayment_list.get(position);
             holder.fourid_tv.setText(fourmodel.getId());
             holder.fourname_tv.setText(fourmodel.getName());
             holder.fourpayment_tv.setText(fourmodel.getPayment());
             holder.fourpayment1_tv.setText(fourmodel.getPayment1());
-
-        }else{
-            return;
         }
     }
 
@@ -47,7 +44,7 @@ public class PaymentAdapterFour extends RecyclerView.Adapter<PaymentAdapterFour.
         return fourpayment_list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView fourid_tv,fourname_tv,fourpayment_tv,fourpayment1_tv;
         public ViewHolder(@NonNull View itemView) {

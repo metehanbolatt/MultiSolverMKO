@@ -37,8 +37,6 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.ViewHold
             holder.name_tv.setText(model.getName());
             holder.payment_tv.setText(model.getPayment());
 
-        }else{
-            return;
         }
     }
 
@@ -47,7 +45,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.ViewHold
         return payment_list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView id_tv,name_tv,payment_tv;
         public ViewHolder(@NonNull View itemView) {
