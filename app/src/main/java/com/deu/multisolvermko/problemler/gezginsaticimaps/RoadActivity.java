@@ -1,11 +1,16 @@
-package com.deu.multisolvermko.problemler.python;
+package com.deu.multisolvermko.problemler.gezginsaticimaps;
 
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.media.Image;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.FragmentActivity;
@@ -19,6 +24,8 @@ import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.deu.multisolvermko.R;
+import com.deu.multisolvermko.animations.ProgressBarAnimation;
+import com.deu.multisolvermko.createnote.CreateNoteActivity;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -48,6 +55,9 @@ public class RoadActivity extends FragmentActivity implements OnMapReadyCallback
     ArrayList<Integer> distanceMatrix;
     int[] distances;
     int b = 0;
+    ImageView imageMapsRoad;
+
+    ProgressBar progressBar,progressBar2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +68,17 @@ public class RoadActivity extends FragmentActivity implements OnMapReadyCallback
         button = findViewById(R.id.buttonG);
         button.setVisibility(View.INVISIBLE);
         geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+
+        imageMapsRoad = findViewById(R.id.imageMapsRoad);
+        imageMapsRoad.setVisibility(View.INVISIBLE);
+
+        progressBar = findViewById(R.id.progress_bar_maps3);
+        progressBar2 = findViewById(R.id.progress_bar_maps4);
+
+        progressBar2.setVisibility(View.INVISIBLE);
+
+        progressBar.setMax(100);
+        progressBar.setScaleY(3.f);
 
         Intent intent = getIntent();
         sehirSayisi = intent.getIntExtra("sehir",1);
@@ -76,9 +97,44 @@ public class RoadActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View v) {
 
+                progressBar.setVisibility(View.VISIBLE);
+                button.setVisibility(View.INVISIBLE);
+                imageMapsRoad.setVisibility(View.VISIBLE);
+
+
+                textView.setText("0 %");
+                progressAnimation2();
+
                 RoadActivity.ExampleThread4 thread4 = new ExampleThread4();
                 thread4.start();
 
+                textView.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        progressBar.setVisibility(View.INVISIBLE);
+                        progressBar2.setVisibility(View.INVISIBLE);
+
+                    }
+                });
+
+            }
+        });
+
+        imageMapsRoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), CreateNoteActivity.class);
+                startActivity(intent1);
             }
         });
 
@@ -172,5 +228,11 @@ public class RoadActivity extends FragmentActivity implements OnMapReadyCallback
             });
 
         }
+    }
+
+    public void progressAnimation2(){
+        ProgressBarAnimation anim = new ProgressBarAnimation(progressBar,progressBar2,textView,0,100f);
+        anim.setDuration(2000);
+        progressBar.setAnimation(anim);
     }
 }

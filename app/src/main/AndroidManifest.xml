@@ -35,7 +35,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".problemler.python.MapsActivity"
+            android:name=".problemler.gezginsaticimaps.MapsActivity"
             android:label="@string/title_activity_maps" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -61,8 +61,8 @@
         <activity android:name=".topsis_ahp.topsis.TopsisActivity" />
         <activity android:name=".homepage.HomepageActivity" />
         <activity android:name=".information.InformationActivity" />
-        <activity android:name=".problemler.python.GezginSatici" />
-        <activity android:name=".problemler.python.RoadActivity" />
+        <activity android:name=".problemler.gezginsaticimanuel.GezginSatici" />
+        <activity android:name=".problemler.gezginsaticimaps.RoadActivity" />
         <activity android:name=".problemler.ProblemActivity" />
     </application>
 

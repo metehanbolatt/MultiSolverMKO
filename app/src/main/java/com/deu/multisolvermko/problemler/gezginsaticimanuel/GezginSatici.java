@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.problemler.python;
+package com.deu.multisolvermko.problemler.gezginsaticimanuel;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.ColorDrawable;

@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.problemler.python;
+package com.deu.multisolvermko.problemler.gezginsaticimaps;
 
 import androidx.fragment.app.FragmentActivity;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.deu.multisolvermko.animations.ProgressBarAnimation;
 import com.deu.multisolvermko.R;
+import com.deu.multisolvermko.createnote.CreateNoteActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -32,6 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Integer sehirSayisi;
     TextView mapsTextView;
     int a = 0 ;
+    int b = 0;
     int[] distances;
     Python py;
     PyObject pyobj;
@@ -40,13 +43,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ArrayList<Double> latdouble,londouble;
     ArrayList<Float> goToPy;
     Location loc1,loc2;
+    ImageView imageMaps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         sehirSayisi = intent.getIntExtra("sehir",1);
 
@@ -61,6 +65,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         progressBar = findViewById(R.id.progress_bar_maps);
         progressBar2 = findViewById(R.id.progress_bar_maps2);
 
+        imageMaps = findViewById(R.id.imageMaps);
+        imageMaps.setVisibility(View.INVISIBLE);
+
         progressBar2.setVisibility(View.INVISIBLE);
 
         progressBar.setMax(100);
@@ -73,6 +80,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        imageMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Intent intent1 = new Intent(getApplicationContext(),CreateNoteActivity.class);
+                    startActivity(intent1);
+            }
+        });
 
     }
 
@@ -98,7 +113,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             if (a == sehirSayisi-1){
 
-                Toast.makeText(MapsActivity.this, "Hesaplanıyor", Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.VISIBLE);
 
                 mapsTextView.setText("0 %");
@@ -122,6 +136,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     public void afterTextChanged(Editable s) {
                         progressBar.setVisibility(View.INVISIBLE);
                         progressBar2.setVisibility(View.INVISIBLE);
+                        imageMaps.setVisibility(View.VISIBLE);
 
                     }
                 });
@@ -196,4 +211,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         toast.setView(layout);
         toast.show();
     }
+
 }

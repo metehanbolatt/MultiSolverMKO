@@ -10,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.deu.multisolvermko.problemler.python.MapsActivity;
+
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.problemler.python.RoadActivity;
 
 public class GsFly extends AppCompatActivity {
 
