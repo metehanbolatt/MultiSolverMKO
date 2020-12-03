@@ -28,7 +28,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
+public class FlyActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
     private GoogleMap mMap;
     Integer sehirSayisi;
@@ -48,7 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_fly);
 
         final Intent intent = getIntent();
 
@@ -182,7 +182,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             arrayToDizi();
             Python py = Python.getInstance();
             final PyObject pyobj = py.getModule("gezginfly");
-            final PyObject obj = pyobj.callAttr("main123", distances);
+            final PyObject obj = pyobj.callAttr("main123", (Object) distances);
 
             runOnUiThread(new Runnable() {
                 @Override

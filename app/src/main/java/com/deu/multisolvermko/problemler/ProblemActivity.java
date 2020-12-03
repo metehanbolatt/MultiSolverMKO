@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.problemler.gezginsaticimaps.GsFly;
+import com.deu.multisolvermko.problemler.gezginsaticimaps.GezginSaticiMapsEntry;
 import com.deu.multisolvermko.problemler.gezginsaticimanuel.GezginSatici;
 
 public class ProblemActivity extends AppCompatActivity {
@@ -34,7 +34,7 @@ public class ProblemActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProblemActivity.this, GsFly.class);
+                Intent intent = new Intent(ProblemActivity.this, GezginSaticiMapsEntry.class);
                 startActivity(intent);
             }
         });

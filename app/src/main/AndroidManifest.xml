@@ -21,7 +21,6 @@
         <activity android:name=".createnote.CreateNoteActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".problemler.gezginsaticimaps.FlyHesaplama" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -35,7 +34,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".problemler.gezginsaticimaps.MapsActivity"
+            android:name=".problemler.gezginsaticimaps.FlyActivity"
             android:label="@string/title_activity_maps" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -45,7 +44,7 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <activity android:name=".problemler.gezginsaticimaps.GsFly" />
+        <activity android:name=".problemler.gezginsaticimaps.GezginSaticiMapsEntry" />
         <activity android:name=".splashscreen.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.deu.multisolvermko.R;
 
-public class GsFly extends AppCompatActivity {
+public class GezginSaticiMapsEntry extends AppCompatActivity {
 
     EditText editTextFly;
     Button buttonFly, buttonRoad;
@@ -20,7 +20,7 @@ public class GsFly extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gs_fly);
+        setContentView(R.layout.activity_gezgin_satici_entry);
 
         editTextFly = findViewById(R.id.editTextFly);
         buttonFly = findViewById(R.id.buttonfly);
@@ -35,7 +35,7 @@ public class GsFly extends AppCompatActivity {
                 }else{
                     Integer city = Integer.parseInt(editTextFly.getText().toString());
 
-                    Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), FlyActivity.class);
                     intent.putExtra("sehir",city);
                     startActivity(intent);
 

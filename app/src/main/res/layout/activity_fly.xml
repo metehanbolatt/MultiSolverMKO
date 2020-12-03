@@ -16,7 +16,7 @@
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent"
         map:layout_constraintTop_toTopOf="parent"
-        tools:context=".problemler.gezginsaticimaps.MapsActivity" />
+        tools:context=".problemler.gezginsaticimaps.FlyActivity" />
 
     <ProgressBar
         android:id="@+id/progress_bar_maps2"

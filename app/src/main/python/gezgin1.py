@@ -80,4 +80,4 @@ def main1(distanceMatrix):
 
         iterasyon=iterasyon + 1
 
-    return "en iyi çözüm: \n"+str(cozumeniyi)+"\n" +"en iyi obj: " +str(objeniyi)
+    return "Seçilen Konumlar İçin En İyi Rota:\n"+str(cozumeniyi)+"\n"+"\n"+str(cozumeniyi)+" Rotası için Katedilmesi Gereken Toplam Yol:\n" +str(objeniyi/1000)+" km'dir"

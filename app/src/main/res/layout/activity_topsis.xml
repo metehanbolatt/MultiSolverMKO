@@ -50,7 +50,7 @@
 
     <TableRow>
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch1"
             android:text="Minimum"
             android:gravity="center"
@@ -61,7 +61,7 @@
             android:layout_column="1"
             android:padding="10dp"/>
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch2"
             android:text="Minimum"
             android:gravity="center"
@@ -72,7 +72,7 @@
             android:layout_column="1"
             android:padding="10dp"/>
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch3"
             android:text="Minimum"
             android:textColor="@color/colorWhite"
@@ -88,28 +88,28 @@
     <TableRow>
         <EditText
             android:hint="Parametre 1"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
             android:padding="10dp"
             android:layout_column="1"/>
         <EditText
             android:hint="Parametre 2"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:gravity="center"
             android:textStyle="bold"
             android:padding="10dp"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
             android:layout_column="1"/>
         <EditText
             android:hint="Parametre 3"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:gravity="center"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
             android:textStyle="bold"
             android:padding="10dp"
             android:layout_column="1"/>

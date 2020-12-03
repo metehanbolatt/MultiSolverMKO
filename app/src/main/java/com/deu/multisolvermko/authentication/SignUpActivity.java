@@ -230,6 +230,7 @@ public class SignUpActivity extends AppCompatActivity {
                     signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
                     Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
                     startActivity(intent);
+                    finish();
 
                 }
             }).addOnFailureListener(new OnFailureListener() {

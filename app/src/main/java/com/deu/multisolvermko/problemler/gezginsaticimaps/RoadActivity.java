@@ -218,7 +218,7 @@ public class RoadActivity extends FragmentActivity implements OnMapReadyCallback
             arrayToDizi();
             Python py = Python.getInstance();
             final PyObject pyobj = py.getModule("gezgin1");
-            final PyObject obj = pyobj.callAttr("main1", distances);
+            final PyObject obj = pyobj.callAttr("main1", (Object) distances);
 
             runOnUiThread(new Runnable() {
                 @Override

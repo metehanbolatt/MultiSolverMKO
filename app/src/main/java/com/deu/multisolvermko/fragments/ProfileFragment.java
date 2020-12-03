@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.authentication.SignInActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -84,36 +87,95 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-                        TextView oldPassword=viewView.findViewById(R.id.oldPassword);
-                        String oldPasswordAuth=oldPassword.getText().toString();
-                        System.out.println(oldPassword);
-                        TextView newPassword=viewView.findViewById(R.id.newPassword);
+                        EditText oldPassword=viewView.findViewById(R.id.oldPassword);
+                        EditText newPassword=viewView.findViewById(R.id.newPassword);
 
-                        if (oldPassword.getText().length()<6 || newPassword.getText().length()<6){
-                            Toast.makeText(getContext(), "Lütfen 6 haneden uzun şifre giriniz", Toast.LENGTH_SHORT).show();
+                        if (newPassword.getText().toString().isEmpty() && oldPassword.getText().toString().isEmpty()){
+                            LayoutInflater inflater = getLayoutInflater();
+                            View layout = inflater.inflate(R.layout.toast_profile_new_old_password, (ViewGroup) viewGroup.findViewById(R.id.toast_root));
+                            Toast toast = new Toast(getContext());
+                            toast.setGravity(Gravity.BOTTOM,0,50);
+                            toast.setDuration(Toast.LENGTH_LONG);
+                            toast.setView(layout);
+                            toast.show();
+
+                        }else if(newPassword.getText().toString().isEmpty()){
+                            LayoutInflater inflater = getLayoutInflater();
+                            View layout = inflater.inflate(R.layout.toast_profile_new_password, (ViewGroup) viewGroup.findViewById(R.id.toast_root));
+                            Toast toast = new Toast(getContext());
+                            toast.setGravity(Gravity.BOTTOM,0,50);
+                            toast.setDuration(Toast.LENGTH_LONG);
+                            toast.setView(layout);
+                            toast.show();
+
+                        }else if(oldPassword.getText().toString().isEmpty()){
+                            LayoutInflater inflater = getLayoutInflater();
+                            View layout = inflater.inflate(R.layout.toast_profile_old_password, (ViewGroup) viewGroup.findViewById(R.id.toast_root));
+                            Toast toast = new Toast(getContext());
+                            toast.setGravity(Gravity.BOTTOM,0,50);
+                            toast.setDuration(Toast.LENGTH_LONG);
+                            toast.setView(layout);
+                            toast.show();
+
+                        }else if (oldPassword.getText().length() < 6 || newPassword.getText().length() < 6){
+                            LayoutInflater inflater = getLayoutInflater();
+                            View layout = inflater.inflate(R.layout.toast_profile_password_length, (ViewGroup) viewGroup.findViewById(R.id.toast_root));
+                            Toast toast = new Toast(getContext());
+                            toast.setGravity(Gravity.BOTTOM,0,50);
+                            toast.setDuration(Toast.LENGTH_LONG);
+                            toast.setView(layout);
+                            toast.show();
+
                         }else {
 
                             final String newPasswordAuth = newPassword.getText().toString();
-                            System.out.println(newPassword);
+                            final String oldPasswordAuth = oldPassword.getText().toString();
+
                             AuthCredential credential = EmailAuthProvider.getCredential(email, oldPasswordAuth);
+                            System.out.println(credential);
                             firebaseUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        firebaseUser.updatePassword(newPasswordAuth).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(getContext(), "Şifreniz başarıyla değiştirildi.", Toast.LENGTH_SHORT).show();
-                                                    alertDialog.dismiss();
-                                                } else {
-                                                    Toast.makeText(getContext(), "Şifre değiştirme başarısız", Toast.LENGTH_SHORT).show();
-                                                }
+
+                                    firebaseUser.updatePassword(newPasswordAuth).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                LayoutInflater inflater = getLayoutInflater();
+                                                View layout = inflater.inflate(R.layout.toast_profile_change_password_success, (ViewGroup) viewGroup.findViewById(R.id.toast_root));
+                                                Toast toast = new Toast(getContext());
+                                                toast.setGravity(Gravity.BOTTOM, 0, 50);
+                                                toast.setDuration(Toast.LENGTH_LONG);
+                                                toast.setView(layout);
+                                                toast.show();
+                                                alertDialog.dismiss();
                                             }
-                                        });
-                                    } else {
-                                        Toast.makeText(getContext(), "Doğrulama Hatası", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    if (Objects.equals(e.getLocalizedMessage(), "The password is invalid or the user does not have a password.")){
+                                        LayoutInflater inflater = getLayoutInflater();
+                                        View layout = inflater.inflate(R.layout.toast_profile_password_change_failed, (ViewGroup) viewGroup.findViewById(R.id.toast_root));
+                                        Toast toast = new Toast(getContext());
+                                        toast.setGravity(Gravity.BOTTOM,0,50);
+                                        toast.setDuration(Toast.LENGTH_LONG);
+                                        toast.setView(layout);
+                                        toast.show();
+                                    }else if (Objects.equals(e.getLocalizedMessage(), "We have blocked all requests from this device due to unusual activity. Try again later. [ Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. ]")){
+                                        LayoutInflater inflater = getLayoutInflater();
+                                        View layout = inflater.inflate(R.layout.toast_profile_change_password_block, (ViewGroup) viewGroup.findViewById(R.id.toast_root));
+                                        Toast toast = new Toast(getContext());
+                                        toast.setGravity(Gravity.BOTTOM,0,50);
+                                        toast.setDuration(Toast.LENGTH_LONG);
+                                        toast.setView(layout);
+                                        toast.show();
                                     }
+
+
                                 }
                             });
                         }
@@ -123,7 +185,13 @@ public class ProfileFragment extends Fragment {
                 viewView.findViewById(R.id.buttonChangeCancelWithKC).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getContext(), "ŞİFRE DEĞİŞTİRME İŞLEMİNİZ İPTAL EDİLMİŞTİR", Toast.LENGTH_SHORT).show();
+                        LayoutInflater inflater = getLayoutInflater();
+                        View layout = inflater.inflate(R.layout.toast_profile_password_change_canceled, (ViewGroup) viewGroup.findViewById(R.id.toast_root));
+                        Toast toast = new Toast(getContext());
+                        toast.setGravity(Gravity.BOTTOM,0,50);
+                        toast.setDuration(Toast.LENGTH_LONG);
+                        toast.setView(layout);
+                        toast.show();
                         alertDialog.dismiss();
                     }
                 });
@@ -175,6 +243,7 @@ public class ProfileFragment extends Fragment {
             }
         });
         return viewGroup;
+
     }
 
 }
