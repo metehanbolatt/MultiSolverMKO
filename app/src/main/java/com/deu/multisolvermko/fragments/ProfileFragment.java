@@ -133,12 +133,12 @@ public class ProfileFragment extends Fragment {
 
                             AuthCredential credential = EmailAuthProvider.getCredential(email, oldPasswordAuth);
                             System.out.println(credential);
-                            firebaseUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            firebaseUser.reauthenticate(credential).addOnSuccessListener(new OnSuccessListener<Void>() {
 
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
+                                public void onSuccess(Void aVoid) {
 
-                                    firebaseUser.updatePassword(newPasswordAuth).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                firebaseUser.updatePassword(newPasswordAuth).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
