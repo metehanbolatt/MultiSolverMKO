@@ -86,33 +86,45 @@
 
     </TableRow>
     <TableRow>
+
         <EditText
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:width="0dp"
+            android:maxLength="9"
+            android:gravity="center"
             android:hint="Parametre 1"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="center"
+            android:padding="10dp"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
-            android:padding="10dp"
-            android:layout_column="1"/>
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
         <EditText
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:width="0dp"
+            android:maxLength="9"
+            android:gravity="center"
             android:hint="Parametre 2"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:textStyle="bold"
             android:padding="10dp"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
-            android:layout_column="1"/>
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
         <EditText
-            android:hint="Parametre 3"
-            android:textSize="16sp"
+            android:layout_height="43dp"
+            android:layout_column="1"
             android:gravity="center"
+            android:hint="Parametre 3"
+            android:width="0dp"
+            android:maxLength="9"
+            android:padding="10dp"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:layout_column="1"/>
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </TableRow>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -139,6 +151,7 @@
             android:id="@+id/editText1"
             android:layout_width="wrap_content"
             android:hint="1. Veri"
+            android:width="0dp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
             android:layout_height="wrap_content"
@@ -150,12 +163,14 @@
             android:layout_width="wrap_content"
             android:textColor="@color/colorWhite"
             android:hint="2. Veri"
+            android:width="0dp"
             android:gravity="center"
             android:textColorHint="@color/colorWhite"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"/>
         <EditText
             android:id="@+id/editText3"
+            android:width="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
