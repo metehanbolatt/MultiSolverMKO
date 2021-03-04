@@ -35,6 +35,7 @@
 
         <activity
             android:name=".problemler.gezginsaticimaps.FlyActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"
             android:label="@string/title_activity_maps" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -44,7 +45,8 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <activity android:name=".problemler.gezginsaticimaps.GezginSaticiMapsEntry" />
+        <activity android:name=".problemler.gezginsaticimaps.GezginSaticiMapsEntry"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
         <activity android:name=".splashscreen.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,17 +54,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".topsis_ahp.ahp.AhpFourProcess" />
-        <activity android:name=".topsis_ahp.ahp.AhpThreeProcess" />
-        <activity android:name=".topsis_ahp.topsis.TopsisFourActivity" />
-        <activity android:name=".authentication.SignUpActivity" />
-        <activity android:name=".authentication.SignInActivity" />
-        <activity android:name=".topsis_ahp.topsis.TopsisActivity" />
-        <activity android:name=".homepage.HomepageActivity" />
-        <activity android:name=".information.InformationActivity" />
-        <activity android:name=".problemler.gezginsaticimanuel.GezginSatici" />
-        <activity android:name=".problemler.gezginsaticimaps.RoadActivity" />
-        <activity android:name=".problemler.ProblemActivity" />
+        <activity android:name=".topsis_ahp.ahp.AhpFourProcess"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".topsis_ahp.ahp.AhpThreeProcess"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".topsis_ahp.topsis.TopsisFourActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".authentication.SignUpActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".authentication.SignInActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".topsis_ahp.topsis.TopsisActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".homepage.HomepageActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".information.InformationActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".problemler.gezginsaticimanuel.GezginSatici"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".problemler.gezginsaticimaps.RoadActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity android:name=".problemler.ProblemActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
     </application>
 
 </manifest>

@@ -15,22 +15,25 @@
 
         <EditText
             android:id="@+id/foureditTextTopsis1"
-            android:layout_width="98dp"
+            android:layout_width="92dp"
             android:layout_column="1"
             android:gravity="center"
+            android:width="0dp"
             android:hint="Ağırlık 1"
             android:inputType="numberDecimal"
             android:padding="10dp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/foureditTextTopsis2"
             android:hint="Ağırlık 2"
-            android:textSize="16dp"
+            android:layout_width="92dp"
+            android:textSize="16sp"
             android:textColor="@color/colorWhite"
+            android:width="0dp"
             android:textColorHint="@color/colorWhite"
             android:gravity="center"
             android:textStyle="bold"
@@ -40,7 +43,9 @@
         <EditText
             android:id="@+id/foureditTextTopsis3"
             android:hint="Ağırlık 3"
-            android:textSize="16dp"
+            android:layout_width="92dp"
+            android:textSize="16sp"
+            android:width="0dp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
             android:gravity="center"
@@ -51,7 +56,9 @@
         <EditText
             android:id="@+id/foureditTextTopsis4"
             android:hint="Ağırlık 4"
-            android:textSize="16dp"
+            android:layout_width="92dp"
+            android:textSize="16sp"
+            android:width="0dp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
             android:gravity="center"
@@ -67,51 +74,53 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/fourswitch1"
             android:layout_column="1"
+            android:width="0dp"
             android:gravity="center"
             android:padding="10dp"
-            android:autoSizeMaxTextSize="10sp"
             android:text="Min"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
             android:textSize="10sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="SmallSp" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/fourswitch2"
             android:text="Min"
             android:gravity="center"
+            android:width="0dp"
             android:textStyle="bold"
-            android:autoSizeMaxTextSize="10sp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
             android:textSize="10sp"
             android:layout_column="1"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="SmallSp" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/fourswitch3"
             android:text="Min"
             android:gravity="center"
-            android:autoSizeMaxTextSize="10sp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
             android:textSize="10sp"
             android:textStyle="bold"
+            android:width="0dp"
             android:layout_column="1"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            tools:ignore="SmallSp" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/fourswitch4"
             android:text="Min"
             android:gravity="center"
             android:textSize="10sp"
-            android:autoSizeMaxTextSize="10sp"
+            android:width="0dp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
             android:textStyle="bold"
             android:layout_column="1"
             android:padding="10dp"/>
-
 
     </TableRow>
     <TableRow>
@@ -121,6 +130,9 @@
             android:gravity="center"
             android:hint="Parametre 1"
             android:padding="10dp"
+            android:width="0dp"
+            android:maxLength="9"
+            android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
             android:textSize="12sp"
@@ -130,6 +142,9 @@
             android:layout_column="1"
             android:gravity="center"
             android:hint="Parametre 2"
+            android:width="0dp"
+            android:maxLength="9"
+            android:textAlignment="center"
             android:padding="10dp"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
@@ -138,11 +153,14 @@
 
         <EditText
             android:layout_column="1"
+            android:width="0dp"
             android:gravity="center"
+            android:hint="Parametre 3"
+            android:maxLength="9"
+            android:padding="10dp"
+            android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
-            android:hint="Parametre 3"
-            android:padding="10dp"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -150,9 +168,12 @@
             android:layout_column="1"
             android:gravity="center"
             android:hint="Parametre 4"
+            android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent"
             android:padding="10dp"
+            android:width="0dp"
+            android:maxLength="9"
             android:textSize="12sp"
             android:textStyle="bold" />
     </TableRow>
@@ -183,6 +204,7 @@
             android:textColorHint="@color/colorWhite"
             android:hint="1. Veri"
             android:gravity="center"
+            android:width="0dp"
             android:layout_width="93dp"
             android:layout_height="match_parent"
             android:inputType="numberDecimal" />
@@ -192,6 +214,7 @@
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
             android:hint="2. Veri"
+            android:width="0dp"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -200,6 +223,7 @@
             android:id="@+id/foureditText3"
             android:textColor="@color/colorWhite"
             android:hint="3. Veri"
+            android:width="0dp"
             android:gravity="center"
             android:textColorHint="@color/colorWhite"
             android:layout_width="wrap_content"
@@ -210,6 +234,7 @@
             android:id="@+id/foureditText4"
             android:textColor="@color/colorWhite"
             android:hint="4. Veri"
+            android:width="0dp"
             android:gravity="center"
             android:textColorHint="@color/colorWhite"
             android:layout_width="104dp"
