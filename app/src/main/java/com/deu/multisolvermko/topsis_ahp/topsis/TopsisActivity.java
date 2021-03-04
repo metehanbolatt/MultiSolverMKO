@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,7 +54,7 @@ public class TopsisActivity extends AppCompatActivity {
     Integer sonuc;
     ArrayList<BarEntry> visitors;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    Switch switch1,switch2,switch3;
+    SwitchCompat switch1,switch2,switch3;
 
     int a = 0;
 

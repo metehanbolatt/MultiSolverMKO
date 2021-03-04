@@ -2,6 +2,7 @@ package com.deu.multisolvermko.topsis_ahp.topsis;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,7 +39,7 @@ public class TopsisFourActivity extends AppCompatActivity {
     EditText foureditText1,foureditText2,foureditText3,foureditText4,foureditTextTopsis1,foureditTextTopsis2,foureditTextTopsis3,foureditTextTopsis4;
     TextView fourtextViewTopsis;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    Switch fourswitch1,fourswitch2,fourswitch3,fourswitch4;
+    SwitchCompat fourswitch1,fourswitch2,fourswitch3,fourswitch4;
     Integer sonuc;
     ArrayList<BarEntry> visitors;
     List<PaymentModelFour> fourpayment_list;
