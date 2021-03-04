@@ -15,7 +15,6 @@ import com.deu.multisolvermko.topsis_ahp.ahp.AhpThreeProcess;
 import com.deu.multisolvermko.topsis_ahp.topsis.TopsisActivity;
 import com.deu.multisolvermko.topsis_ahp.topsis.TopsisFourActivity;
 
-
 public class Topsis_Ahp_Fragment extends Fragment {
 
     @Nullable
@@ -61,10 +60,6 @@ public class Topsis_Ahp_Fragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
-
 
         return viewGroup;
     }

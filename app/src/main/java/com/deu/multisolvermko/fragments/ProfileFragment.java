@@ -207,7 +207,7 @@ public class ProfileFragment extends Fragment {
         storageReference.child(email).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(final Uri uri) {
-                Picasso.with(getContext()).load(uri).into(userImage);
+                Picasso.get().load(uri).into(userImage);
             }
         });
 

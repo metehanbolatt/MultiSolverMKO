@@ -1,7 +1,6 @@
 package com.deu.multisolvermko.fragments.adapters;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     ArrayList<String> emailList;
     ArrayList<String> surnameList;
     ArrayList<String> urlfoto;
-    Context context;
 
     public UsersRecyclerAdapter(ArrayList<String> nameList, ArrayList<String> emailList, ArrayList<String> surnameList, ArrayList<String> urlfoto) {
         this.nameList = nameList;
@@ -50,7 +48,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
         }else{
             holder.isimTextView.setText(nameList.get(position)+" "+surnameList.get(position));
             holder.emailText.setText(emailList.get(position));
-            Picasso.with(context).load(urlfoto.get(position)).into(holder.fotoImageView);
+            Picasso.get().load(urlfoto.get(position)).into(holder.fotoImageView);
         }
     }
 

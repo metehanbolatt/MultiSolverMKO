@@ -39,7 +39,6 @@ public class UsersFragment extends Fragment {
     UsersRecyclerAdapter usersRecyclerAdapter;
     RecyclerView recyclerView;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_users, container, false);
@@ -178,9 +177,6 @@ public class UsersFragment extends Fragment {
             timer.cancel();
         }
     }
-
-
-
 
 }
 

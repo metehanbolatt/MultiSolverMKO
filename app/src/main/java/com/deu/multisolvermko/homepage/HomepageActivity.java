@@ -124,7 +124,7 @@ public class HomepageActivity extends AppCompatActivity {
         newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(HomepageActivity.this).load(uri).into(imageView);
+                Picasso.get().load(uri).into(imageView);
             }
         });
     }
@@ -188,7 +188,7 @@ public class HomepageActivity extends AppCompatActivity {
 
                                 }
                             });
-                            Picasso.with(HomepageActivity.this).load(uri).into(imageView);
+                            Picasso.get().load(uri).into(imageView);
                         }
                     });
                 }
