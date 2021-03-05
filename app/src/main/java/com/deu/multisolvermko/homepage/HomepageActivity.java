@@ -148,7 +148,6 @@ public class HomepageActivity extends AppCompatActivity {
                     Toast.makeText(HomepageActivity.this, "Lütfen Profil Fotoğrafı Yükleyiniz", Toast.LENGTH_SHORT).show();
                     control=1;
                 }
-
             }
 
             @Override
