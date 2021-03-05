@@ -6,9 +6,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_title">Sıfırlamak istediğinize emin misiniz?</string>
     <string name="dummy_text">Lorem Ipsum is simply dummy text  of the printing and type setting industry</string>
-    <string name="okay">Okay</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
+    <string name="okay">Tamam</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
     <string name="title_activity_maps_fly">Map</string>
     <string name="title_activity_maps">Map</string>
 

@@ -1,10 +1,14 @@
 package com.deu.multisolvermko.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -14,11 +18,13 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.fragments.adapters.TravelLocation;
 import com.deu.multisolvermko.fragments.adapters.TravelLocationsAdapter;
+import com.deu.multisolvermko.premium.PremiumActivity;
 import com.deu.multisolvermko.topsis_ahp.ahp.AhpFourProcess;
 import com.deu.multisolvermko.topsis_ahp.ahp.AhpThreeProcess;
 import com.deu.multisolvermko.topsis_ahp.topsis.TopsisActivity;
@@ -29,12 +35,21 @@ import java.util.List;
 
 public class TopsisFragment extends Fragment {
 
+    View layout;
+    AlertDialog alertDialog;
+    Button premiumQuit, premiumGo;
+    ConstraintLayout layoutDialogContainer;
     private TravelLocationsAdapter.RecyclerViewClickListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_topsis,container,false);
+
+        layout = inflater.inflate(R.layout.premium_popup,container,false);
+        premiumQuit=layout.findViewById(R.id.premiumQuit);
+        premiumGo=layout.findViewById(R.id.premiumGo);
+
         ViewPager2 locationsViewPager = viewGroup.findViewById(R.id.locationsViewPager);
         List<TravelLocation> travelLocations = new ArrayList<>();
 
@@ -85,6 +100,7 @@ public class TopsisFragment extends Fragment {
         });
 
         locationsViewPager.setPageTransformer(compositePageTransformer);
+        layoutDialogContainer= viewGroup.findViewById(R.id.layoutDialogContainer);
 
         return viewGroup;
     }
@@ -100,7 +116,30 @@ public class TopsisFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), TopsisFourActivity.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getActivity(), "Premium", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder=new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                    final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.premium_popup,layoutDialogContainer);
+                    builder.setView(viewView);
+
+                    alertDialog = builder.create();
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    alertDialog.show();
+
+                    viewView.findViewById(R.id.premiumQuit).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            alertDialog.dismiss();
+
+                        }
+                    });
+
+                    viewView.findViewById(R.id.premiumGo).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getActivity(), PremiumActivity.class);
+                            startActivity(intent);
+                            alertDialog.dismiss();
+                        }
+                    });
                 }
             }
         };

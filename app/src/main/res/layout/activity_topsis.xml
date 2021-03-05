@@ -52,7 +52,7 @@
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch1"
-            android:text="Minimum"
+            android:text="Min"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/colorWhite"
@@ -63,7 +63,7 @@
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch2"
-            android:text="Minimum"
+            android:text="Min"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/colorWhite"
@@ -74,7 +74,7 @@
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch3"
-            android:text="Minimum"
+            android:text="Min"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
             android:gravity="center"
@@ -141,6 +141,7 @@
         android:id="@+id/buttonT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/buttonstyle"
         android:text="Ekle"/>
 
     <TableRow>
@@ -199,6 +200,7 @@
         android:id="@+id/buttonTopsisHesapla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/buttonstyle"
         android:onClick="buttonTopsisHesapla"
         android:text="Hesapla" />
 

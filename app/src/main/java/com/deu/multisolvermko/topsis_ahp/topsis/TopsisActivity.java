@@ -84,9 +84,9 @@ public class TopsisActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if (isChecked){
-                    switch1.setText("Maximum");
+                    switch1.setText("Max");
                 }else{
-                    switch1.setText("Minimum");
+                    switch1.setText("Min");
                 }
             }
         });
@@ -97,9 +97,9 @@ public class TopsisActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if (isChecked){
-                    switch2.setText("Maximum");
+                    switch2.setText("Max");
                 }else{
-                    switch2.setText("Minimum");
+                    switch2.setText("Min");
                 }
             }
         });
@@ -110,9 +110,9 @@ public class TopsisActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if (isChecked){
-                    switch3.setText("Maximum");
+                    switch3.setText("Max");
                 }else{
-                    switch3.setText("Minimum");
+                    switch3.setText("Min");
                 }
             }
         });
@@ -230,26 +230,26 @@ public class TopsisActivity extends AppCompatActivity {
         varti = new ArrayList<>();
         veksi = new ArrayList<>();
 
-        if (switch1.getText().toString().equals("Minimum")) {
+        if (switch1.getText().toString().equals("Min")) {
             varti.add(Collections.min(agirliklisutun1));
             veksi.add(Collections.max(agirliklisutun1));
-        }else if(switch1.getText().toString().equals("Maximum")){
+        }else if(switch1.getText().toString().equals("Max")){
             veksi.add(Collections.min(agirliklisutun1));
             varti.add(Collections.max(agirliklisutun1));
         }
 
-        if (switch2.getText().toString().equals("Minimum")) {
+        if (switch2.getText().toString().equals("Min")) {
             varti.add(Collections.min(agirliklisutun2));
             veksi.add(Collections.max(agirliklisutun2));
-        }else if(switch2.getText().toString().equals("Maximum")){
+        }else if(switch2.getText().toString().equals("Max")){
             veksi.add(Collections.min(agirliklisutun2));
             varti.add(Collections.max(agirliklisutun2));
         }
 
-        if (switch3.getText().toString().equals("Minimum")) {
+        if (switch3.getText().toString().equals("Min")) {
             varti.add(Collections.min(agirliklisutun3));
             veksi.add(Collections.max(agirliklisutun3));
-        }else if(switch3.getText().toString().equals("Maximum")){
+        }else if(switch3.getText().toString().equals("Max")){
             veksi.add(Collections.min(agirliklisutun3));
             varti.add(Collections.max(agirliklisutun3));
         }

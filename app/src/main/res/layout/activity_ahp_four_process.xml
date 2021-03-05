@@ -272,6 +272,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="tablotamamla"
+        android:background="@drawable/buttonstyle"
         android:text="Tabloyu Tamamla"/>
 
     <TextView
@@ -302,6 +303,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="hesaplaButton"
+        android:background="@drawable/buttonstyle"
         android:text="Hesapla"/>
 
 

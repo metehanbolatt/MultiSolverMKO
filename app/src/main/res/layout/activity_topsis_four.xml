@@ -189,6 +189,7 @@
         android:id="@+id/fourbuttonT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/buttonstyle"
         android:text="Ekle"/>
 
     <TableRow>
@@ -257,6 +258,7 @@
     <Button
         android:id="@+id/fourbuttonTopsisHesapla"
         android:layout_width="wrap_content"
+        android:background="@drawable/buttonstyle"
         android:layout_height="wrap_content"
         android:onClick="fourhesapla"
         android:text="Hesapla" />
