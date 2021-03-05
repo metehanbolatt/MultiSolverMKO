@@ -94,4 +94,7 @@ dependencies {
 
     implementation 'com.android.volley:volley:1.1.0'
 
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.3'
+
 }

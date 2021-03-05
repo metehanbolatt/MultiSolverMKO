@@ -24,8 +24,8 @@
     <fragment
         android:id="@+id/menuTopsis"
         android:name="com.deu.multisolvermko.fragments.Topsis_Ahp_Fragment"
-        android:label="AHP / Topsis"
-        tools:layout="@layout/fragment_topsis" />
+        android:label="Karar Destek Sistemleri"
+        tools:layout="@layout/fragment_dss" />
     <fragment
         android:id="@+id/menuLogout"
         android:name="com.deu.multisolvermko.fragments.LogoutFragment"

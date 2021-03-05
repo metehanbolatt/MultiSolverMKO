@@ -1,19 +1,20 @@
 package com.deu.multisolvermko.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.topsis_ahp.ahp.AhpFourProcess;
-import com.deu.multisolvermko.topsis_ahp.ahp.AhpThreeProcess;
-import com.deu.multisolvermko.topsis_ahp.topsis.TopsisActivity;
-import com.deu.multisolvermko.topsis_ahp.topsis.TopsisFourActivity;
+
+import me.ibrahimsn.lib.OnItemSelectedListener;
+import me.ibrahimsn.lib.SmoothBottomBar;
 
 public class Topsis_Ahp_Fragment extends Fragment {
 
@@ -21,43 +22,39 @@ public class Topsis_Ahp_Fragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_topsis,container,false);
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_dss,container,false);
 
-        Button buttontopsis = viewGroup.findViewById(R.id.buttontopsis);
-        Button buttonfour = viewGroup.findViewById(R.id.topsisfour);
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        TopsisFragment ahpFragment = new TopsisFragment();
+        fragmentTransaction.replace(R.id.deneme,ahpFragment).commit();
 
-        Button ahpThree = viewGroup.findViewById(R.id.ahpthree);
-        Button ahpFour = viewGroup.findViewById(R.id.ahpfour);
-
-        buttontopsis.setOnClickListener(new View.OnClickListener() {
+        SmoothBottomBar bottomNav = viewGroup.findViewById(R.id.bottomBar);
+        bottomNav.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TopsisActivity.class);
-                startActivity(intent);
-            }
-        });
+            public void onItemSelect(int i) {
 
-        buttonfour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TopsisFourActivity.class);
-                startActivity(intent);
-            }
-        });
+                switch (i){
+                    case 0:
+                        FragmentManager fragmentManager = getParentFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        TopsisFragment topsisFragment = new TopsisFragment();
+                        fragmentTransaction.replace(R.id.deneme,topsisFragment).commit();
+                        break;
+                    case 1:
+                        FragmentManager fragmentManager2 = getParentFragmentManager();
+                        FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+                        AhpFragment ahpFragment1  = new AhpFragment();
+                        fragmentTransaction2.replace(R.id.deneme,ahpFragment1).commit();
+                        break;
+                    case 2:
+                        FragmentManager fragmentManager3 = getParentFragmentManager();
+                        FragmentTransaction fragmentTransaction3 = fragmentManager3.beginTransaction();
+                        PremiumFragment premiumFragment  = new PremiumFragment();
+                        fragmentTransaction3.replace(R.id.deneme,premiumFragment).commit();
+                        break;
+                }
 
-        ahpThree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AhpThreeProcess.class);
-                startActivity(intent);
-            }
-        });
-
-        ahpFour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AhpFourProcess.class);
-                startActivity(intent);
             }
         });
 

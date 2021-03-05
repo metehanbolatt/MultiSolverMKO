@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background"
-    tools:context=".fragments.AhpFragment">
+    tools:context=".fragments.TopsisFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardProfilePicture"
@@ -33,11 +33,11 @@
         android:id="@+id/textGoing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Topsis"
+        android:text="Analitik Hiyerarşi Süreci"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardProfilePicture"
         app:layout_constraintStart_toEndOf="@+id/cardProfilePicture"
         app:layout_constraintTop_toTopOf="@+id/cardProfilePicture" />

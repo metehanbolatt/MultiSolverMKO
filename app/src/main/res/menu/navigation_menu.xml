@@ -23,7 +23,7 @@
 
     <item android:id="@+id/menuTopsis"
         android:icon="@drawable/topsis"
-        android:title="AHP / Topsis"/>
+        android:title="Karar Destek Sistemleri"/>
 
 
     <item android:title="Diğer"
