@@ -61,6 +61,8 @@ public class HomepageActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     String email,name,surName;
     TextView userName;
+    int control=0;
+    String control2;
     DocumentReference documentReference;
 
     @Override
@@ -127,6 +129,36 @@ public class HomepageActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(imageView);
+                control2 = String.valueOf(Picasso.get().load(uri));
+            }
+        });
+
+        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+                if(control==0 && control2==null) {
+                    Animation care;
+                    care= AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+                    imageView.startAnimation(care);
+                    Toast.makeText(HomepageActivity.this, "Lütfen Profil Fotoğrafı Yükleyiniz", Toast.LENGTH_SHORT).show();
+                    control=1;
+                }
+
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
             }
         });
 
