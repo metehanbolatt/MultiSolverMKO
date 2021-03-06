@@ -67,8 +67,7 @@
             android:name=".topsis_ahp.topsis.TopsisFourActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
-            android:name=".authentication.SignUpActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize" />
+            android:name=".authentication.SignUpActivity" />
         <activity
             android:name=".authentication.SignInActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
