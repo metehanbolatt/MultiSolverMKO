@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,7 @@ public class InformationActivity extends AppCompatActivity {
 
     private OnboardingAdapter onboardingAdapter;
     private LinearLayout layoutOnboardingIndicators;
-    private MaterialButton buttonOnboardingAction;
+    private Button buttonOnboardingAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,6 @@ public class InformationActivity extends AppCompatActivity {
 
         layoutOnboardingIndicators = findViewById(R.id.layoutOnboardingIndicators);
         buttonOnboardingAction = findViewById(R.id.buttonOnboardingAction);
-
 
         setupOnboardingItems();
 
