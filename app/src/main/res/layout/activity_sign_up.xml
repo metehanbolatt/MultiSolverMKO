@@ -12,7 +12,7 @@
         android:layout_width="408dp"
         android:layout_height="100dp"
         android:layout_marginBottom="153dp"
-        android:background="@drawable/ic_beyaz"
+        android:background="@drawable/ic_white"
         app:layout_constraintBottom_toTopOf="@+id/signUpName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
         android:layout_marginBottom="21dp"
         android:background="@drawable/round_border"
         android:ems="10"
-        android:hint="İsim"
+        android:hint="@string/name"
         android:maxLength="11"
         android:inputType="textPersonName"
         android:textAlignment="center"
@@ -48,7 +48,7 @@
         android:background="@drawable/round_border"
         android:ems="10"
         android:maxLength="16"
-        android:hint="Soyisim"
+        android:hint="@string/surname"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
@@ -67,7 +67,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/round_border"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
@@ -75,7 +75,8 @@
         app:layout_constraintBottom_toTopOf="@+id/signUpPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpSurname" />
+        app:layout_constraintTop_toBottomOf="@+id/signUpSurname"
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/signUpPassword"
@@ -86,24 +87,24 @@
         android:layout_marginBottom="21dp"
         android:background="@drawable/round_border"
         android:ems="10"
-        android:hint="Şifre"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUpEmail" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/signUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="49dp"
         android:background="@drawable/round_border2"
         android:onClick="signUpButton"
-        android:text="Kayıt Ol"
+        android:text="@string/sign_up"
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,13 +112,13 @@
         app:layout_constraintTop_toBottomOf="@+id/signUpPassword" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageMsLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:layout_marginBottom="27dp"
         app:layout_constraintBottom_toTopOf="@+id/signUpName"
         app:layout_constraintStart_toStartOf="@+id/signUpName"
-        app:srcCompat="@drawable/logomuz" />
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

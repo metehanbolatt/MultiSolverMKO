@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".topsis_ahp.topsis.activities.ThreeCriteriaTopsisActivity"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:padding="10dp"
+    android:stretchColumns="1,2,3">
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/editTextTopsis1"
+            android:hint="@string/weight_1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTopsis2"
+            android:hint="@string/weight_2"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTopsis3"
+            android:hint="@string/weight_3"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch1"
+            android:text="@string/min"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="13sp"
+            android:layout_column="1"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch2"
+            android:text="@string/min"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="13sp"
+            android:layout_column="1"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch3"
+            android:text="@string/min"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_column="1"
+            android:padding="10dp"/>
+
+    </TableRow>
+
+    <TableRow>
+
+        <EditText
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:width="0dp"
+            android:maxLength="9"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:hint="@string/parameter_1"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:autofillHints=""
+            tools:ignore="TextFields" />
+
+        <EditText
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:width="0dp"
+            android:maxLength="9"
+            android:gravity="center"
+            android:hint="@string/parameter_2"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:autofillHints=""
+            tools:ignore="TextFields" />
+
+        <EditText
+            android:layout_height="43dp"
+            android:layout_column="1"
+            android:gravity="center"
+            android:hint="@string/parameter_3"
+            android:textAlignment="center"
+            android:width="0dp"
+            android:maxLength="9"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:autofillHints=""
+            tools:ignore="TextFields" />
+
+    </TableRow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"/>
+
+    <Button
+        android:id="@+id/buttonT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:text="@string/add_data"/>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="wrap_content"
+            android:hint="@string/_1_data"
+            android:width="0dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:hint="@string/_2_data"
+            android:width="0dp"
+            android:gravity="center"
+            android:textColorHint="@color/colorWhite"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:width="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/_3_data"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+    </TableRow>
+
+    <TextView
+        android:id="@+id/textViewTopsis"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="@string/best_alternate"/>
+
+    <Button
+        android:id="@+id/buttonTopsisCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:onClick="buttonTopsisCalculate"
+        android:text="@string/calculate" />
+
+</TableLayout>

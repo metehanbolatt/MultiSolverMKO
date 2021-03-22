@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".premium.PremiumActivity"></activity>
+        <activity android:name=".premium.PremiumActivity" />
         <activity
             android:name=".createlibrary.CreateLibraryActivity"
             android:screenOrientation="portrait"
@@ -36,7 +36,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".problemler.gezginsaticimaps.FlyActivity"
+            android:name=".problems.travellingsalesmanmaps.FlySalesmanMapsActivity"
             android:label="@string/title_activity_maps"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <!--
@@ -48,7 +48,7 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <activity
-            android:name=".problemler.gezginsaticimaps.GezginSaticiMapsEntry"
+            android:name=".problems.travellingsalesmanmaps.EntrySalesmanMapsActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity android:name=".splashscreen.SplashActivity">
             <intent-filter>
@@ -58,13 +58,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".topsis_ahp.ahp.AhpFourProcess"
+            android:name=".topsis_ahp.ahp.AhpFourCriteriaActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
-            android:name=".topsis_ahp.ahp.AhpThreeProcess"
+            android:name=".topsis_ahp.ahp.AhpThreeCriteriaActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
-            android:name=".topsis_ahp.topsis.TopsisFourActivity"
+            android:name=".topsis_ahp.topsis.activities.FourCriteriaTopsisActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".authentication.SignUpActivity" />
@@ -72,7 +72,7 @@
             android:name=".authentication.SignInActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
-            android:name=".topsis_ahp.topsis.TopsisActivity"
+            android:name=".topsis_ahp.topsis.activities.ThreeCriteriaTopsisActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".homepage.HomepageActivity"
@@ -81,14 +81,12 @@
             android:name=".information.InformationActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
-            android:name=".problemler.gezginsaticimanuel.GezginSatici"
+            android:name=".problems.travellingsalesmanmanuel.TravellingSalesmanManuel" />
+        <activity
+            android:name=".problems.travellingsalesmanmaps.RoadSalesmanMapsActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
-            android:name=".problemler.gezginsaticimaps.RoadActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize" />
-        <activity
-            android:name=".problemler.ProblemActivity"
+            android:name=".problems.SalesmanProblemActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
     </application>
-
 </manifest>

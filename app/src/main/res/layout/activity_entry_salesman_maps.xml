@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".problems.travellingsalesmanmaps.EntrySalesmanMapsActivity">
+
+    <Button
+        android:id="@+id/buttonFly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_airplane"
+        android:drawablePadding="10dp"
+        android:textColor="#fff"
+        android:background="@drawable/button_style"
+        android:layout_marginTop="20dp"
+        android:text="@string/airway"
+        app:layout_constraintEnd_toEndOf="@+id/editTextFly"
+        app:layout_constraintStart_toStartOf="@+id/editTextFly"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFly" />
+
+    <Button
+        android:id="@+id/buttonRoad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_car"
+        android:textColor="#fff"
+        android:drawablePadding="10dp"
+        android:background="@drawable/button_style"
+        android:layout_marginTop="10dp"
+        android:text="@string/highway"
+        app:layout_constraintEnd_toEndOf="@+id/buttonFly"
+        app:layout_constraintStart_toStartOf="@+id/buttonFly"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFly" />
+
+    <EditText
+        android:id="@+id/editTextFly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/custom_input"
+        android:hint="@string/entry_salesman_question"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

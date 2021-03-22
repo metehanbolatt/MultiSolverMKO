@@ -145,7 +145,7 @@ public class HomepageActivity extends AppCompatActivity {
                     Animation care;
                     care= AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
                     imageView.startAnimation(care);
-                    Toast.makeText(HomepageActivity.this, "Lütfen Profil Fotoğrafı Yükleyiniz", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomepageActivity.this, "Please Upload Your Profile Picture", Toast.LENGTH_SHORT).show();
                     control=1;
                 }
             }
@@ -184,10 +184,10 @@ public class HomepageActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= 28){
                     ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(),imageData);
                     selectedImage = ImageDecoder.decodeBitmap(source);
-                    uploadd();
+                    upload();
                 }else{
                     selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(),imageData);
-                    uploadd();
+                    upload();
 
                 }
             } catch (IOException e) {
@@ -197,7 +197,7 @@ public class HomepageActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void uploadd(){
+    public void upload(){
         currentUser = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail();
         if (imageData != null){
             assert currentUser != null;

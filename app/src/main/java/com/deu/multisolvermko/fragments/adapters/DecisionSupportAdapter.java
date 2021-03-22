@@ -45,7 +45,6 @@ public class DecisionSupportAdapter extends RecyclerView.Adapter<DecisionSupport
     public class DecisionSupportViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private final KenBurnsView kbvName;
-
         private final TextView textTitle;
         private final TextView textName;
         private final TextView textFeature;

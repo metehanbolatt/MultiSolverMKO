@@ -30,7 +30,7 @@ public class SignInActivity extends AppCompatActivity {
     Button signInButton;
     ImageView imageView;
     public FirebaseAuth firebaseAuth;
-    TextView kaydol,textView3;
+    TextView signUp, areYouNew;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,9 @@ public class SignInActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         emailTextSignIn = findViewById(R.id.emailTextSignIn);
         passwordTextSignIn = findViewById(R.id.passwordSignIn);
-        kaydol = findViewById(R.id.kaydol);
+        signUp = findViewById(R.id.signUpText);
         signInButton = findViewById(R.id.signInButton);
-        textView3 = findViewById(R.id.textView3);
+        areYouNew = findViewById(R.id.areYouNewText);
         imageView = findViewById(R.id.imageView);
 
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -53,7 +53,7 @@ public class SignInActivity extends AppCompatActivity {
             finish();
         }
 
-        kaydol.setOnClickListener(new View.OnClickListener() {
+        signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
@@ -70,17 +70,17 @@ public class SignInActivity extends AppCompatActivity {
     public void signInClick(View view){
 
         if (emailTextSignIn.getText().toString().equals("") && passwordTextSignIn.getText().toString().equals("")){
-            showEmailPasswordTost();
+            showEmailPasswordToast();
             passwordTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
             emailTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
             onShakeBoth();
         }else if (passwordTextSignIn.getText().toString().equals("")){
-            showPasswordTost();
+            showPasswordToast();
             passwordTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
             emailTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
             onShakePassword();
         }else if (emailTextSignIn.getText().toString().equals("")){
-            showEmailTost();
+            showEmailToast();
             emailTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
             passwordTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
             onShakeEmail();
@@ -105,7 +105,7 @@ public class SignInActivity extends AppCompatActivity {
                     passwordTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
                     emailTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
                     onShakeBoth();
-                    onShakeKayitText();
+                    onShakeSignText();
                 }
             });
         }
@@ -114,7 +114,7 @@ public class SignInActivity extends AppCompatActivity {
     public void animationStart(){
 
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim);
-        kaydol.startAnimation(animation);
+        signUp.startAnimation(animation);
         emailTextSignIn.startAnimation(animation);
         passwordTextSignIn.startAnimation(animation);
         signInButton.startAnimation(animation);
@@ -122,12 +122,12 @@ public class SignInActivity extends AppCompatActivity {
     public void animationStart2(){
 
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim2);
-        textView3.startAnimation(animation);
+        areYouNew.startAnimation(animation);
     }
     public void animationStart3(){
 
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim3);
-        kaydol.startAnimation(animation);
+        signUp.startAnimation(animation);
     }
     public void animationStart4(){
 
@@ -142,7 +142,7 @@ public class SignInActivity extends AppCompatActivity {
     public void onShakePassword() {
         Animation shake;
         shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-        emailTextSignIn.startAnimation(shake);
+        passwordTextSignIn.startAnimation(shake);
     }
     public void onShakeBoth() {
         Animation shake;
@@ -150,12 +150,12 @@ public class SignInActivity extends AppCompatActivity {
         emailTextSignIn.startAnimation(shake);
         passwordTextSignIn.startAnimation(shake);
     }
-    public void onShakeKayitText(){
+    public void onShakeSignText(){
         Animation shake;
         shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-        kaydol.startAnimation(shake);
+        signUp.startAnimation(shake);
     }
-    public void showEmailTost(){
+    public void showEmailToast(){
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast_layout_email, (ViewGroup)findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
@@ -164,7 +164,7 @@ public class SignInActivity extends AppCompatActivity {
         toast.setView(layout);
         toast.show();
     }
-    public void showPasswordTost(){
+    public void showPasswordToast(){
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast_layout_password, (ViewGroup)findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
@@ -173,7 +173,7 @@ public class SignInActivity extends AppCompatActivity {
         toast.setView(layout);
         toast.show();
     }
-    public void showEmailPasswordTost(){
+    public void showEmailPasswordToast(){
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast_layout_email_password, (ViewGroup)findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
@@ -191,5 +191,4 @@ public class SignInActivity extends AppCompatActivity {
         toast.setView(layout);
         toast.show();
     }
-
 }

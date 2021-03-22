@@ -16,19 +16,17 @@
         android:drawableStart="@drawable/ic_searchwhite"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint=" MultiSolver'da Kişileri Ara"
+        android:hint="@string/users_search"
         android:inputType="textPersonName"
         android:padding="16dp"
         android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"/>
-
+        android:textColorHint="@color/colorWhite"
+        android:autofillHints="" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        />
-
+        android:layout_marginTop="5dp" />
 
 </LinearLayout>

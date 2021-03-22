@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".topsis_ahp.topsis.activities.FourCriteriaTopsisActivity"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:padding="10dp"
+    android:stretchColumns="1,2,3,4">
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/fourEditTextTopsis1"
+            android:layout_width="92dp"
+            android:layout_column="1"
+            android:gravity="center"
+            android:width="0dp"
+            android:hint="@string/weight_1"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/fourEditTextTopsis2"
+            android:hint="@string/weight_2"
+            android:layout_width="92dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"
+            android:width="0dp"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/fourEditTextTopsis3"
+            android:hint="@string/weight_3"
+            android:layout_width="92dp"
+            android:textSize="16sp"
+            android:width="0dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/fourEditTextTopsis4"
+            android:hint="@string/weight_4"
+            android:layout_width="92dp"
+            android:textSize="16sp"
+            android:width="0dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/fourSwitch1"
+            android:layout_column="1"
+            android:width="0dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/min"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            tools:ignore="SmallSp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/fourSwitch2"
+            android:text="@string/min"
+            android:gravity="center"
+            android:width="0dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="10sp"
+            android:layout_column="1"
+            android:padding="10dp"
+            tools:ignore="SmallSp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/fourSwitch3"
+            android:text="@string/min"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:width="0dp"
+            android:layout_column="1"
+            android:padding="10dp"
+            tools:ignore="SmallSp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/fourSwitch4"
+            android:text="@string/min"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:width="0dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textStyle="bold"
+            android:layout_column="1"
+            android:padding="10dp"
+            tools:ignore="SmallSp" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <EditText
+            android:layout_column="1"
+            android:gravity="center"
+            android:hint="@string/parameter_1"
+            android:padding="10dp"
+            android:width="0dp"
+            android:maxLength="9"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:autofillHints=""
+            tools:ignore="TextFields" />
+
+        <EditText
+            android:layout_column="1"
+            android:gravity="center"
+            android:hint="@string/parameter_2"
+            android:width="0dp"
+            android:maxLength="9"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:autofillHints=""
+            tools:ignore="TextFields" />
+
+        <EditText
+            android:layout_column="1"
+            android:width="0dp"
+            android:gravity="center"
+            android:hint="@string/parameter_3"
+            android:maxLength="9"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:autofillHints=""
+            tools:ignore="TextFields" />
+
+        <EditText
+            android:layout_column="1"
+            android:gravity="center"
+            android:hint="@string/parameter_4"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:padding="10dp"
+            android:width="0dp"
+            android:maxLength="9"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:autofillHints=""
+            tools:ignore="TextFields" />
+
+    </TableRow>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/four_Recycler_View"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"/>
+
+    <Button
+        android:id="@+id/fourButtonT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:text="@string/add_data"/>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+
+        <EditText
+            android:id="@+id/fourEditText1"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:hint="@string/_1_data"
+            android:gravity="center"
+            android:width="0dp"
+            android:layout_width="93dp"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/fourEditText2"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:hint="@string/_2_data"
+            android:width="0dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/fourEditText3"
+            android:textColor="@color/colorWhite"
+            android:hint="@string/_3_data"
+            android:width="0dp"
+            android:gravity="center"
+            android:textColorHint="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/fourEditText4"
+            android:textColor="@color/colorWhite"
+            android:hint="@string/_4_data"
+            android:width="0dp"
+            android:gravity="center"
+            android:textColorHint="@color/colorWhite"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+    </TableRow>
+
+    <TextView
+        android:id="@+id/fourTextViewTopsis"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="@string/best_alternate"/>
+
+    <Button
+        android:id="@+id/fourButtonTopsisCalculate"
+        android:layout_width="wrap_content"
+        android:background="@drawable/button_style"
+        android:layout_height="wrap_content"
+        android:onClick="calculateFourTopsis"
+        android:text="@string/calculate" />
+
+</TableLayout>

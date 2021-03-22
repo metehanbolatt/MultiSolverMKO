@@ -13,15 +13,14 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.authentication.SignInActivity;
-import com.deu.multisolvermko.information.adapters.OnboardingAdapter;
-import com.deu.multisolvermko.information.items.OnboardingItem;
-import com.google.android.material.button.MaterialButton;
+import com.deu.multisolvermko.information.adapters.InformationAdapter;
+import com.deu.multisolvermko.information.items.InformationItem;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InformationActivity extends AppCompatActivity {
 
-    private OnboardingAdapter onboardingAdapter;
+    private InformationAdapter informationAdapter;
     private LinearLayout layoutOnboardingIndicators;
     private Button buttonOnboardingAction;
 
@@ -36,7 +35,7 @@ public class InformationActivity extends AppCompatActivity {
         setupOnboardingItems();
 
         final ViewPager2 onboardingViewPager = findViewById(R.id.onboardingViewPager);
-        onboardingViewPager.setAdapter(onboardingAdapter);
+        onboardingViewPager.setAdapter(informationAdapter);
 
         setupOnboardingIndicators();
         setCurrentOnboardingIndicator(0);
@@ -52,7 +51,7 @@ public class InformationActivity extends AppCompatActivity {
         buttonOnboardingAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onboardingViewPager.getCurrentItem() + 1 < onboardingAdapter.getItemCount()){
+                if (onboardingViewPager.getCurrentItem() + 1 < informationAdapter.getItemCount()){
                     onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem() + 1);
 
                 }else{
@@ -65,40 +64,38 @@ public class InformationActivity extends AppCompatActivity {
 
     private void setupOnboardingItems(){
 
-        List<OnboardingItem> onboardingItems = new ArrayList<>();
+        List<InformationItem> informationItems = new ArrayList<>();
 
-        OnboardingItem itemProfile = new OnboardingItem();
-        itemProfile.setTitle("Profil Resmi Değiştirme");
-        itemProfile.setDescription("Profil fotoğrafınızı değiştirmek için sol taraftan açılan menüde fotoğrafınıza uzun tıklayabilirsiniz.");
-        itemProfile.setImage(R.drawable.profile);
+        InformationItem userProfile = new InformationItem();
+        userProfile.setTitle("Changing Profile Picture");
+        userProfile.setDescription("To change your profile photo, you can long click on your photo in the menu that opens on the left.");
+        userProfile.setImage(R.drawable.profile);
 
-        OnboardingItem itemPayOnline = new OnboardingItem();
-        itemPayOnline.setTitle("Gezgin Satıcı Problemi");
-        itemPayOnline.setDescription("Gezgin satıcı problemi 10 şehirden oluşan bir problemdir." +
-                " Bu problemin çözümünde bulunan şehirler arası uzaklık verileri programa gömülüdür. Bizimle iletişime geçerek kendinize ait veri setini iletebilirsiniz.");
-        itemPayOnline.setImage(R.drawable.pngg);
+        InformationItem salesmanProblem = new InformationItem();
+        salesmanProblem.setTitle("Travelling Salesman Problem");
+        salesmanProblem.setDescription("bbbbbb");
+        salesmanProblem.setImage(R.drawable.guide_image_1);
 
-        OnboardingItem itemOnTheWay = new OnboardingItem();
-        itemOnTheWay.setTitle("Gezgin Satıcı Problemi (Distances)");
-        itemOnTheWay.setDescription("Kaç şehrinizin olduğunu ve şehirler arası mesafelerin ne kadar olduğunu kendiniz girmek isterseniz izlemeniz gereken yol, Öncelikle kaç şehrinizin olduğunu girmek" +
-                " Ardından butona tıklayıp sırasıya şehirler arası mesafeleri girmek. Detaylı bilgiyi mevcut sayfada bulabilirsiniz.");
-        itemOnTheWay.setImage(R.drawable.pnggg);
+        InformationItem salesmanProblem2 = new InformationItem();
+        salesmanProblem2.setTitle("Travelling Salesman Problem (Distances)");
+        salesmanProblem2.setDescription("aaaaaa");
+        salesmanProblem2.setImage(R.drawable.guide_image_2);
 
-        OnboardingItem itemEatTogether = new OnboardingItem();
-        itemEatTogether.setTitle("Gelecek güncellemeler.");
-        itemEatTogether.setDescription("Gelecek problem güncellemeleri ile bu bilgilendirme sayfası artacaktır.");
-        itemEatTogether.setImage(R.drawable.pngggg);
+        InformationItem futureUpdates = new InformationItem();
+        futureUpdates.setTitle("Future Updates");
+        futureUpdates.setDescription("cccccc");
+        futureUpdates.setImage(R.drawable.guide_image_3);
 
-        onboardingItems.add(itemProfile);
-        onboardingItems.add(itemPayOnline);
-        onboardingItems.add(itemOnTheWay);
-        onboardingItems.add(itemEatTogether);
+        informationItems.add(userProfile);
+        informationItems.add(salesmanProblem);
+        informationItems.add(salesmanProblem2);
+        informationItems.add(futureUpdates);
 
-        onboardingAdapter = new OnboardingAdapter(onboardingItems);
+        informationAdapter = new InformationAdapter(informationItems);
 
     }
     private void setupOnboardingIndicators(){
-        ImageView[] indicators = new ImageView[onboardingAdapter.getItemCount()];
+        ImageView[] indicators = new ImageView[informationAdapter.getItemCount()];
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
         );
@@ -130,7 +127,7 @@ public class InformationActivity extends AppCompatActivity {
             }
         }
 
-        if (index == onboardingAdapter.getItemCount()-1){
+        if (index == informationAdapter.getItemCount()-1){
             buttonOnboardingAction.setText("Start");
         }else{
             buttonOnboardingAction.setText("Next");

@@ -40,18 +40,18 @@ public class CreateLibraryActivity extends AppCompatActivity {
     private EditText inputNoteTitle, inputNoteSubtitle, inputNoteText;
     private TextView textDateTime;
     private View viewSubtitleIndicator;
-    private ImageView imageNote;
-    private String selectedNoteColor;
+    private ImageView imageLibrary;
+    private String selectedLibraryColor;
     private String selectedImagePath;
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
-    private AlertDialog dialogDeleteNote;
+    private AlertDialog dialogDeleteLibrary;
     private Library alreadyAvailableLibrary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_note);
+        setContentView(R.layout.activity_create_library);
 
         ImageView imageBack = findViewById(R.id.imageBack);
         imageBack.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +66,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
         inputNoteText = findViewById(R.id.inputNote);
         textDateTime = findViewById(R.id.textDateTime);
         viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
-        imageNote = findViewById(R.id.imageLibrary);
+        imageLibrary = findViewById(R.id.imageLibrary);
 
         textDateTime.setText(
                 new SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm a", Locale.getDefault())
@@ -81,7 +81,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
             }
         });
 
-        selectedNoteColor = "#333333";
+        selectedLibraryColor = "#333333";
         selectedImagePath = "";
 
         if (getIntent().getBooleanExtra("isViewOrUpdate",false)){
@@ -92,8 +92,8 @@ public class CreateLibraryActivity extends AppCompatActivity {
         findViewById(R.id.imageRemoveImage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imageNote.setImageBitmap(null);
-                imageNote.setVisibility(View.GONE);
+                imageLibrary.setImageBitmap(null);
+                imageLibrary.setVisibility(View.GONE);
                 findViewById(R.id.imageRemoveImage).setVisibility(View.GONE);
                 selectedImagePath = "";
             }
@@ -110,8 +110,8 @@ public class CreateLibraryActivity extends AppCompatActivity {
         textDateTime.setText(alreadyAvailableLibrary.getDateTime());
 
         if (alreadyAvailableLibrary.getImagePath() != null && !alreadyAvailableLibrary.getImagePath().trim().isEmpty()){
-            imageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableLibrary.getImagePath()));
-            imageNote.setVisibility(View.VISIBLE);
+            imageLibrary.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableLibrary.getImagePath()));
+            imageLibrary.setVisibility(View.VISIBLE);
             findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
             selectedImagePath = alreadyAvailableLibrary.getImagePath();
         }
@@ -119,11 +119,11 @@ public class CreateLibraryActivity extends AppCompatActivity {
 
     private void saveNote(){
         if (inputNoteTitle.getText().toString().trim().isEmpty()){
-            Toast.makeText(this, "Başlığı boş bırakamazsınız", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You must fill the title.", Toast.LENGTH_SHORT).show();
             return;
 
         }else if (inputNoteSubtitle.getText().toString().trim().isEmpty() && inputNoteText.getText().toString().trim().isEmpty()){
-            Toast.makeText(this, "Boş not kaydedemezsiniz", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You can't save an empty note.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -132,7 +132,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
         library.setSubtitle(inputNoteSubtitle.getText().toString());
         library.setNoteText(inputNoteText.getText().toString());
         library.setDateTime(textDateTime.getText().toString());
-        library.setColor(selectedNoteColor);
+        library.setColor(selectedLibraryColor);
         library.setImagePath(selectedImagePath);
 
         if (alreadyAvailableLibrary != null){
@@ -181,7 +181,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
         layoutMiscellaneous.findViewById(R.id.viewColor1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#333333";
+                selectedLibraryColor = "#333333";
                 imageColor1.setImageResource(R.drawable.ic_done);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
@@ -194,7 +194,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
         layoutMiscellaneous.findViewById(R.id.viewColor2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#FDBE3B";
+                selectedLibraryColor = "#FDBE3B";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(R.drawable.ic_done);
                 imageColor3.setImageResource(0);
@@ -207,7 +207,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
         layoutMiscellaneous.findViewById(R.id.viewColor3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#FF4842";
+                selectedLibraryColor = "#FF4842";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(R.drawable.ic_done);
@@ -220,7 +220,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
         layoutMiscellaneous.findViewById(R.id.viewColor4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#3A52FC";
+                selectedLibraryColor = "#3A52FC";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
@@ -233,7 +233,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
         layoutMiscellaneous.findViewById(R.id.viewColor5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#000000";
+                selectedLibraryColor = "#000000";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
@@ -290,13 +290,13 @@ public class CreateLibraryActivity extends AppCompatActivity {
     }
 
     private void showDeleteNoteDialog(){
-        if (dialogDeleteNote == null){
+        if (dialogDeleteLibrary == null){
             AlertDialog.Builder builder = new AlertDialog.Builder(CreateLibraryActivity.this);
             View view = LayoutInflater.from(this).inflate(R.layout.layout_delete_note,(ViewGroup)findViewById(R.id.layoutDeleteNoteContainer));
             builder.setView(view);
-            dialogDeleteNote = builder.create();
-            if (dialogDeleteNote.getWindow() != null){
-                dialogDeleteNote.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            dialogDeleteLibrary = builder.create();
+            if (dialogDeleteLibrary.getWindow() != null){
+                dialogDeleteLibrary.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             }
             view.findViewById(R.id.textDeleteNote).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -327,16 +327,16 @@ public class CreateLibraryActivity extends AppCompatActivity {
             view.findViewById(R.id.textCancel).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialogDeleteNote.dismiss();
+                    dialogDeleteLibrary.dismiss();
                 }
             });
         }
-        dialogDeleteNote.show();
+        dialogDeleteLibrary.show();
     }
 
     private void setSubtitleIndicatorColor(){
         GradientDrawable gradientDrawable = (GradientDrawable) viewSubtitleIndicator.getBackground();
-        gradientDrawable.setColor(Color.parseColor(selectedNoteColor));
+        gradientDrawable.setColor(Color.parseColor(selectedLibraryColor));
     }
 
     @SuppressLint("QueryPermissionsNeeded")
@@ -354,7 +354,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 selectImage();
             }else{
-                Toast.makeText(this, "Galeriye erişim sağlanamadı.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Couldn't connect to gallery.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -369,8 +369,8 @@ public class CreateLibraryActivity extends AppCompatActivity {
                     try {
                         InputStream inputStream = getContentResolver().openInputStream(selectedImageUri);
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                        imageNote.setImageBitmap(bitmap);
-                        imageNote.setVisibility(View.VISIBLE);
+                        imageLibrary.setImageBitmap(bitmap);
+                        imageLibrary.setVisibility(View.VISIBLE);
                         findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
 
                         selectedImagePath = getPathFromUri(selectedImageUri);

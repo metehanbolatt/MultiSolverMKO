@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -19,13 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.deu.multisolvermko.fragments.adapters.DecisionSupport;
 import com.deu.multisolvermko.fragments.adapters.DecisionSupportAdapter;
 import com.deu.multisolvermko.premium.PremiumActivity;
-import com.deu.multisolvermko.problemler.ProblemActivity;
+import com.deu.multisolvermko.problems.SalesmanProblemActivity;
 import com.deu.multisolvermko.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +49,7 @@ public class ProblemFragment extends Fragment {
 
         DecisionSupport decisionSupportTravelerSalesman = new DecisionSupport();
         decisionSupportTravelerSalesman.imageUrl = "https://i.hizliresim.com/538Xmp.png";
-        decisionSupportTravelerSalesman.title = "Gezgin Satıcı Problemi";
+        decisionSupportTravelerSalesman.title = "Travelling Salesman Problem";
         decisionSupportTravelerSalesman.name = "by MKO";
         decisionSupportTravelerSalesman.feature = "Simulated Annealing";
         decisionSupports.add(decisionSupportTravelerSalesman);
@@ -101,12 +98,12 @@ public class ProblemFragment extends Fragment {
             @Override
             public void onClick(View v, int position) {
                 if (position == 0){
-                    Intent intent = new Intent(getActivity(), ProblemActivity.class);
+                    Intent intent = new Intent(getActivity(), SalesmanProblemActivity.class);
                     startActivity(intent);
                 }else if (position == 1){
-                    Toast.makeText(getActivity(), "Yazılacak", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "In Development", Toast.LENGTH_SHORT).show();
                 }else{
-                    AlertDialog.Builder builder=new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                    AlertDialog.Builder builder=new AlertDialog.Builder(requireActivity(),R.style.AlertDialogTheme);
                     final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.premium_popup,layoutDialogContainer);
                     builder.setView(viewView);
 

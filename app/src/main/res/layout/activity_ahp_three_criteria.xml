@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".topsis_ahp.ahp.AhpThreeCriteriaActivity"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:stretchColumns="1,2,3">
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/criteria1"
+            android:layout_width="98dp"
+            android:layout_column="1"
+            android:gravity="center"
+            android:hint="@string/criteria_1"
+            android:inputType="text"
+            android:padding="20dp"
+            android:textColor="@color/turkuaz"
+            android:textColorHint="@color/turkuaz"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/criteria2"
+            android:hint="@string/criteria_2"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="@color/turkuaz"
+            android:textColorHint="@color/turkuaz"
+            android:textStyle="bold"
+            android:padding="20dp"
+            android:layout_column="1"
+            android:inputType="text"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/criteria3"
+            android:hint="@string/criteria_3"
+            android:textSize="16sp"
+            android:textColor="@color/turkuaz"
+            android:textColorHint="@color/turkuaz"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="20dp"
+            android:layout_column="1"
+            android:inputType="text"
+            android:autofillHints="" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/oneOneT"
+            android:layout_width="98dp"
+            android:layout_column="1"
+            android:gravity="center"
+            android:text="@string/_1"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="@color/colorErrorAlert"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="TextViewEdits" />
+
+        <EditText
+            android:id="@+id/oneTwoT"
+            android:hint="@string/value"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/oneThreeT"
+            android:hint="@string/value"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/twoOneT"
+            android:layout_width="98dp"
+            android:layout_column="1"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:clickable="false"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="TextViewEdits" />
+
+        <TextView
+            android:id="@+id/twoTwoT"
+            android:text="@string/_1"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorErrorAlert"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            tools:ignore="TextViewEdits" />
+
+        <EditText
+            android:id="@+id/twoThreeT"
+            android:hint="@string/value"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:autofillHints="" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/threeOneT"
+            android:layout_width="98dp"
+            android:layout_column="1"
+            android:gravity="center"
+            android:clickable="false"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="TextViewEdits" />
+
+        <TextView
+            android:id="@+id/threeTwoT"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            tools:ignore="TextViewEdits" />
+
+        <TextView
+            android:id="@+id/threeThreeT"
+            android:text="@string/_1"
+            android:textSize="16sp"
+            android:textColor="@color/colorErrorAlert"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            tools:ignore="TextViewEdits" />
+
+    </TableRow>
+
+    <Button
+        android:id="@+id/tableCompleteButtonT"
+        android:layout_width="wrap_content"
+        android:background="@drawable/button_style"
+        android:layout_height="wrap_content"
+        android:onClick="tableCompleteT"
+        android:text="@string/complete_table"/>
+
+    <TextView
+        android:id="@+id/threeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textSize="15sp"
+        android:text="@string/information"/>
+
+    <TextView
+        android:id="@+id/explanationTextT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="15sp"
+        android:text="@string/four_ahp_explanation"/>
+
+    <Button
+        android:id="@+id/calculateButtonT"
+        android:layout_width="wrap_content"
+        android:background="@drawable/button_style"
+        android:layout_height="wrap_content"
+        android:onClick="calculateButtonT"
+        android:text="@string/calculate"/>
+
+</TableLayout>

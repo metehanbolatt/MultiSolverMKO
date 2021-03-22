@@ -9,19 +9,19 @@
     tools:context=".premium.PremiumActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imagePremiumLogo"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logomuz">
+        app:srcCompat="@drawable/logo">
 
     </ImageView>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textPremium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -29,13 +29,13 @@
         android:text="Premium"
         android:textColor="#fff"
         android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imagePremiumLogo"
+        app:layout_constraintStart_toEndOf="@+id/imagePremiumLogo"
+        app:layout_constraintTop_toTopOf="@+id/imagePremiumLogo"
         app:layout_constraintVertical_bias="0.481" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView4"
+        android:id="@+id/cardViewBronze"
         android:layout_width="380dp"
         android:layout_height="75dp"
         android:backgroundTint="#CD7F32"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imagePremiumLogo"
         tools:context=".MainActivity"
         tools:ignore="MissingConstraints">
 
@@ -90,7 +90,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView8"
+        android:id="@+id/cardViewGold"
         android:layout_width="380dp"
         android:layout_height="75dp"
         android:layout_marginTop="35dp"
@@ -99,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView5"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewSilver"
         tools:context=".MainActivity"
         tools:ignore="MissingConstraints">
 
@@ -150,7 +150,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView5"
+        android:id="@+id/cardViewSilver"
         android:layout_width="380dp"
         android:layout_height="75dp"
         android:layout_marginTop="36dp"
@@ -159,7 +159,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView4"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewBronze"
         tools:context=".MainActivity"
         tools:ignore="MissingConstraints">
 
@@ -209,7 +209,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/areYouNewText"
         android:layout_width="321dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -238,15 +238,15 @@
     </TextView>
 
     <com.github.siyamed.shapeimageview.CircularImageView
-        android:id="@+id/fotoImageView"
+        android:id="@+id/userImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="28dp"
         android:alpha="1"
-        android:src="@drawable/prifle"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        android:src="@drawable/profile"
+        app:layout_constraintBottom_toBottomOf="@+id/imagePremiumLogo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imagePremiumLogo"
         app:siBorderAlpha="0.5"
         app:siBorderWidth="4dp"
         tools:ignore="MissingClass" />

@@ -16,7 +16,7 @@
         android:drawableStart="@drawable/ic_email"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textPersonName"
         android:padding="16dp"
         android:textColor="@color/colorWhite"
@@ -24,7 +24,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/passwordSignIn"
@@ -35,7 +36,7 @@
         android:drawableStart="@drawable/ic_pass"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="Şifre"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:padding="16dp"
         android:textColor="@color/colorWhite"
@@ -53,7 +54,7 @@
         android:background="@drawable/round_border2"
         android:onClick="signInClick"
         android:textColor="#fff"
-        android:text="Giriş"
+        android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +64,7 @@
         android:id="@+id/view3"
         android:layout_width="409dp"
         android:layout_height="138dp"
-        android:background="@drawable/beyazalt"
+        android:background="@drawable/white_down"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -82,14 +83,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.38"
-        app:srcCompat="@drawable/logomuz" />
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/todo" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/areYouNewText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Yeni Misiniz?"
+        android:text="@string/are_you_new"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,17 +100,18 @@
         app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
     <TextView
-        android:id="@+id/kaydol"
+        android:id="@+id/signUpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:clickable="true"
-        android:text="Hemen Kaydolun!"
+        android:text="@string/sign_up_now"
         android:textColor="@color/colorNavigationGreen"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        app:layout_constraintStart_toEndOf="@+id/areYouNewText"
+        app:layout_constraintTop_toBottomOf="@+id/signInButton"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

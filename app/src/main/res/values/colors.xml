@@ -10,11 +10,11 @@
     <color name="colorPrimaryDarkFirst">#1976D2</color>
     <color name="colorAccentFirst">#FF5252</color>
     <color name="colorTextPrimary">#1687F8</color>
-    <color name="colorTextSecendory">#FFFFFF</color>
+    <color name="colorTextSecondary">#FFFFFF</color>
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorOnboardingIndicatorInactive">#72BCF7</color>
 
-    <color name="turkuazmavi">#00BCD4</color>
+    <color name="turkuaz">#00BCD4</color>
 
     <color name="colorNavigationPrimary">#000000</color>
     <color name="colorNavigationPrimaryDark">#000000</color>
@@ -35,7 +35,6 @@
 
     <color name="colorToastRed">#7E0A0A</color>
 
-
     <color name="colorNotePrimary">#292929</color>
     <color name="colorNotePrimaryDark">#292929</color>
     <color name="colorNoteAccent">#FDBE3B</color>
@@ -43,7 +42,7 @@
     <color name="colorNoteSearchIcon">#DBDBDB</color>
     <color name="colorNoteTextHint">#7B7B7B</color>
     <color name="colorNoteQuickActionsBackground">#2F2D2E</color>
-    <color name="colorNoteIcons">#A4A4A4</color>
+    <color name="colorLibraryIcons">#A4A4A4</color>
     <color name="colorNoteTextSubtitle">#CECECE</color>
     <color name="colorNoteDefaultNoteColor">#333333</color>
     <color name="colorNoteSubtitleText">#FAFAFA</color>
@@ -54,9 +53,5 @@
     <color name="colorNoteColor5">#000000</color>
     <color name="colorNoteDelete">#FF4842</color>
     <color name="colorNoteSearchBackground">#333333</color>
-
-
-
-
 
 </resources>

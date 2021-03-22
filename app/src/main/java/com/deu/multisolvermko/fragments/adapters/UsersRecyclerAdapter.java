@@ -18,13 +18,13 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     ArrayList<String> nameList;
     ArrayList<String> emailList;
     ArrayList<String> surnameList;
-    ArrayList<String> urlfoto;
+    ArrayList<String> urlImage;
 
-    public UsersRecyclerAdapter(ArrayList<String> nameList, ArrayList<String> emailList, ArrayList<String> surnameList, ArrayList<String> urlfoto) {
+    public UsersRecyclerAdapter(ArrayList<String> nameList, ArrayList<String> emailList, ArrayList<String> surnameList, ArrayList<String> urlImage) {
         this.nameList = nameList;
         this.emailList = emailList;
         this.surnameList = surnameList;
-        this.urlfoto = urlfoto;
+        this.urlImage = urlImage;
     }
 
     @NonNull
@@ -40,15 +40,15 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull final PostHolder holder, final int position) {
 
-        if (urlfoto.get(position).equals("null")){
-            holder.fotoImageView.setImageResource(R.drawable.profile);
-            holder.isimTextView.setText(nameList.get(position)+" "+surnameList.get(position));
+        if (urlImage.get(position).equals("null")){
+            holder.userImageView.setImageResource(R.drawable.profile);
+            holder.nameTextView.setText(nameList.get(position)+" "+surnameList.get(position));
             holder.emailText.setText(emailList.get(position));
 
         }else{
-            holder.isimTextView.setText(nameList.get(position)+" "+surnameList.get(position));
+            holder.nameTextView.setText(nameList.get(position)+" "+surnameList.get(position));
             holder.emailText.setText(emailList.get(position));
-            Picasso.get().load(urlfoto.get(position)).into(holder.fotoImageView);
+            Picasso.get().load(urlImage.get(position)).into(holder.userImageView);
         }
     }
 
@@ -58,16 +58,16 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     }
 
     static class PostHolder extends RecyclerView.ViewHolder {
-        TextView isimTextView,emailText;
-        ImageView fotoImageView;
-        ConstraintLayout UsersLayout;
+        TextView nameTextView,emailText;
+        ImageView userImageView;
+        ConstraintLayout usersLayout;
 
         public PostHolder(@NonNull View itemView) {
             super(itemView);
-            emailText = itemView.findViewById(R.id.emailUsers);
-            isimTextView=itemView.findViewById(R.id.isim);
-            fotoImageView=itemView.findViewById(R.id.fotoImageView);
-            UsersLayout=itemView.findViewById(R.id.UsersLayout);
+            emailText = itemView.findViewById(R.id.emailUserText);
+            nameTextView =itemView.findViewById(R.id.nameText);
+            userImageView =itemView.findViewById(R.id.userImageView);
+            usersLayout =itemView.findViewById(R.id.usersLayout);
 
         }
     }

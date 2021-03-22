@@ -4,6 +4,6 @@
 
     <stroke
         android:width="@dimen/_2sdp"
-        android:color="@color/colorNoteIcons"/>
+        android:color="@color/colorLibraryIcons"/>
 
 </shape>

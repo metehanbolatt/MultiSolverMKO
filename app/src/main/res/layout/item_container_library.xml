@@ -8,7 +8,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/_12sdp"
     android:layout_marginTop="@dimen/_12sdp"
-    android:background="@drawable/background_note">
+    android:background="@drawable/background_library">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageLibrary"

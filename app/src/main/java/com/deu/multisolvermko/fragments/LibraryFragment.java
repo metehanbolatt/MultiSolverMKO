@@ -122,7 +122,6 @@ public class LibraryFragment extends Fragment implements LibraryListener {
                         libraryList.add(libraryClickedPosition, library.get(libraryClickedPosition));
                         libraryAdapter.notifyItemChanged(libraryClickedPosition);
                     }
-
                 }
             }
         }

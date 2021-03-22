@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,19 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.fragments.adapters.DecisionSupport;
 import com.deu.multisolvermko.fragments.adapters.DecisionSupportAdapter;
 import com.deu.multisolvermko.premium.PremiumActivity;
-import com.deu.multisolvermko.topsis_ahp.topsis.TopsisActivity;
-import com.deu.multisolvermko.topsis_ahp.topsis.TopsisFourActivity;
-
+import com.deu.multisolvermko.topsis_ahp.topsis.activities.ThreeCriteriaTopsisActivity;
+import com.deu.multisolvermko.topsis_ahp.topsis.activities.FourCriteriaTopsisActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,13 +102,13 @@ public class TopsisFragment extends Fragment {
             @Override
             public void onClick(View v, int position) {
                 if (position == 0){
-                    Intent intent = new Intent(getActivity(), TopsisActivity.class);
+                    Intent intent = new Intent(getActivity(), ThreeCriteriaTopsisActivity.class);
                     startActivity(intent);
                 }else if (position == 1){
-                    Intent intent = new Intent(getActivity(), TopsisFourActivity.class);
+                    Intent intent = new Intent(getActivity(), FourCriteriaTopsisActivity.class);
                     startActivity(intent);
                 }else{
-                    AlertDialog.Builder builder=new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                    AlertDialog.Builder builder=new AlertDialog.Builder(requireActivity(),R.style.AlertDialogTheme);
                     final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.premium_popup,layoutDialogContainer);
                     builder.setView(viewView);
 

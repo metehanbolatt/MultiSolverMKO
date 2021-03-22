@@ -21,7 +21,7 @@
         app:riv_oval="true" />
 
     <TextView
-        android:id="@+id/full_name"
+        android:id="@+id/fullNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -44,7 +44,7 @@
         android:textColorHint="#07A731"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/full_name" />
+        app:layout_constraintTop_toBottomOf="@+id/fullNameText" />
 
     <LinearLayout
         android:id="@+id/icon_layout"
@@ -65,28 +65,31 @@
             app:layout_constraintBottom_toBottomOf="@+id/facebook_icon"
             app:layout_constraintTop_toTopOf="@+id/facebook_icon"
             app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="153dp" />
+            tools:layout_editor_absoluteX="153dp"
+            android:contentDescription="@string/todo" />
 
         <ImageView
-            android:id="@+id/linkedin_icon"
+            android:id="@+id/linkedinIcon"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginEnd="15dp"
             android:src="@drawable/linkedin"
-            app:layout_constraintBottom_toBottomOf="@+id/instagram_icon"
-            app:layout_constraintTop_toTopOf="@+id/instagram_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/instagramIcon"
+            app:layout_constraintTop_toTopOf="@+id/instagramIcon"
             app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="264dp" />
+            tools:layout_editor_absoluteX="264dp"
+            android:contentDescription="@string/todo" />
 
         <ImageView
-            android:id="@+id/instagram_icon"
+            android:id="@+id/instagramIcon"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:src="@drawable/instagram"
             android:layout_marginEnd="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/twitter_icon"
             app:layout_constraintTop_toTopOf="@+id/twitter_icon"
-            tools:layout_editor_absoluteX="211dp" />
+            tools:layout_editor_absoluteX="211dp"
+            android:contentDescription="@string/todo" />
 
         <ImageView
             android:id="@+id/facebook_icon"
@@ -94,17 +97,18 @@
             android:layout_height="45dp"
             android:src="@drawable/facebook"
             tools:layout_editor_absoluteX="105dp"
-            tools:layout_editor_absoluteY="258dp" />
+            tools:layout_editor_absoluteY="258dp"
+            android:contentDescription="@string/todo" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/click_textviews_layout"
+        android:id="@+id/clickTextViewsLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/babalar"
+        app:layout_constraintBottom_toTopOf="@+id/mko"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon_layout">
@@ -118,7 +122,7 @@
             android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
-            android:text="Profil"
+            android:text="@string/profile"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16sdp"
             app:drawableStartCompat="@drawable/ic_profile_user"
@@ -126,7 +130,7 @@
             tools:layout_editor_absoluteY="367dp" />
 
         <TextView
-            android:id="@+id/profile_arkadaslar"
+            android:id="@+id/profileFriends"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -134,15 +138,15 @@
             android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
-            android:text="Arkadaşlar"
+            android:text="@string/friends"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16sdp"
-            app:drawableStartCompat="@drawable/ic_arkadaslar"
+            app:drawableStartCompat="@drawable/ic_friends"
             tools:layout_editor_absoluteX="109dp"
             tools:layout_editor_absoluteY="367dp" />
 
         <TextView
-            android:id="@+id/profile_sifre_degistir"
+            android:id="@+id/profile_change_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -150,7 +154,7 @@
             android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
-            android:text="Şifreyi Değiştir"
+            android:text="@string/change_password"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16sdp"
             app:drawableStartCompat="@drawable/ic_lock"
@@ -158,7 +162,7 @@
             tools:layout_editor_absoluteY="367dp" />
 
         <TextView
-            android:id="@+id/profile_ayarlar"
+            android:id="@+id/profile_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -166,7 +170,7 @@
             android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
-            android:text="Ayarlar"
+            android:text="@string/settings"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16sdp"
             app:drawableStartCompat="@drawable/ic_settings"
@@ -174,7 +178,7 @@
             tools:layout_editor_absoluteY="367dp" />
 
         <TextView
-            android:id="@+id/profile_cikis"
+            android:id="@+id/profileLogoutText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -182,7 +186,7 @@
             android:focusable="true"
             android:gravity="center_vertical"
             android:paddingBottom="15dp"
-            android:text="Çıkış"
+            android:text="@string/logout"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16sdp"
             app:drawableStartCompat="@drawable/ic_cikis"
@@ -192,10 +196,10 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/babalar"
+        android:id="@+id/mko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="by MKO"
+        android:text="@string/by_mko"
         android:textColor="#777272"
         android:layout_marginBottom="3dp"
         app:layout_constraintBottom_toBottomOf="parent"

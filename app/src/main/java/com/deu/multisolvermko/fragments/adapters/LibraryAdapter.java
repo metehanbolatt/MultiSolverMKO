@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.deu.multisolvermko.createlibrary.Library;
 import com.deu.multisolvermko.fragments.listeners.LibraryListener;
 import com.deu.multisolvermko.R;

@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/menuNotification"
         android:name="com.deu.multisolvermko.fragments.NotificationsFragment"
-        android:label="Notification"
+        android:label="Notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
@@ -23,7 +23,7 @@
         tools:layout="@layout/fragment_problem" />
     <fragment
         android:id="@+id/menuTopsis"
-        android:name="com.deu.multisolvermko.fragments.Topsis_Ahp_Fragment"
+        android:name="com.deu.multisolvermko.fragments.DssFragment"
         android:label="Decision Support System"
         tools:layout="@layout/fragment_dss" />
     <fragment
@@ -32,25 +32,24 @@
         android:label="Exit"
         tools:layout="@layout/fragment_logout" />
     <fragment
-        android:id="@+id/menuIletisim"
-        android:name="com.deu.multisolvermko.fragments.YardimFragment"
+        android:id="@+id/menuContactUs"
+        android:name="com.deu.multisolvermko.fragments.ContactUsFragment"
         android:label="Contact Us"
-        tools:layout="@layout/fragment_iletisim" />
+        tools:layout="@layout/fragment_contactus" />
     <fragment
-        android:id="@+id/menuKullanimKilavuzu"
-        android:name="com.deu.multisolvermko.fragments.KullanimKilavuzuFragment"
+        android:id="@+id/menuUserGuide"
+        android:name="com.deu.multisolvermko.fragments.UsersGuideFragment"
         android:label="User Guide"
-        tools:layout="@layout/fragment_kullanim_kilavuzu" />
+        tools:layout="@layout/fragment_users_guide" />
     <fragment
         android:id="@+id/menuLibrary"
         android:name="com.deu.multisolvermko.fragments.LibraryFragment"
-        android:label="Notes"
+        android:label="Library"
         tools:layout="@layout/fragment_library" />
     <fragment
         android:id="@+id/menuUsers"
         android:name="com.deu.multisolvermko.fragments.UsersFragment"
         android:label="Users"
         tools:layout="@layout/fragment_users" />
-
 
 </navigation>

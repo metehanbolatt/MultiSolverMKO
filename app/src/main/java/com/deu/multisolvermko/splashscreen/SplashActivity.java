@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        imageView2 = findViewById(R.id.imageView2);
+        imageView2 = findViewById(R.id.imagePremiumLogo);
 
         int SPLASH_TIME_OUT = 600;
         new Handler().postDelayed(new Runnable() {

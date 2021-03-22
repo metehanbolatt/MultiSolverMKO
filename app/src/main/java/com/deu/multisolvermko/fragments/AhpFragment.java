@@ -20,8 +20,8 @@ import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.fragments.adapters.DecisionSupport;
 import com.deu.multisolvermko.fragments.adapters.DecisionSupportAdapter;
 import com.deu.multisolvermko.premium.PremiumActivity;
-import com.deu.multisolvermko.topsis_ahp.ahp.AhpFourProcess;
-import com.deu.multisolvermko.topsis_ahp.ahp.AhpThreeProcess;
+import com.deu.multisolvermko.topsis_ahp.ahp.AhpFourCriteriaActivity;
+import com.deu.multisolvermko.topsis_ahp.ahp.AhpThreeCriteriaActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,13 +103,13 @@ public class AhpFragment extends Fragment {
             @Override
             public void onClick(View v, int position) {
                 if (position == 0){
-                    Intent intent = new Intent(getActivity(),AhpThreeProcess.class);
+                    Intent intent = new Intent(getActivity(), AhpThreeCriteriaActivity.class);
                     startActivity(intent);
                 }else if (position == 1){
-                    Intent intent = new Intent(getActivity(),AhpFourProcess.class);
+                    Intent intent = new Intent(getActivity(), AhpFourCriteriaActivity.class);
                     startActivity(intent);
                 }else{
-                    AlertDialog.Builder builder=new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                    AlertDialog.Builder builder=new AlertDialog.Builder(requireActivity(),R.style.AlertDialogTheme);
                     final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.premium_popup,layoutDialogContainer);
                     builder.setView(viewView);
 

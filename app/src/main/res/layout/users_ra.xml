@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/UsersLayout"
+    android:id="@+id/usersLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="3dp"
@@ -10,7 +10,7 @@
     android:orientation="horizontal">
 
     <com.github.siyamed.shapeimageview.CircularImageView
-        android:id="@+id/fotoImageView"
+        android:id="@+id/userImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="15dp"
@@ -23,7 +23,7 @@
         app:siBorderWidth="4dp" />
 
     <TextView
-        android:id="@+id/isim"
+        android:id="@+id/nameText"
         android:layout_width="249dp"
         android:layout_height="35dp"
         android:layout_marginStart="25dp"
@@ -32,12 +32,12 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/fotoImageView"
+        app:layout_constraintStart_toEndOf="@+id/userImageView"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/emailUsers"
+        android:id="@+id/emailUserText"
         android:layout_width="249dp"
         android:layout_height="35dp"
         android:layout_marginStart="25dp"
@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/fotoImageView"
+        app:layout_constraintStart_toEndOf="@+id/userImageView"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
     String email,name,surname;
-    TextView emailText, full_nameText,profile_cikis;
+    TextView emailText, fullNameText, profileLogout;
     ImageView userImage;
 
     FirebaseUser firebaseUser;
@@ -67,11 +67,11 @@ public class ProfileFragment extends Fragment {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         emailText=viewGroup.findViewById(R.id.emailText);
-        full_nameText=viewGroup.findViewById(R.id.full_name);
+        fullNameText =viewGroup.findViewById(R.id.fullNameText);
         userImage=viewGroup.findViewById(R.id.imageProfile);
-        profile_cikis = viewGroup.findViewById(R.id.profile_cikis);
+        profileLogout = viewGroup.findViewById(R.id.profileLogoutText);
 
-        final TextView clickText=viewGroup.findViewById(R.id.profile_sifre_degistir);
+        final TextView clickText=viewGroup.findViewById(R.id.profile_change_password);
         final ConstraintLayout layoutDialogContainer = viewGroup.findViewById(R.id.layoutDialogContainer);
 
         clickText.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +83,7 @@ public class ProfileFragment extends Fragment {
 
                 final AlertDialog alertDialog = builder.create();
 
-                viewView.findViewById(R.id.buttonChangeOkWithKC).setOnClickListener(new View.OnClickListener() {
+                viewView.findViewById(R.id.buttonChangeOk).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
@@ -174,15 +174,13 @@ public class ProfileFragment extends Fragment {
                                         toast.setView(layout);
                                         toast.show();
                                     }
-
-
                                 }
                             });
                         }
                     }
                 });
 
-                viewView.findViewById(R.id.buttonChangeCancelWithKC).setOnClickListener(new View.OnClickListener() {
+                viewView.findViewById(R.id.buttonChangeCancel).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         LayoutInflater inflater = getLayoutInflater();
@@ -225,7 +223,7 @@ public class ProfileFragment extends Fragment {
                         assert data != null;
                         name = (String) data.get("name");
                         surname = (String) data.get("surname");
-                        full_nameText.setText(name + " " + surname);
+                        fullNameText.setText(name + " " + surname);
                     }
                 }
             }
@@ -233,7 +231,7 @@ public class ProfileFragment extends Fragment {
 
         emailText.setText(email);
 
-        profile_cikis.setOnClickListener(new View.OnClickListener() {
+        profileLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 firebaseAuth.signOut();

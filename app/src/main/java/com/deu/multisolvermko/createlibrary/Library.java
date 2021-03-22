@@ -31,9 +31,6 @@ public class Library implements Serializable {
     @ColumnInfo(name = "color")
     public String color;
 
-    @ColumnInfo(name = "web_link")
-    public String webLink;
-
     public int getId() {
         return id;
     }
@@ -88,14 +85,6 @@ public class Library implements Serializable {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public String getWebLink() {
-        return webLink;
-    }
-
-    public void setWebLink(String webLink) {
-        this.webLink = webLink;
     }
 
     @NonNull

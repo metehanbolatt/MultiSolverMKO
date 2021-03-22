@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".problemler.gezginsaticimaps.RoadActivity">
+    tools:context=".problems.travellingsalesmanmaps.RoadSalesmanMapsActivity">
 
     <fragment
         android:id="@+id/map"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".problemler.gezginsaticimaps.FlyActivity" />
+        tools:context=".problems.travellingsalesmanmaps.FlySalesmanMapsActivity" />
 
 
     <Button
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/buttonstyle"
+        android:background="@drawable/button_style"
         android:text="Hesapla"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/progress_bar_maps3"
@@ -69,7 +69,7 @@
         android:layout_width="@dimen/_45sdp"
         android:layout_height="@dimen/_45sdp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/kitap"
+        android:src="@drawable/book"
         app:layout_constraintBottom_toBottomOf="@+id/buttonG"
         app:layout_constraintEnd_toEndOf="@+id/buttonG"
         app:layout_constraintStart_toStartOf="@+id/buttonG"

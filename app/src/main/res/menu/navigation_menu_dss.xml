@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menuExplore"
+        android:id="@+id/menuOfTopsis"
         android:icon="@drawable/ic_topsis"
-        android:title="TOPSIS" />
+        android:title="@string/topsis" />
 
     <item
-        android:id="@+id/menuSearch"
+        android:id="@+id/menuOfAhp"
         android:icon="@drawable/ic_ahp"
-        android:title="AHP" />
+        android:title="@string/ahp" />
     <item
-        android:id="@+id/menuFavorite"
+        android:id="@+id/menuOfMore"
         android:icon="@drawable/ic_favorite"
-        android:title="More" />
+        android:title="@string/more" />
 
 </menu>

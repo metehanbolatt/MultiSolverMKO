@@ -3,48 +3,48 @@
 
     <item android:id="@+id/menuProfile"
         android:icon="@drawable/profile"
-        android:title="Profil"/>
+        android:title="@string/profile"/>
 
     <item android:id="@+id/menuNotification"
         android:icon="@drawable/notification"
-        android:title="Bildirimler"/>
+        android:title="@string/notifications"/>
 
     <item android:id="@+id/menuLibrary"
-        android:icon="@drawable/kitap"
-        android:title="Notelar"/>
+        android:icon="@drawable/book"
+        android:title="@string/library"/>
 
     <item android:id="@+id/menuUsers"
         android:icon="@drawable/profile"
-        android:title="Kullanıcılar"/>
+        android:title="@string/users"/>
 
     <item android:id="@+id/menuProblems"
         android:icon="@drawable/problem"
-        android:title="Problemler"/>
+        android:title="@string/problems"/>
 
     <item android:id="@+id/menuTopsis"
         android:icon="@drawable/topsis"
-        android:title="Karar Destek Sistemleri"/>
+        android:title="@string/decision_support_systems"/>
 
 
-    <item android:title="Diğer"
+    <item android:title="@string/other"
         android:id="@+id/others">
 
         <menu>
             <item android:id="@+id/menuSettings"
                 android:icon="@drawable/set2"
-                android:title="Ayarlar"/>
+                android:title="@string/settings"/>
 
-            <item android:id="@+id/menuIletisim"
+            <item android:id="@+id/menuContactUs"
                 android:icon="@drawable/support"
-                android:title="İletişim"/>
+                android:title="@string/contact_us" />
 
-            <item android:id="@+id/menuKullanimKilavuzu"
+            <item android:id="@+id/menuUserGuide"
                 android:icon="@drawable/icon4"
-                android:title="Kullanım Kılavuzu"/>
+                android:title="@string/user_guide"/>
 
             <item android:id="@+id/menuLogout"
                 android:icon="@drawable/logout"
-                android:title="Çıkış"/>
+                android:title="@string/log_out"/>
 
         </menu>
 

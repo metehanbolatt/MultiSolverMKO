@@ -8,7 +8,7 @@
     <TableRow>
 
         <TextView
-            android:id="@+id/fourid_tv"
+            android:id="@+id/alternate1Text"
             android:textSize="16dp"
             android:layout_gravity="center"
             android:padding="10dp"
@@ -16,7 +16,7 @@
             android:textColorHint="@color/colorWhite"
             android:layout_column="1"/>
         <TextView
-            android:id="@+id/fourname_tv"
+            android:id="@+id/alternate2Text"
             android:textSize="16dp"
             android:layout_gravity="center"
             android:padding="10dp"
@@ -24,7 +24,7 @@
             android:textColorHint="@color/colorWhite"
             android:layout_column="1"/>
         <TextView
-            android:id="@+id/fourpayment_tv"
+            android:id="@+id/alternate3Text"
             android:textSize="16dp"
             android:layout_gravity="center"
             android:padding="10dp"
@@ -33,7 +33,7 @@
             android:layout_column="1"/>
 
         <TextView
-            android:id="@+id/fourpayment1_tv"
+            android:id="@+id/alternate4Text"
             android:textSize="16dp"
             android:layout_gravity="center"
             android:textColor="@color/colorWhite"

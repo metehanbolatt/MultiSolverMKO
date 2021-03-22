@@ -35,7 +35,7 @@ public class UsersFragment extends Fragment {
     private ArrayList<String> UsersEmailList;
     private ArrayList<String> UsersUrlList;
     private Timer timer;
-    EditText aramaEditText;
+    EditText searchEditText;
     UsersRecyclerAdapter usersRecyclerAdapter;
     RecyclerView recyclerView;
 
@@ -46,7 +46,7 @@ public class UsersFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        aramaEditText = viewGroup.findViewById(R.id.aramaEditText);
+        searchEditText = viewGroup.findViewById(R.id.aramaEditText);
         recyclerView = viewGroup.findViewById(R.id.recyclerViewUsers);
 
         UsersNameList = new ArrayList<>();
@@ -54,9 +54,9 @@ public class UsersFragment extends Fragment {
         UsersEmailList = new ArrayList<>();
         UsersUrlList = new ArrayList<>();
 
-        searchNotes2();
+        searchUsers2();
 
-        aramaEditText.addTextChangedListener(new TextWatcher() {
+        searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -74,9 +74,9 @@ public class UsersFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().isEmpty()){
-                    searchNotes2();
+                    searchUsers2();
                 }else{
-                    searchNotes(s.toString());
+                    searchUsers(s.toString());
                 }
             }
         });
@@ -88,7 +88,7 @@ public class UsersFragment extends Fragment {
         return viewGroup;
     }
 
-    public void searchNotes(final String searchKeyword){
+    public void searchUsers(final String searchKeyword){
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -128,7 +128,7 @@ public class UsersFragment extends Fragment {
         },500);
     }
 
-    public void searchNotes2(){
+    public void searchUsers2(){
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
