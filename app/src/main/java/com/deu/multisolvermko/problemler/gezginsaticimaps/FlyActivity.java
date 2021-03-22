@@ -19,7 +19,7 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.deu.multisolvermko.animations.ProgressBarAnimation;
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.createnote.CreateNoteActivity;
+import com.deu.multisolvermko.createlibrary.CreateLibraryActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -27,6 +27,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FlyActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
@@ -85,7 +86,7 @@ public class FlyActivity extends FragmentActivity implements OnMapReadyCallback,
         imageMaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent1 = new Intent(getApplicationContext(),CreateNoteActivity.class);
+                    Intent intent1 = new Intent(getApplicationContext(), CreateLibraryActivity.class);
                     startActivity(intent1);
             }
         });
@@ -183,6 +184,7 @@ public class FlyActivity extends FragmentActivity implements OnMapReadyCallback,
             Python py = Python.getInstance();
             final PyObject pyobj = py.getModule("gezginfly");
             final PyObject obj = pyobj.callAttr("main123", (Object) distances);
+            System.out.println(Arrays.toString(distances));
 
             runOnUiThread(new Runnable() {
                 @Override

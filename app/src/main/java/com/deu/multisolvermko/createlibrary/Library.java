@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.createnote;
+package com.deu.multisolvermko.createlibrary;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 
 @Entity(tableName = "notes")
-public class Note implements Serializable {
+public class Library implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     public int id;

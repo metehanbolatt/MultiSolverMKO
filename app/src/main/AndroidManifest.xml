@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".premium.PremiumActivity"></activity>
         <activity
-            android:name=".createnote.CreateNoteActivity"
+            android:name=".createlibrary.CreateLibraryActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <!--

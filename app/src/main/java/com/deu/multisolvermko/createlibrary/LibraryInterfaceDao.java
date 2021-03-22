@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.createnote;
+package com.deu.multisolvermko.createlibrary;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -8,15 +8,15 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface NoteDao {
+public interface LibraryInterfaceDao {
 
     @Query("SELECT * FROM notes ORDER BY id DESC")
-    List<Note> getAllNotes();
+    List<Library> getAllLibrary();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertNote(Note note);
+    void insertLibrary(Library library);
 
     @Delete
-    void deleteNote(Note note);
+    void deleteLibrary(Library library);
 
 }

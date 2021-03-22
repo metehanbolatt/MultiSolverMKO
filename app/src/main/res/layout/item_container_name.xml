@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <com.flaviofaria.kenburnsview.KenBurnsView
-            android:id="@+id/kbvLocation"
+            android:id="@+id/kbvName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
@@ -32,20 +32,20 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_star"
                 app:tint="#FFFFFF" />
 
             <TextView
-                android:id="@+id/textStarRating"
+                android:id="@+id/textFeature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
                 android:textColor="#FFFFFF"
-                android:textSize="15sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <View
@@ -57,25 +57,25 @@
 
         <ImageView
             android:id="@+id/imageLocation"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_marginStart="20dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_build"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textLocation"
-            app:layout_constraintBottom_toBottomOf="@id/textLocation"
+            app:layout_constraintTop_toTopOf="@id/textName"
+            app:layout_constraintBottom_toBottomOf="@id/textName"
             app:tint="#FFFFFF" />
 
         <TextView
-            android:id="@+id/textLocation"
+            android:id="@+id/textName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="8dp"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageLocation"/>
@@ -89,7 +89,7 @@
             android:layout_marginBottom="2dp"
             android:paddingTop="4dp"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/imageLocation" />
     </androidx.constraintlayout.widget.ConstraintLayout>

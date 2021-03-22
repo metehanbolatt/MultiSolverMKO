@@ -48,7 +48,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/notesRecyclerView"
+        android:id="@+id/libraryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/_2sdp"
@@ -73,7 +73,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageAddNoteMain"
+        android:id="@+id/imageAddLibraryMain"
         android:layout_width="@dimen/_45sdp"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginBottom="25dp"

@@ -20,13 +20,11 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.deu.multisolvermko.fragments.adapters.TravelLocation;
-import com.deu.multisolvermko.fragments.adapters.TravelLocationsAdapter;
+import com.deu.multisolvermko.fragments.adapters.DecisionSupport;
+import com.deu.multisolvermko.fragments.adapters.DecisionSupportAdapter;
 import com.deu.multisolvermko.premium.PremiumActivity;
 import com.deu.multisolvermko.problemler.ProblemActivity;
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.topsis_ahp.topsis.TopsisActivity;
-import com.deu.multisolvermko.topsis_ahp.topsis.TopsisFourActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +35,7 @@ public class ProblemFragment extends Fragment {
     AlertDialog alertDialog;
     Button premiumQuit, premiumGo;
     ConstraintLayout layoutDialogContainer;
-    private TravelLocationsAdapter.RecyclerViewClickListener listener;
+    private DecisionSupportAdapter.RecyclerViewClickListener listener;
 
     @Nullable
     @Override
@@ -49,37 +47,37 @@ public class ProblemFragment extends Fragment {
         premiumQuit=layout.findViewById(R.id.premiumQuit);
         premiumGo=layout.findViewById(R.id.premiumGo);
 
-        ViewPager2 locationsViewPager = viewGroup.findViewById(R.id.locationsViewPager);
-        List<TravelLocation> travelLocations = new ArrayList<>();
+        ViewPager2 decisionViewPager = viewGroup.findViewById(R.id.decisionViewPager);
+        List<DecisionSupport> decisionSupports = new ArrayList<>();
 
-        TravelLocation travelLocationEiffelTower = new TravelLocation();
-        travelLocationEiffelTower.imageUrl = "https://media.istockphoto.com/photos/logistics-import-export-background-and-container-cargo-transport-picture-id827684740?k=6&m=827684740&s=170667a&w=0&h=ryGi2igONgNODIr1k-uliyI82Icopn9bpoXqpkXY9pE=";
-        travelLocationEiffelTower.title = "Gezgin Satıcı Problemi";
-        travelLocationEiffelTower.location = "by MKO";
-        travelLocationEiffelTower.starRating = "Benzetilmiş Tavlama";
-        travelLocations.add(travelLocationEiffelTower);
+        DecisionSupport decisionSupportTravelerSalesman = new DecisionSupport();
+        decisionSupportTravelerSalesman.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportTravelerSalesman.title = "Gezgin Satıcı Problemi";
+        decisionSupportTravelerSalesman.name = "by MKO";
+        decisionSupportTravelerSalesman.feature = "Simulated Annealing";
+        decisionSupports.add(decisionSupportTravelerSalesman);
 
-        TravelLocation travelLocationMountainView = new TravelLocation();
-        travelLocationMountainView.imageUrl = "https://i.hizliresim.com/q8yRd4.png";
-        travelLocationMountainView.title = "Paralel Makine Çizelgeleme";
-        travelLocationMountainView.location = "by MKO";
-        travelLocationMountainView.starRating = "Genetik Algoritma";
-        travelLocations.add(travelLocationMountainView);
+        DecisionSupport decisionSupportParallelMachine = new DecisionSupport();
+        decisionSupportParallelMachine.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportParallelMachine.title = "Parallel Machine Scheduling";
+        decisionSupportParallelMachine.name = "by MKO";
+        decisionSupportParallelMachine.feature = "Genetic Algorithm";
+        decisionSupports.add(decisionSupportParallelMachine);
 
-        TravelLocation travelLocationPremium = new TravelLocation();
-        travelLocationPremium.imageUrl = "https://a-static.besthdwallpaper.com/kucuk-golet-mountain-view-duvar-kagidi-1920x1280-28790_38.jpg";
-        travelLocationPremium.title = "Premium";
-        travelLocationPremium.location = "by MKO";
-        travelLocationPremium.starRating = "Premium Özellik";
-        travelLocations.add(travelLocationPremium);
+        DecisionSupport decisionSupportPremium = new DecisionSupport();
+        decisionSupportPremium.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportPremium.title = "Premium";
+        decisionSupportPremium.name = "by MKO";
+        decisionSupportPremium.feature = "Premium";
+        decisionSupports.add(decisionSupportPremium);
 
         setOnClickListener();
-        locationsViewPager.setAdapter(new TravelLocationsAdapter(travelLocations,listener));
+        decisionViewPager.setAdapter(new DecisionSupportAdapter(decisionSupports,listener));
 
-        locationsViewPager.setClipToPadding(false);
-        locationsViewPager.setClipChildren(false);
-        locationsViewPager.setOffscreenPageLimit(3);
-        locationsViewPager.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+        decisionViewPager.setClipToPadding(false);
+        decisionViewPager.setClipChildren(false);
+        decisionViewPager.setOffscreenPageLimit(3);
+        decisionViewPager.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
@@ -91,7 +89,7 @@ public class ProblemFragment extends Fragment {
             }
         });
 
-        locationsViewPager.setPageTransformer(compositePageTransformer);
+        decisionViewPager.setPageTransformer(compositePageTransformer);
 
         layoutDialogContainer= viewGroup.findViewById(R.id.layoutDialogContainer);
 
@@ -99,7 +97,7 @@ public class ProblemFragment extends Fragment {
     }
 
     private void setOnClickListener() {
-        listener = new TravelLocationsAdapter.RecyclerViewClickListener() {
+        listener = new DecisionSupportAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View v, int position) {
                 if (position == 0){

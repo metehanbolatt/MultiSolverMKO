@@ -16,10 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 import com.deu.multisolvermko.R;
-import com.deu.multisolvermko.fragments.adapters.TravelLocation;
-import com.deu.multisolvermko.fragments.adapters.TravelLocationsAdapter;
+import com.deu.multisolvermko.fragments.adapters.DecisionSupport;
+import com.deu.multisolvermko.fragments.adapters.DecisionSupportAdapter;
 import com.deu.multisolvermko.premium.PremiumActivity;
 import com.deu.multisolvermko.topsis_ahp.ahp.AhpFourProcess;
 import com.deu.multisolvermko.topsis_ahp.ahp.AhpThreeProcess;
@@ -32,7 +31,7 @@ public class AhpFragment extends Fragment {
     AlertDialog alertDialog;
     Button premiumQuit, premiumGo;
     ConstraintLayout layoutDialogContainer;
-    private TravelLocationsAdapter.RecyclerViewClickListener listener;
+    private DecisionSupportAdapter.RecyclerViewClickListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,44 +42,44 @@ public class AhpFragment extends Fragment {
         premiumQuit=layout.findViewById(R.id.premiumQuit);
         premiumGo=layout.findViewById(R.id.premiumGo);
 
-        ViewPager2 locationsViewPager = viewGroup.findViewById(R.id.locationsViewPager);
-        List<TravelLocation> travelLocations = new ArrayList<>();
+        ViewPager2 decisionViewPager = viewGroup.findViewById(R.id.decisionViewPager);
+        List<DecisionSupport> decisionSupports = new ArrayList<>();
 
-        TravelLocation travelLocationEiffelTower = new TravelLocation();
-        travelLocationEiffelTower.imageUrl = "https://salom.com.tr/uploads/news/b_1572020uui1hdiKYGL7S59vhc7Jy5Jp5.jpg";
-        travelLocationEiffelTower.title = "Kullanılabilir";
-        travelLocationEiffelTower.location = "by MKO";
-        travelLocationEiffelTower.starRating = "3 Kriterli";
-        travelLocations.add(travelLocationEiffelTower);
+        DecisionSupport decisionSupportThreeAhp = new DecisionSupport();
+        decisionSupportThreeAhp.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportThreeAhp.title = "Available";
+        decisionSupportThreeAhp.name = "by MKO";
+        decisionSupportThreeAhp.feature = "3 Criterias";
+        decisionSupports.add(decisionSupportThreeAhp);
 
-        TravelLocation travelLocationMountainView = new TravelLocation();
-        travelLocationMountainView.imageUrl = "https://a-static.besthdwallpaper.com/kucuk-golet-mountain-view-duvar-kagidi-1920x1280-28790_38.jpg";
-        travelLocationMountainView.title = "Kullanılabilir";
-        travelLocationMountainView.location = "by MKO";
-        travelLocationMountainView.starRating = "4 Kriterli";
-        travelLocations.add(travelLocationMountainView);
+        DecisionSupport decisionSupportFourAhp = new DecisionSupport();
+        decisionSupportFourAhp.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportFourAhp.title = "Available";
+        decisionSupportFourAhp.name = "by MKO";
+        decisionSupportFourAhp.feature = "4 Criterias";
+        decisionSupports.add(decisionSupportFourAhp);
 
-        TravelLocation travelLocationTajMahal = new TravelLocation();
-        travelLocationTajMahal.imageUrl = "https://i.pinimg.com/originals/38/e3/42/38e342f5490eb155e5bd8f99608a304a.jpg";
-        travelLocationTajMahal.title = "Premium";
-        travelLocationTajMahal.location = "by MKO";
-        travelLocationTajMahal.starRating = "5 Kriterli";
-        travelLocations.add(travelLocationTajMahal);
+        DecisionSupport decisionSupportFiveAhp = new DecisionSupport();
+        decisionSupportFiveAhp.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportFiveAhp.title = "Premium";
+        decisionSupportFiveAhp.name = "by MKO";
+        decisionSupportFiveAhp.feature = "5 Kriterli";
+        decisionSupports.add(decisionSupportFiveAhp);
 
-        TravelLocation travelLocationLakeView= new TravelLocation();
-        travelLocationLakeView.imageUrl = "https://www.pandotrip.com/wp-content/uploads/2018/06/Moraine-Lake-in-Banff-National-park-Canada.jpg";
-        travelLocationLakeView.title = "Premium";
-        travelLocationLakeView.location = "by MKO";
-        travelLocationLakeView.starRating = "6 Kriterli";
-        travelLocations.add(travelLocationLakeView);
+        DecisionSupport decisionSupportSixAhp = new DecisionSupport();
+        decisionSupportSixAhp.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportSixAhp.title = "Premium";
+        decisionSupportSixAhp.name = "by MKO";
+        decisionSupportSixAhp.feature = "6 Kriterli";
+        decisionSupports.add(decisionSupportSixAhp);
 
         setOnClickListener();
-        locationsViewPager.setAdapter(new TravelLocationsAdapter(travelLocations,listener));
+        decisionViewPager.setAdapter(new DecisionSupportAdapter(decisionSupports,listener));
 
-        locationsViewPager.setClipToPadding(false);
-        locationsViewPager.setClipChildren(false);
-        locationsViewPager.setOffscreenPageLimit(3);
-        locationsViewPager.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+        decisionViewPager.setClipToPadding(false);
+        decisionViewPager.setClipChildren(false);
+        decisionViewPager.setOffscreenPageLimit(3);
+        decisionViewPager.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
@@ -92,7 +91,7 @@ public class AhpFragment extends Fragment {
             }
         });
 
-        locationsViewPager.setPageTransformer(compositePageTransformer);
+        decisionViewPager.setPageTransformer(compositePageTransformer);
 
         layoutDialogContainer= viewGroup.findViewById(R.id.layoutDialogContainer);
 
@@ -100,7 +99,7 @@ public class AhpFragment extends Fragment {
     }
 
     private void setOnClickListener() {
-        listener = new TravelLocationsAdapter.RecyclerViewClickListener() {
+        listener = new DecisionSupportAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View v, int position) {
                 if (position == 0){

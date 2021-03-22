@@ -1,4 +1,4 @@
-package com.deu.multisolvermko.createnote;
+package com.deu.multisolvermko.createlibrary;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class CreateNoteActivity extends AppCompatActivity {
+public class CreateLibraryActivity extends AppCompatActivity {
 
     private EditText inputNoteTitle, inputNoteSubtitle, inputNoteText;
     private TextView textDateTime;
@@ -46,7 +46,7 @@ public class CreateNoteActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
     private AlertDialog dialogDeleteNote;
-    private Note alreadyAvailableNote;
+    private Library alreadyAvailableLibrary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         inputNoteText = findViewById(R.id.inputNote);
         textDateTime = findViewById(R.id.textDateTime);
         viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
-        imageNote = findViewById(R.id.imageNote);
+        imageNote = findViewById(R.id.imageLibrary);
 
         textDateTime.setText(
                 new SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm a", Locale.getDefault())
@@ -85,7 +85,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         selectedImagePath = "";
 
         if (getIntent().getBooleanExtra("isViewOrUpdate",false)){
-            alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
+            alreadyAvailableLibrary = (Library) getIntent().getSerializableExtra("note");
             setViewOrUpdateNote();
         }
 
@@ -104,16 +104,16 @@ public class CreateNoteActivity extends AppCompatActivity {
     }
 
     private void setViewOrUpdateNote(){
-        inputNoteTitle.setText(alreadyAvailableNote.getTitle());
-        inputNoteSubtitle.setText(alreadyAvailableNote.getSubtitle());
-        inputNoteText.setText(alreadyAvailableNote.getNoteText());
-        textDateTime.setText(alreadyAvailableNote.getDateTime());
+        inputNoteTitle.setText(alreadyAvailableLibrary.getTitle());
+        inputNoteSubtitle.setText(alreadyAvailableLibrary.getSubtitle());
+        inputNoteText.setText(alreadyAvailableLibrary.getNoteText());
+        textDateTime.setText(alreadyAvailableLibrary.getDateTime());
 
-        if (alreadyAvailableNote.getImagePath() != null && !alreadyAvailableNote.getImagePath().trim().isEmpty()){
-            imageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableNote.getImagePath()));
+        if (alreadyAvailableLibrary.getImagePath() != null && !alreadyAvailableLibrary.getImagePath().trim().isEmpty()){
+            imageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableLibrary.getImagePath()));
             imageNote.setVisibility(View.VISIBLE);
             findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
-            selectedImagePath = alreadyAvailableNote.getImagePath();
+            selectedImagePath = alreadyAvailableLibrary.getImagePath();
         }
     }
 
@@ -127,23 +127,23 @@ public class CreateNoteActivity extends AppCompatActivity {
             return;
         }
 
-        final Note note = new Note();
-        note.setTitle(inputNoteTitle.getText().toString());
-        note.setSubtitle(inputNoteSubtitle.getText().toString());
-        note.setNoteText(inputNoteText.getText().toString());
-        note.setDateTime(textDateTime.getText().toString());
-        note.setColor(selectedNoteColor);
-        note.setImagePath(selectedImagePath);
+        final Library library = new Library();
+        library.setTitle(inputNoteTitle.getText().toString());
+        library.setSubtitle(inputNoteSubtitle.getText().toString());
+        library.setNoteText(inputNoteText.getText().toString());
+        library.setDateTime(textDateTime.getText().toString());
+        library.setColor(selectedNoteColor);
+        library.setImagePath(selectedImagePath);
 
-        if (alreadyAvailableNote != null){
-            note.setId(alreadyAvailableNote.getId());
+        if (alreadyAvailableLibrary != null){
+            library.setId(alreadyAvailableLibrary.getId());
         }
 
         class SaveNoteTask extends AsyncTask<Void, Void, Void>{
 
             @Override
             protected Void doInBackground(Void... voids) {
-                NotesDatabase.getDatabase(getApplicationContext()).noteDao().insertNote(note);
+                LibraryDatabase.getDatabase(getApplicationContext()).libraryInterfaceDao().insertLibrary(library);
                 return null;
             }
 
@@ -243,8 +243,8 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
-        if (alreadyAvailableNote != null && alreadyAvailableNote.getColor() != null && !alreadyAvailableNote.getColor().trim().isEmpty()){
-            switch (alreadyAvailableNote.getColor()){
+        if (alreadyAvailableLibrary != null && alreadyAvailableLibrary.getColor() != null && !alreadyAvailableLibrary.getColor().trim().isEmpty()){
+            switch (alreadyAvailableLibrary.getColor()){
                 case "#FDBE3B":
                     layoutMiscellaneous.findViewById(R.id.viewColor2).performClick();
                     break;
@@ -267,7 +267,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                 if (ContextCompat.checkSelfPermission(
                         getApplicationContext(),Manifest.permission.READ_EXTERNAL_STORAGE
                 ) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(CreateNoteActivity.this,
+                    ActivityCompat.requestPermissions(CreateLibraryActivity.this,
                             new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                             REQUEST_CODE_STORAGE_PERMISSION
                     );
@@ -277,7 +277,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
-        if (alreadyAvailableNote != null){
+        if (alreadyAvailableLibrary != null){
             layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setVisibility(View.VISIBLE);
             layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -291,7 +291,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     private void showDeleteNoteDialog(){
         if (dialogDeleteNote == null){
-            AlertDialog.Builder builder = new AlertDialog.Builder(CreateNoteActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(CreateLibraryActivity.this);
             View view = LayoutInflater.from(this).inflate(R.layout.layout_delete_note,(ViewGroup)findViewById(R.id.layoutDeleteNoteContainer));
             builder.setView(view);
             dialogDeleteNote = builder.create();
@@ -307,7 +307,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
                         @Override
                         protected Void doInBackground(Void... voids) {
-                            NotesDatabase.getDatabase(getApplicationContext()).noteDao().deleteNote(alreadyAvailableNote);
+                            LibraryDatabase.getDatabase(getApplicationContext()).libraryInterfaceDao().deleteLibrary(alreadyAvailableLibrary);
                             return null;
                         }
 

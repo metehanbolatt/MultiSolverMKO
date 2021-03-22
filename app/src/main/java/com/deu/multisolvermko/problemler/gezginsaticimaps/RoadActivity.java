@@ -24,7 +24,7 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.animations.ProgressBarAnimation;
-import com.deu.multisolvermko.createnote.CreateNoteActivity;
+import com.deu.multisolvermko.createlibrary.CreateLibraryActivity;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -132,7 +132,7 @@ public class RoadActivity extends FragmentActivity implements OnMapReadyCallback
         imageMapsRoad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(), CreateNoteActivity.class);
+                Intent intent1 = new Intent(getApplicationContext(), CreateLibraryActivity.class);
                 startActivity(intent1);
             }
         });

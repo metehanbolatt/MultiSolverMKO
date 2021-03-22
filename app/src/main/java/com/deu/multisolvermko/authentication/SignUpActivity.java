@@ -245,7 +245,7 @@ public class SignUpActivity extends AppCompatActivity {
                         signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
                         onShakeEmail();
 
-                    }else{
+                    }else if(signUpPassword.getText().length() < 6){
 
                         showFirebasePasswordError();
                         signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
@@ -253,6 +253,10 @@ public class SignUpActivity extends AppCompatActivity {
                         signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
                         signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
                         onShakePassword();
+
+                    }else{
+                        
+
 
                     }
                 }

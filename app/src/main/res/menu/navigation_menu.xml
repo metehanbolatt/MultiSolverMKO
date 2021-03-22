@@ -11,7 +11,7 @@
 
     <item android:id="@+id/menuLibrary"
         android:icon="@drawable/kitap"
-        android:title="Kütüphane"/>
+        android:title="Notelar"/>
 
     <item android:id="@+id/menuUsers"
         android:icon="@drawable/profile"

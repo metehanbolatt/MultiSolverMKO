@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layoutNote"
+    android:id="@+id/layoutLibrary"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,7 +11,7 @@
     android:background="@drawable/background_note">
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/imageNote"
+        android:id="@+id/imageLibrary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"

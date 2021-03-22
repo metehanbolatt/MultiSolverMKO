@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".createnote.CreateNoteActivity">
+    tools:context=".createlibrary.CreateLibraryActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -112,7 +112,7 @@
                 app:layout_constraintTop_toTopOf="@id/inputNoteSubtitle"/>
 
             <ImageView
-                android:id="@+id/imageNote"
+                android:id="@+id/imageLibrary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
@@ -134,8 +134,8 @@
                 android:padding="@dimen/_4sdp"
                 android:src="@drawable/ic_delete"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@id/imageNote"
-                app:layout_constraintTop_toTopOf="@id/imageNote"
+                app:layout_constraintEnd_toEndOf="@id/imageLibrary"
+                app:layout_constraintTop_toTopOf="@id/imageLibrary"
                 app:tint="@color/colorWhite" />
 
             <LinearLayout
@@ -148,7 +148,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/imageNote"
+                app:layout_constraintTop_toBottomOf="@id/imageLibrary"
                 tools:ignore="UseCompoundDrawables">
 
                 <TextView

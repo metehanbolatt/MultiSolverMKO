@@ -33,7 +33,7 @@ android {
         }
 
         python{
-            buildPython "C:/Program Files/Python38/python.exe"
+            buildPython "C:/Users/meteb/AppData/Local/Programs/Python/Python38/python.exe"
         }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
