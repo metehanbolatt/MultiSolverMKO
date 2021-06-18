@@ -3,7 +3,7 @@ import math
 
 def flyFunction(distancesFLY):
     
-    T=1000;
+    T=1000
     num1=int(T)
     Tend=0.01
     sk=0.999
