@@ -15,8 +15,6 @@ import android.widget.Toast;
 import androidx.fragment.app.FragmentActivity;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.chaquo.python.PyObject;
@@ -30,6 +28,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,48 +91,42 @@ public class RoadSalesmanMapsActivity extends FragmentActivity implements OnMapR
             Python.start(new AndroidPlatform(this));
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        button.setOnClickListener(v -> {
 
-                progressBar.setVisibility(View.VISIBLE);
-                button.setVisibility(View.INVISIBLE);
-                imageMapsRoad.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
+            button.setVisibility(View.INVISIBLE);
+            imageMapsRoad.setVisibility(View.VISIBLE);
 
-                textView.setText("0 %");
-                progressAnimation2();
+            textView.setText("0 %");
+            progressAnimation2();
 
-                RoadSalesmanMapsActivity.ExampleThread4 thread4 = new ExampleThread4();
-                thread4.start();
+            ExampleThread4 thread4 = new ExampleThread4();
+            thread4.start();
 
-                textView.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            textView.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    }
+                }
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                    }
+                }
 
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        progressBar.setVisibility(View.INVISIBLE);
-                        progressBar2.setVisibility(View.INVISIBLE);
+                @Override
+                public void afterTextChanged(Editable s) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    progressBar2.setVisibility(View.INVISIBLE);
 
-                    }
-                });
+                }
+            });
 
-            }
         });
 
-        imageMapsRoad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(), CreateLibraryActivity.class);
-                startActivity(intent1);
-            }
+        imageMapsRoad.setOnClickListener(v -> {
+            Intent intent1 = new Intent(getApplicationContext(), CreateLibraryActivity.class);
+            startActivity(intent1);
         });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -144,35 +137,26 @@ public class RoadSalesmanMapsActivity extends FragmentActivity implements OnMapR
     private void jsonParse(){
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null
-                , new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray = response.getJSONArray("rows");
+                , response -> {
+                    try {
+                        JSONArray jsonArray = response.getJSONArray("rows");
 
-                    for (int i = 0 ; i < jsonArray.length(); i++){
-                        JSONObject rows = jsonArray.getJSONObject(i);
-                        text = rows.getJSONArray("elements");
-                        for (int y = 0; y<text.length();y++){
-                            JSONObject elements = text.getJSONObject(y);
-                            distance = elements.getJSONObject("distance");
-                            int value = distance.getInt("value");
-                            distanceMatrix.add(value);
+                        for (int i = 0 ; i < jsonArray.length(); i++){
+                            JSONObject rows = jsonArray.getJSONObject(i);
+                            text = rows.getJSONArray("elements");
+                            for (int y = 0; y<text.length();y++){
+                                JSONObject elements = text.getJSONObject(y);
+                                distance = elements.getJSONObject("distance");
+                                int value = distance.getInt("value");
+                                distanceMatrix.add(value);
+                            }
                         }
+
+                    } catch (JSONException e) {
+                        Toast.makeText(RoadSalesmanMapsActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
 
-                } catch (JSONException e) {
-                    Toast.makeText(RoadSalesmanMapsActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(RoadSalesmanMapsActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
+                }, error -> Toast.makeText(RoadSalesmanMapsActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show());
 
         mQueue.add(request);
 
@@ -186,7 +170,7 @@ public class RoadSalesmanMapsActivity extends FragmentActivity implements OnMapR
     }
 
     @Override
-    public void onMapLongClick(LatLng latLng) {
+    public void onMapLongClick(@NotNull LatLng latLng) {
 
         if (b < numberOfCities){
 
@@ -205,7 +189,7 @@ public class RoadSalesmanMapsActivity extends FragmentActivity implements OnMapR
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NotNull GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
     }
@@ -219,12 +203,7 @@ public class RoadSalesmanMapsActivity extends FragmentActivity implements OnMapR
             final PyObject pyobj = py.getModule("roadSalesman");
             final PyObject obj = pyobj.callAttr("roadFunction", (Object) distances);
 
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    textView.setText(obj.toString());
-                }
-            });
+            runOnUiThread(() -> textView.setText(obj.toString()));
 
         }
     }

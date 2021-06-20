@@ -21,7 +21,7 @@
         <activity android:name=".premium.PremiumActivity" />
         <activity
             android:name=".createlibrary.CreateLibraryActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:windowSoftInputMode="stateHidden" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

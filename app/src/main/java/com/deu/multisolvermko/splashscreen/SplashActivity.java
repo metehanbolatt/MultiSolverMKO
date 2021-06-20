@@ -20,14 +20,10 @@ public class SplashActivity extends AppCompatActivity {
         imageView2 = findViewById(R.id.imagePremiumLogo);
 
         int SPLASH_TIME_OUT = 600;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent homeIntent = new Intent(SplashActivity.this, SignInActivity.class);
-                startActivity(homeIntent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent homeIntent = new Intent(SplashActivity.this, SignInActivity.class);
+            startActivity(homeIntent);
+            finish();
         }, SPLASH_TIME_OUT);
-
     }
 }

@@ -24,26 +24,18 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.authentication.SignInActivity;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.Map;
@@ -76,12 +68,7 @@ public class HomepageActivity extends AppCompatActivity {
         firebaseFirestore=FirebaseFirestore.getInstance();
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        findViewById(R.id.imageMenu).setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
         getData();
 
@@ -90,18 +77,15 @@ public class HomepageActivity extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         userName = headerView.findViewById(R.id.userName);
 
-        imageView = (RoundedImageView) headerView.findViewById(R.id.imageProfile);
-        imageView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (ContextCompat.checkSelfPermission(HomepageActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(HomepageActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
-                }else{
-                    Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intentToGallery,2);
-                }
-                return false;
+        imageView = headerView.findViewById(R.id.imageProfile);
+        imageView.setOnLongClickListener(v -> {
+            if (ContextCompat.checkSelfPermission(HomepageActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(HomepageActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
+            }else{
+                Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intentToGallery,2);
             }
+            return false;
         });
 
         NavController navController = Navigation.findNavController(this, R.id.navHosFragment);
@@ -109,28 +93,22 @@ public class HomepageActivity extends AppCompatActivity {
 
         final TextView textTitle = findViewById(R.id.textTitle);
 
-        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-            @Override
-            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                textTitle.setText(destination.getLabel());
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            textTitle.setText(destination.getLabel());
 
-                if (destination.getId() == R.id.menuLogout){
-                    firebaseAuth.signOut();
-                    Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+            if (destination.getId() == R.id.menuLogout){
+                firebaseAuth.signOut();
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
         currentUser = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail();
         StorageReference newReference = FirebaseStorage.getInstance().getReference(currentUser);
-        newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(imageView);
-                control2 = String.valueOf(Picasso.get().load(uri));
-            }
+        newReference.getDownloadUrl().addOnSuccessListener(uri -> {
+            Picasso.get().load(uri).into(imageView);
+            control2 = String.valueOf(Picasso.get().load(uri));
         });
 
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
@@ -145,7 +123,7 @@ public class HomepageActivity extends AppCompatActivity {
                     Animation care;
                     care= AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
                     imageView.startAnimation(care);
-                    Toast.makeText(HomepageActivity.this, "Please Upload Your Profile Picture", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomepageActivity.this, "Profil fotoğrafı yükleyiniz...", Toast.LENGTH_SHORT).show();
                     control=1;
                 }
             }
@@ -160,7 +138,6 @@ public class HomepageActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     @Override
@@ -201,35 +178,24 @@ public class HomepageActivity extends AppCompatActivity {
         currentUser = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail();
         if (imageData != null){
             assert currentUser != null;
-            storageReference.child(currentUser).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    final StorageReference newReference = FirebaseStorage.getInstance().getReference(currentUser);
-                    newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
+            storageReference.child(currentUser).putFile(imageData).addOnSuccessListener(taskSnapshot -> {
+                final StorageReference newReference = FirebaseStorage.getInstance().getReference(currentUser);
+                newReference.getDownloadUrl().addOnSuccessListener(uri -> {
 
-                            downloadUrl = uri.toString();
-                            documentReference = firebaseFirestore.collection("Users").document(currentUser);
-                            documentReference.update("urlfoto",downloadUrl).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
+                    downloadUrl = uri.toString();
+                    documentReference = firebaseFirestore.collection("Users").document(currentUser);
+                    documentReference.update("urlfoto",downloadUrl).addOnSuccessListener(aVoid -> {
 
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
+                    }).addOnFailureListener(e -> {
 
-                                }
-                            });
-                            Picasso.get().load(uri).into(imageView);
-                        }
                     });
-                }
+                    Picasso.get().load(uri).into(imageView);
+                });
             });
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void getData(){
 
         if (firebaseAuth.getCurrentUser() != null){
@@ -237,21 +203,17 @@ public class HomepageActivity extends AppCompatActivity {
         }
 
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
-        collectionReference.whereEqualTo("useremail",email).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if (error != null){
-                    Toast.makeText(HomepageActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
-                if (value != null){
-                    for (DocumentSnapshot snapshot: value.getDocuments()){
-                        Map<String,Object> data = snapshot.getData();
-                        assert data != null;
-                        name = (String) data.get("name");
-                        surName = (String) data.get("surname");
-                        userName.setText(name+" "+surName);
-                    }
+        collectionReference.whereEqualTo("useremail",email).addSnapshotListener((value, error) -> {
+            if (error != null){
+                Toast.makeText(HomepageActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+            if (value != null){
+                for (DocumentSnapshot snapshot: value.getDocuments()){
+                    Map<String,Object> data = snapshot.getData();
+                    assert data != null;
+                    name = (String) data.get("name");
+                    surName = (String) data.get("surname");
+                    userName.setText(name+" "+surName);
                 }
             }
         });

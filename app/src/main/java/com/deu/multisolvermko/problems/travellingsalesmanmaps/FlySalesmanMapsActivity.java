@@ -9,7 +9,6 @@ import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,8 +25,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class FlySalesmanMapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
@@ -83,27 +84,24 @@ public class FlySalesmanMapsActivity extends FragmentActivity implements OnMapRe
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-        imageMaps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Intent intent1 = new Intent(getApplicationContext(), CreateLibraryActivity.class);
-                    startActivity(intent1);
-            }
+        imageMaps.setOnClickListener(v -> {
+                Intent intent1 = new Intent(getApplicationContext(), CreateLibraryActivity.class);
+                startActivity(intent1);
         });
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NotNull GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
     }
 
     @Override
-    public void onMapLongClick(LatLng latLng) {
+    public void onMapLongClick(@NotNull LatLng latLng) {
 
         if (a < numberOfCities){
-            String explanation = a+". Location";
-            mMap.addMarker(new MarkerOptions().position(latLng).title(explanation)).showInfoWindow();
+            String explanation = a+". Konum";
+            Objects.requireNonNull(mMap.addMarker(new MarkerOptions().position(latLng).title(explanation))).showInfoWindow();
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
             Double lat = latLng.latitude;
@@ -168,7 +166,6 @@ public class FlySalesmanMapsActivity extends FragmentActivity implements OnMapRe
         }
     }
 
-
     public void arrayToArray(){
         distances = new int[numberOfCities * numberOfCities];
         for (int i = 0; i< numberOfCities * numberOfCities; i++){
@@ -183,15 +180,10 @@ public class FlySalesmanMapsActivity extends FragmentActivity implements OnMapRe
             arrayToArray();
             Python py = Python.getInstance();
             final PyObject pyobj = py.getModule("flySalesman");
-            final PyObject obj = pyobj.callAttr("flyFunction", (Object) distances);
+            final PyObject obj = pyobj.callAttr("flyFunction", distances);
             System.out.println(Arrays.toString(distances));
 
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mapsTextView.setText(obj.toString());
-                }
-            });
+            runOnUiThread(() -> mapsTextView.setText(obj.toString()));
         }
     }
 
@@ -203,12 +195,11 @@ public class FlySalesmanMapsActivity extends FragmentActivity implements OnMapRe
 
     public void afterCalculateValue() {
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_salesman_maps_fly_calculation_done, (ViewGroup) findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_salesman_maps_fly_calculation_done, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM, 0, 50);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();
     }
-
 }

@@ -8,48 +8,48 @@
     <fragment
         android:id="@+id/menuProfile"
         android:name="com.deu.multisolvermko.fragments.ProfileFragment"
-        android:label="Profile"
+        android:label="Profil"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/menuNotification"
         android:name="com.deu.multisolvermko.fragments.NotificationsFragment"
-        android:label="Notifications"
+        android:label="Bildirimler"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/menuProblems"
         android:name="com.deu.multisolvermko.fragments.ProblemFragment"
-        android:label="Problems"
+        android:label="Problemler"
         tools:layout="@layout/fragment_problem" />
     <fragment
         android:id="@+id/menuTopsis"
         android:name="com.deu.multisolvermko.fragments.DssFragment"
-        android:label="Decision Support System"
+        android:label="Karar Destek Sistemleri"
         tools:layout="@layout/fragment_dss" />
     <fragment
         android:id="@+id/menuLogout"
         android:name="com.deu.multisolvermko.fragments.LogoutFragment"
-        android:label="Exit"
+        android:label="Çıkış"
         tools:layout="@layout/fragment_logout" />
     <fragment
         android:id="@+id/menuContactUs"
         android:name="com.deu.multisolvermko.fragments.ContactUsFragment"
-        android:label="Contact Us"
+        android:label="İletişim"
         tools:layout="@layout/fragment_contactus" />
     <fragment
         android:id="@+id/menuUserGuide"
         android:name="com.deu.multisolvermko.fragments.UsersGuideFragment"
-        android:label="User Guide"
+        android:label="Kullanım Kılavuzu"
         tools:layout="@layout/fragment_users_guide" />
     <fragment
         android:id="@+id/menuLibrary"
         android:name="com.deu.multisolvermko.fragments.LibraryFragment"
-        android:label="Library"
+        android:label="Kütüphane"
         tools:layout="@layout/fragment_library" />
     <fragment
         android:id="@+id/menuUsers"
         android:name="com.deu.multisolvermko.fragments.UsersFragment"
-        android:label="Users"
+        android:label="Kullanıcılar"
         tools:layout="@layout/fragment_users" />
 
 </navigation>

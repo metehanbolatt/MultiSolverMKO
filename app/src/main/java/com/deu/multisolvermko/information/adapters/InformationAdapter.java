@@ -62,4 +62,3 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
         }
     }
 }
-

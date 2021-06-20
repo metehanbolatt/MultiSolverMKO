@@ -8,7 +8,6 @@ import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
@@ -37,6 +35,7 @@ public class TravellingSalesmanManuel extends AppCompatActivity{
     int column;
     int row;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,95 +98,79 @@ public class TravellingSalesmanManuel extends AppCompatActivity{
 
         });
 
-        buttonReset.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(TravellingSalesmanManuel.this, R.style.AlertDialogTheme);
-                View view = LayoutInflater.from(TravellingSalesmanManuel.this).inflate(
-                        R.layout.layout_error_dialog, (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
-                );
-                builder.setView(view);
-                ((TextView) view.findViewById(R.id.textTitle)).setText("Are you sure?");
-                ((TextView) view.findViewById(R.id.textMessage)).setText(getResources().getString(R.string.error_title));
-                ((Button) view.findViewById(R.id.buttonYes)).setText("Yes");
-                ((Button) view.findViewById(R.id.buttonNo)).setText("No");
-                ((ImageView) view.findViewById(R.id.imageIcon)).setImageResource(R.drawable.ic_warningg);
+        buttonReset.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(TravellingSalesmanManuel.this, R.style.AlertDialogTheme);
+            View view = LayoutInflater.from(TravellingSalesmanManuel.this).inflate(
+                    R.layout.layout_error_dialog, findViewById(R.id.layoutDialogContainer)
+            );
+            builder.setView(view);
+            ((TextView) view.findViewById(R.id.textTitle)).setText("Emin misiniz?");
+            ((TextView) view.findViewById(R.id.textMessage)).setText(getResources().getString(R.string.error_title));
+            ((Button) view.findViewById(R.id.buttonYes)).setText("Evet");
+            ((Button) view.findViewById(R.id.buttonNo)).setText("Hayır");
+            ((ImageView) view.findViewById(R.id.imageIcon)).setImageResource(R.drawable.ic_warningg);
 
-                final AlertDialog alertDialog = builder.create();
+            final AlertDialog alertDialog = builder.create();
 
-                view.findViewById(R.id.buttonYes).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        a = 0;
-                        textView.setVisibility(View.VISIBLE);
-                        buttonCalculate.setVisibility(View.INVISIBLE);
-                        editText.setHint("Enter the matrix size");
-                        PyObject obj = pyobj.callAttr("manual4");
-                        textView.setText(obj.toString());
-                        alertDialog.dismiss();
-                    }
-                });
+            view.findViewById(R.id.buttonYes).setOnClickListener(v1 -> {
+                a = 0;
+                textView.setVisibility(View.VISIBLE);
+                buttonCalculate.setVisibility(View.INVISIBLE);
+                editText.setHint("Matris boyutunu giriniz..");
+                PyObject obj = pyobj.callAttr("manual4");
+                textView.setText(obj.toString());
+                alertDialog.dismiss();
+            });
 
-                view.findViewById(R.id.buttonNo).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
+            view.findViewById(R.id.buttonNo).setOnClickListener(v12 -> alertDialog.dismiss());
 
-                    }
-                });
-
-                if (alertDialog.getWindow() != null) {
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                }
-
-                alertDialog.show();
+            if (alertDialog.getWindow() != null) {
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             }
+
+            alertDialog.show();
         });
 
-        buttonCalculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonCalculate.setClickable(false);
-                buttonReset.setClickable(false);
-                button.setClickable(false);
+        buttonCalculate.setOnClickListener(v -> {
+            buttonCalculate.setClickable(false);
+            buttonReset.setClickable(false);
+            button.setClickable(false);
 
-                textView.setText("0 %");
-                progressBar.setMax(100);
-                progressBar.setScaleY(3.f);
-                progressAnimation();
+            textView.setText("0 %");
+            progressBar.setMax(100);
+            progressBar.setScaleY(3.f);
+            progressAnimation();
 
-                ExampleThread thread = new ExampleThread();
-                thread.start();
+            ExampleThread thread = new ExampleThread();
+            thread.start();
 
-                textViewCalculate.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            textViewCalculate.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    }
+                }
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                    }
+                }
 
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        progressBar.setVisibility(View.INVISIBLE);
-                        progressBar2.setVisibility(View.INVISIBLE);
-                        textView.setVisibility(View.INVISIBLE);
-                        buttonCalculate.setClickable(true);
-                        buttonReset.setClickable(true);
-                        button.setClickable(true);
-                    }
-                });
-            }
+                @Override
+                public void afterTextChanged(Editable s) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    progressBar2.setVisibility(View.INVISIBLE);
+                    textView.setVisibility(View.INVISIBLE);
+                    buttonCalculate.setClickable(true);
+                    buttonReset.setClickable(true);
+                    button.setClickable(true);
+                }
+            });
         });
     }
 
     public void showTooSize() {
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_salesman_extra_value, (ViewGroup) findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_salesman_extra_value, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM, 0, 50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -197,7 +180,7 @@ public class TravellingSalesmanManuel extends AppCompatActivity{
 
     public void showEnterData() {
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_salesman_enter_value, (ViewGroup) findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_salesman_enter_value, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM, 0, 50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -223,5 +206,4 @@ public class TravellingSalesmanManuel extends AppCompatActivity{
 
         }
     }
-
 }

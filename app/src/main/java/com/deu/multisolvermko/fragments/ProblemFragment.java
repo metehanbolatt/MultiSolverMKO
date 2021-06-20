@@ -48,23 +48,23 @@ public class ProblemFragment extends Fragment {
         List<DecisionSupport> decisionSupports = new ArrayList<>();
 
         DecisionSupport decisionSupportTravelerSalesman = new DecisionSupport();
-        decisionSupportTravelerSalesman.imageUrl = "https://i.hizliresim.com/538Xmp.png";
-        decisionSupportTravelerSalesman.title = "Travelling Salesman Problem";
-        decisionSupportTravelerSalesman.name = "by MKO";
-        decisionSupportTravelerSalesman.feature = "Simulated Annealing";
+        decisionSupportTravelerSalesman.imageUrl = "https://i.hizliresim.com/gx193em.png";
+        decisionSupportTravelerSalesman.title = "Gezgin Satıcı Problemi";
+        decisionSupportTravelerSalesman.name = "MKO";
+        decisionSupportTravelerSalesman.feature = "Benzetilmiş Tavlama";
         decisionSupports.add(decisionSupportTravelerSalesman);
 
         DecisionSupport decisionSupportParallelMachine = new DecisionSupport();
-        decisionSupportParallelMachine.imageUrl = "https://i.hizliresim.com/538Xmp.png";
-        decisionSupportParallelMachine.title = "Parallel Machine Scheduling";
-        decisionSupportParallelMachine.name = "by MKO";
-        decisionSupportParallelMachine.feature = "Genetic Algorithm";
+        decisionSupportParallelMachine.imageUrl = "https://i.hizliresim.com/gx193em.png";
+        decisionSupportParallelMachine.title = "Paralel Makine Çizelgeleme";
+        decisionSupportParallelMachine.name = "MKO";
+        decisionSupportParallelMachine.feature = "Genetik Algoritma";
         decisionSupports.add(decisionSupportParallelMachine);
 
         DecisionSupport decisionSupportPremium = new DecisionSupport();
-        decisionSupportPremium.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportPremium.imageUrl = "https://i.hizliresim.com/gx193em.png";
         decisionSupportPremium.title = "Premium";
-        decisionSupportPremium.name = "by MKO";
+        decisionSupportPremium.name = "MKO";
         decisionSupportPremium.feature = "Premium";
         decisionSupports.add(decisionSupportPremium);
 
@@ -78,12 +78,9 @@ public class ProblemFragment extends Fragment {
 
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
-        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
-            @Override
-            public void transformPage(@NonNull View page, float position) {
-                float r = 1 - Math.abs(position);
-                page.setScaleY(0.95f + r * 0.05f);
-            }
+        compositePageTransformer.addTransformer((page, position) -> {
+            float r = 1 - Math.abs(position);
+            page.setScaleY(0.95f + r * 0.05f);
         });
 
         decisionViewPager.setPageTransformer(compositePageTransformer);
@@ -94,40 +91,28 @@ public class ProblemFragment extends Fragment {
     }
 
     private void setOnClickListener() {
-        listener = new DecisionSupportAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View v, int position) {
-                if (position == 0){
-                    Intent intent = new Intent(getActivity(), SalesmanProblemActivity.class);
+        listener = (v, position) -> {
+            if (position == 0){
+                Intent intent = new Intent(getActivity(), SalesmanProblemActivity.class);
+                startActivity(intent);
+            }else if (position == 1){
+                Toast.makeText(getActivity(), "Geliştirilme aşamasında..", Toast.LENGTH_SHORT).show();
+            }else{
+                AlertDialog.Builder builder=new AlertDialog.Builder(requireActivity(),R.style.AlertDialogTheme);
+                final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.premium_popup,layoutDialogContainer);
+                builder.setView(viewView);
+
+                alertDialog = builder.create();
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog.show();
+
+                viewView.findViewById(R.id.premiumQuit).setOnClickListener(view -> alertDialog.dismiss());
+
+                viewView.findViewById(R.id.premiumGo).setOnClickListener(view -> {
+                    Intent intent = new Intent(getActivity(), PremiumActivity.class);
                     startActivity(intent);
-                }else if (position == 1){
-                    Toast.makeText(getActivity(), "In Development", Toast.LENGTH_SHORT).show();
-                }else{
-                    AlertDialog.Builder builder=new AlertDialog.Builder(requireActivity(),R.style.AlertDialogTheme);
-                    final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.premium_popup,layoutDialogContainer);
-                    builder.setView(viewView);
-
-                    alertDialog = builder.create();
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    alertDialog.show();
-
-                    viewView.findViewById(R.id.premiumQuit).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            alertDialog.dismiss();
-
-                        }
-                    });
-
-                    viewView.findViewById(R.id.premiumGo).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), PremiumActivity.class);
-                            startActivity(intent);
-                            alertDialog.dismiss();
-                        }
-                    });
-                }
+                    alertDialog.dismiss();
+                });
             }
         };
     }

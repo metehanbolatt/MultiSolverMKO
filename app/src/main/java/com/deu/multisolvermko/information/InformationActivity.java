@@ -3,7 +3,6 @@ package com.deu.multisolvermko.information;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -48,16 +47,13 @@ public class InformationActivity extends AppCompatActivity {
             }
         });
 
-        buttonOnboardingAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onboardingViewPager.getCurrentItem() + 1 < informationAdapter.getItemCount()){
-                    onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem() + 1);
+        buttonOnboardingAction.setOnClickListener(v -> {
+            if (onboardingViewPager.getCurrentItem() + 1 < informationAdapter.getItemCount()){
+                onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem() + 1);
 
-                }else{
-                    startActivity(new Intent(getApplicationContext(), SignInActivity.class));
-                    finish();
-                }
+            }else{
+                startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                finish();
             }
         });
     }
@@ -67,23 +63,23 @@ public class InformationActivity extends AppCompatActivity {
         List<InformationItem> informationItems = new ArrayList<>();
 
         InformationItem userProfile = new InformationItem();
-        userProfile.setTitle("Changing Profile Picture");
-        userProfile.setDescription("To change your profile photo, you can long click on your photo in the menu that opens on the left.");
+        userProfile.setTitle("Profil Fotoğrafı Değiştirmek");
+        userProfile.setDescription("Profil fotoğrafını değiştirmek için sol taraftan açılan menüde bulunan profil fotoğrafı kısmına uzun dokununuz.");
         userProfile.setImage(R.drawable.profile);
 
         InformationItem salesmanProblem = new InformationItem();
-        salesmanProblem.setTitle("Travelling Salesman Problem");
-        salesmanProblem.setDescription("bbbbbb");
+        salesmanProblem.setTitle("Gezgin Satıcı Problemi");
+        salesmanProblem.setDescription("Bu problem uygulama ile birlikte gelmektedir. Detaylı bilgilendirme ilerleyen aşamalarda yapılacaktır.");
         salesmanProblem.setImage(R.drawable.guide_image_1);
 
         InformationItem salesmanProblem2 = new InformationItem();
-        salesmanProblem2.setTitle("Travelling Salesman Problem (Distances)");
-        salesmanProblem2.setDescription("aaaaaa");
+        salesmanProblem2.setTitle("Gezgin Satıcı Problemi (Manuel)");
+        salesmanProblem2.setDescription("Bu problem uygulama ile birlikte gelmektedir. Detaylı bilgilendirme ilerleyen aşamalarda yapılacaktır.");
         salesmanProblem2.setImage(R.drawable.guide_image_2);
 
         InformationItem futureUpdates = new InformationItem();
-        futureUpdates.setTitle("Future Updates");
-        futureUpdates.setDescription("cccccc");
+        futureUpdates.setTitle("Gelecek Güncellemeler");
+        futureUpdates.setDescription("Gelecek güncellemeler burada belirtilecektir.");
         futureUpdates.setImage(R.drawable.guide_image_3);
 
         informationItems.add(userProfile);
@@ -128,10 +124,9 @@ public class InformationActivity extends AppCompatActivity {
         }
 
         if (index == informationAdapter.getItemCount()-1){
-            buttonOnboardingAction.setText("Start");
+            buttonOnboardingAction.setText("Başla");
         }else{
-            buttonOnboardingAction.setText("Next");
+            buttonOnboardingAction.setText("İleri");
         }
-
     }
 }

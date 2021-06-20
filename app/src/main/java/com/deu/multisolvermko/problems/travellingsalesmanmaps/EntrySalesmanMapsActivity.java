@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,41 +26,35 @@ public class EntrySalesmanMapsActivity extends AppCompatActivity {
         buttonRoad = findViewById(R.id.buttonRoad);
 
 
-        buttonFly.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editTextFly.getText().toString().equals("")){
-                    extraValue();
-                }else{
-                    Integer city = Integer.parseInt(editTextFly.getText().toString());
-                    Intent intent = new Intent(getApplicationContext(), FlySalesmanMapsActivity.class);
-                    intent.putExtra("city",city);
-                    startActivity(intent);
+        buttonFly.setOnClickListener(v -> {
+            if (editTextFly.getText().toString().equals("")){
+                extraValue();
+            }else{
+                Integer city = Integer.parseInt(editTextFly.getText().toString());
+                Intent intent = new Intent(getApplicationContext(), FlySalesmanMapsActivity.class);
+                intent.putExtra("city",city);
+                startActivity(intent);
 
-                }
             }
         });
 
-        buttonRoad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editTextFly.getText().toString().equals("")){
-                    extraValue();
-                }else{
-                    Integer city = Integer.parseInt(editTextFly.getText().toString());
+        buttonRoad.setOnClickListener(v -> {
+            if (editTextFly.getText().toString().equals("")){
+                extraValue();
+            }else{
+                Integer city = Integer.parseInt(editTextFly.getText().toString());
 
-                    Intent intent = new Intent(getApplicationContext(), RoadSalesmanMapsActivity.class);
-                    intent.putExtra("city",city);
-                    startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), RoadSalesmanMapsActivity.class);
+                intent.putExtra("city",city);
+                startActivity(intent);
 
-                }
             }
         });
     }
 
     public void extraValue() {
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_selasman_maps_fly_empty_value, (ViewGroup) findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_selasman_maps_fly_empty_value, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM, 0, 50);
         toast.setDuration(Toast.LENGTH_LONG);

@@ -37,10 +37,10 @@ import java.util.Locale;
 
 public class CreateLibraryActivity extends AppCompatActivity {
 
-    private EditText inputNoteTitle, inputNoteSubtitle, inputNoteText;
+    private EditText noteTitle, noteSubtitle, note;
     private TextView textDateTime;
     private View viewSubtitleIndicator;
-    private ImageView imageLibrary;
+    private ImageView noteImage;
     private String selectedLibraryColor;
     private String selectedImagePath;
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
@@ -54,19 +54,14 @@ public class CreateLibraryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_library);
 
         ImageView imageBack = findViewById(R.id.imageBack);
-        imageBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        imageBack.setOnClickListener(v -> onBackPressed());
 
-        inputNoteTitle = findViewById(R.id.inputNoteTitle);
-        inputNoteSubtitle = findViewById(R.id.inputNoteSubtitle);
-        inputNoteText = findViewById(R.id.inputNote);
+        noteTitle = findViewById(R.id.inputNoteTitle);
+        noteSubtitle = findViewById(R.id.inputNoteSubtitle);
+        note = findViewById(R.id.inputNote);
         textDateTime = findViewById(R.id.textDateTime);
         viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
-        imageLibrary = findViewById(R.id.imageLibrary);
+        noteImage = findViewById(R.id.imageLibrary);
 
         textDateTime.setText(
                 new SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm a", Locale.getDefault())
@@ -74,12 +69,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
         );
 
         ImageView imageSave = findViewById(R.id.imageSave);
-        imageSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveNote();
-            }
-        });
+        imageSave.setOnClickListener(v -> saveNote());
 
         selectedLibraryColor = "#333333";
         selectedImagePath = "";
@@ -89,14 +79,11 @@ public class CreateLibraryActivity extends AppCompatActivity {
             setViewOrUpdateNote();
         }
 
-        findViewById(R.id.imageRemoveImage).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imageLibrary.setImageBitmap(null);
-                imageLibrary.setVisibility(View.GONE);
-                findViewById(R.id.imageRemoveImage).setVisibility(View.GONE);
-                selectedImagePath = "";
-            }
+        findViewById(R.id.imageRemoveImage).setOnClickListener(v -> {
+            noteImage.setImageBitmap(null);
+            noteImage.setVisibility(View.GONE);
+            findViewById(R.id.imageRemoveImage).setVisibility(View.GONE);
+            selectedImagePath = "";
         });
 
         initMiscellaneous();
@@ -104,33 +91,33 @@ public class CreateLibraryActivity extends AppCompatActivity {
     }
 
     private void setViewOrUpdateNote(){
-        inputNoteTitle.setText(alreadyAvailableLibrary.getTitle());
-        inputNoteSubtitle.setText(alreadyAvailableLibrary.getSubtitle());
-        inputNoteText.setText(alreadyAvailableLibrary.getNoteText());
+        noteTitle.setText(alreadyAvailableLibrary.getTitle());
+        noteSubtitle.setText(alreadyAvailableLibrary.getSubtitle());
+        note.setText(alreadyAvailableLibrary.getNoteText());
         textDateTime.setText(alreadyAvailableLibrary.getDateTime());
 
         if (alreadyAvailableLibrary.getImagePath() != null && !alreadyAvailableLibrary.getImagePath().trim().isEmpty()){
-            imageLibrary.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableLibrary.getImagePath()));
-            imageLibrary.setVisibility(View.VISIBLE);
+            noteImage.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableLibrary.getImagePath()));
+            noteImage.setVisibility(View.VISIBLE);
             findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
             selectedImagePath = alreadyAvailableLibrary.getImagePath();
         }
     }
 
     private void saveNote(){
-        if (inputNoteTitle.getText().toString().trim().isEmpty()){
-            Toast.makeText(this, "You must fill the title.", Toast.LENGTH_SHORT).show();
+        if (noteTitle.getText().toString().trim().isEmpty()){
+            Toast.makeText(this, "Başlığı boş bırakmayınız.", Toast.LENGTH_SHORT).show();
             return;
 
-        }else if (inputNoteSubtitle.getText().toString().trim().isEmpty() && inputNoteText.getText().toString().trim().isEmpty()){
-            Toast.makeText(this, "You can't save an empty note.", Toast.LENGTH_SHORT).show();
+        }else if (noteSubtitle.getText().toString().trim().isEmpty() && note.getText().toString().trim().isEmpty()){
+            Toast.makeText(this, "Boş bir not kaydedemezsin.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         final Library library = new Library();
-        library.setTitle(inputNoteTitle.getText().toString());
-        library.setSubtitle(inputNoteSubtitle.getText().toString());
-        library.setNoteText(inputNoteText.getText().toString());
+        library.setTitle(noteTitle.getText().toString());
+        library.setSubtitle(noteSubtitle.getText().toString());
+        library.setNoteText(note.getText().toString());
         library.setDateTime(textDateTime.getText().toString());
         library.setColor(selectedLibraryColor);
         library.setImagePath(selectedImagePath);
@@ -139,6 +126,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
             library.setId(alreadyAvailableLibrary.getId());
         }
 
+        @SuppressLint("StaticFieldLeak")
         class SaveNoteTask extends AsyncTask<Void, Void, Void>{
 
             @Override
@@ -161,14 +149,11 @@ public class CreateLibraryActivity extends AppCompatActivity {
     private void initMiscellaneous() {
         final LinearLayout layoutMiscellaneous = findViewById(R.id.layoutMiscellaneous);
         final BottomSheetBehavior<LinearLayout> bottomSheetBehavior = BottomSheetBehavior.from(layoutMiscellaneous);
-        layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                } else {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                }
+        layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setOnClickListener(v -> {
+            if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            } else {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         });
 
@@ -178,69 +163,54 @@ public class CreateLibraryActivity extends AppCompatActivity {
         final ImageView imageColor4 = layoutMiscellaneous.findViewById(R.id.imageColor4);
         final ImageView imageColor5 = layoutMiscellaneous.findViewById(R.id.imageColor5);
 
-        layoutMiscellaneous.findViewById(R.id.viewColor1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedLibraryColor = "#333333";
-                imageColor1.setImageResource(R.drawable.ic_done);
-                imageColor2.setImageResource(0);
-                imageColor3.setImageResource(0);
-                imageColor4.setImageResource(0);
-                imageColor5.setImageResource(0);
-                setSubtitleIndicatorColor();
-            }
+        layoutMiscellaneous.findViewById(R.id.viewColor1).setOnClickListener(v -> {
+            selectedLibraryColor = "#333333";
+            imageColor1.setImageResource(R.drawable.ic_done);
+            imageColor2.setImageResource(0);
+            imageColor3.setImageResource(0);
+            imageColor4.setImageResource(0);
+            imageColor5.setImageResource(0);
+            setSubtitleIndicatorColor();
         });
 
-        layoutMiscellaneous.findViewById(R.id.viewColor2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedLibraryColor = "#FDBE3B";
-                imageColor1.setImageResource(0);
-                imageColor2.setImageResource(R.drawable.ic_done);
-                imageColor3.setImageResource(0);
-                imageColor4.setImageResource(0);
-                imageColor5.setImageResource(0);
-                setSubtitleIndicatorColor();
-            }
+        layoutMiscellaneous.findViewById(R.id.viewColor2).setOnClickListener(v -> {
+            selectedLibraryColor = "#FDBE3B";
+            imageColor1.setImageResource(0);
+            imageColor2.setImageResource(R.drawable.ic_done);
+            imageColor3.setImageResource(0);
+            imageColor4.setImageResource(0);
+            imageColor5.setImageResource(0);
+            setSubtitleIndicatorColor();
         });
 
-        layoutMiscellaneous.findViewById(R.id.viewColor3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedLibraryColor = "#FF4842";
-                imageColor1.setImageResource(0);
-                imageColor2.setImageResource(0);
-                imageColor3.setImageResource(R.drawable.ic_done);
-                imageColor4.setImageResource(0);
-                imageColor5.setImageResource(0);
-                setSubtitleIndicatorColor();
-            }
+        layoutMiscellaneous.findViewById(R.id.viewColor3).setOnClickListener(v -> {
+            selectedLibraryColor = "#FF4842";
+            imageColor1.setImageResource(0);
+            imageColor2.setImageResource(0);
+            imageColor3.setImageResource(R.drawable.ic_done);
+            imageColor4.setImageResource(0);
+            imageColor5.setImageResource(0);
+            setSubtitleIndicatorColor();
         });
 
-        layoutMiscellaneous.findViewById(R.id.viewColor4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedLibraryColor = "#3A52FC";
-                imageColor1.setImageResource(0);
-                imageColor2.setImageResource(0);
-                imageColor3.setImageResource(0);
-                imageColor4.setImageResource(R.drawable.ic_done);
-                imageColor5.setImageResource(0);
-                setSubtitleIndicatorColor();
-            }
+        layoutMiscellaneous.findViewById(R.id.viewColor4).setOnClickListener(v -> {
+            selectedLibraryColor = "#3A52FC";
+            imageColor1.setImageResource(0);
+            imageColor2.setImageResource(0);
+            imageColor3.setImageResource(0);
+            imageColor4.setImageResource(R.drawable.ic_done);
+            imageColor5.setImageResource(0);
+            setSubtitleIndicatorColor();
         });
 
-        layoutMiscellaneous.findViewById(R.id.viewColor5).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedLibraryColor = "#000000";
-                imageColor1.setImageResource(0);
-                imageColor2.setImageResource(0);
-                imageColor3.setImageResource(0);
-                imageColor4.setImageResource(0);
-                imageColor5.setImageResource(R.drawable.ic_done);
-                setSubtitleIndicatorColor();
-            }
+        layoutMiscellaneous.findViewById(R.id.viewColor5).setOnClickListener(v -> {
+            selectedLibraryColor = "#000000";
+            imageColor1.setImageResource(0);
+            imageColor2.setImageResource(0);
+            imageColor3.setImageResource(0);
+            imageColor4.setImageResource(0);
+            imageColor5.setImageResource(R.drawable.ic_done);
+            setSubtitleIndicatorColor();
         });
 
         if (alreadyAvailableLibrary != null && alreadyAvailableLibrary.getColor() != null && !alreadyAvailableLibrary.getColor().trim().isEmpty()){
@@ -260,31 +230,25 @@ public class CreateLibraryActivity extends AppCompatActivity {
             }
         }
 
-        layoutMiscellaneous.findViewById(R.id.layoutAddImage).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                if (ContextCompat.checkSelfPermission(
-                        getApplicationContext(),Manifest.permission.READ_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(CreateLibraryActivity.this,
-                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                            REQUEST_CODE_STORAGE_PERMISSION
-                    );
-                }else{
-                    selectImage();
-                }
+        layoutMiscellaneous.findViewById(R.id.layoutAddImage).setOnClickListener(v -> {
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            if (ContextCompat.checkSelfPermission(
+                    getApplicationContext(),Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(CreateLibraryActivity.this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_CODE_STORAGE_PERMISSION
+                );
+            }else{
+                selectImage();
             }
         });
 
         if (alreadyAvailableLibrary != null){
             layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setVisibility(View.VISIBLE);
-            layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    showDeleteNoteDialog();
-                }
+            layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setOnClickListener(v -> {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                showDeleteNoteDialog();
             });
         }
     }
@@ -324,12 +288,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
                 }
             });
 
-            view.findViewById(R.id.textCancel).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialogDeleteLibrary.dismiss();
-                }
-            });
+            view.findViewById(R.id.textCancel).setOnClickListener(v -> dialogDeleteLibrary.dismiss());
         }
         dialogDeleteLibrary.show();
     }
@@ -354,7 +313,7 @@ public class CreateLibraryActivity extends AppCompatActivity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 selectImage();
             }else{
-                Toast.makeText(this, "Couldn't connect to gallery.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Galeriye ulaşılamadı.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -369,8 +328,8 @@ public class CreateLibraryActivity extends AppCompatActivity {
                     try {
                         InputStream inputStream = getContentResolver().openInputStream(selectedImageUri);
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                        imageLibrary.setImageBitmap(bitmap);
-                        imageLibrary.setVisibility(View.VISIBLE);
+                        noteImage.setImageBitmap(bitmap);
+                        noteImage.setVisibility(View.VISIBLE);
                         findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
 
                         selectedImagePath = getPathFromUri(selectedImageUri);
@@ -396,6 +355,4 @@ public class CreateLibraryActivity extends AppCompatActivity {
         }
         return filePath;
     }
-
-
 }

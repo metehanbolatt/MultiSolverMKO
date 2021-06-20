@@ -11,10 +11,9 @@
         android:id="@+id/userGuideTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
+        android:layout_marginTop="100dp"
         android:text="@string/fragment_usersguide_title"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/userGuideFirstFeatureText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userGuideLogo" />
@@ -23,49 +22,43 @@
         android:id="@+id/userGuideFirstFeatureText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="30dp"
         android:text="@string/user_guide_first_feature"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userGuideTitleText" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginTop="10dp"
         android:text="@string/user_guide_second_feature"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/userGuideThirdFeatureText"
-        app:layout_constraintEnd_toEndOf="@+id/userGuideTitleText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userGuideFirstFeatureText" />
 
     <TextView
         android:id="@+id/userGuideThirdFeatureText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="74dp"
+        android:layout_marginTop="10dp"
         android:text="@string/user_guide_third_feature"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="11dp"
+        android:layout_width="386dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="20dp"
         android:text="@string/user_guide_explanation"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/guideButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userGuideThirdFeatureText" />
@@ -74,11 +67,11 @@
         android:id="@+id/guideButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="127dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_success_background"
+        android:padding="10dp"
         android:text="@string/user_guide_button"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -86,14 +79,12 @@
     <ImageView
         android:id="@+id/userGuideLogo"
         android:layout_width="131dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="68dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="80dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/userGuideTitleText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

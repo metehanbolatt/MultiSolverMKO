@@ -21,12 +21,9 @@ public class UsersGuideFragment extends Fragment {
 
         Button button = viewGroup.findViewById(R.id.guideButton);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), InformationActivity.class);
-                startActivity(intent);
-            }
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), InformationActivity.class);
+            startActivity(intent);
         });
         return viewGroup;
     }

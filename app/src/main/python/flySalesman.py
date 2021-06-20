@@ -16,7 +16,6 @@ def flyFunction(distancesFLY):
     
     distances = np.reshape(yenidizi, (boyuttflyone,boyuttflyone))
 
-
     _matrix=np.array(distances)
     sehirsayisi=len(_matrix)
     liste=list(range(sehirsayisi))
@@ -82,5 +81,4 @@ def flyFunction(distancesFLY):
 
         iterasyon=iterasyon + 1
 
-
-    return "Best route for chosen location:\n"+str(cozumeniyi)+"\n"+"\n"+str(cozumeniyi)+" total distance required for this route:\n" +str(objeniyi)+" km"
+    return "Best route for chosen location:\n"+str(cozumeniyi)+"\n"+"\n"+str(cozumeniyi)+" total distance required for this route:\n" +str(objeniyi)+" km" + " iterasyon: " +str(iterasyon)

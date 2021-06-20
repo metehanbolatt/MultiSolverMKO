@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -46,28 +45,28 @@ public class AhpFragment extends Fragment {
         List<DecisionSupport> decisionSupports = new ArrayList<>();
 
         DecisionSupport decisionSupportThreeAhp = new DecisionSupport();
-        decisionSupportThreeAhp.imageUrl = "https://i.hizliresim.com/538Xmp.png";
-        decisionSupportThreeAhp.title = "Available";
-        decisionSupportThreeAhp.name = "by MKO";
-        decisionSupportThreeAhp.feature = "3 Criterias";
+        decisionSupportThreeAhp.imageUrl = "https://i.hizliresim.com/e5z2m9l.png";
+        decisionSupportThreeAhp.title = "Kullanılabilir";
+        decisionSupportThreeAhp.name = "MKO";
+        decisionSupportThreeAhp.feature = "3 Kriterli";
         decisionSupports.add(decisionSupportThreeAhp);
 
         DecisionSupport decisionSupportFourAhp = new DecisionSupport();
-        decisionSupportFourAhp.imageUrl = "https://i.hizliresim.com/538Xmp.png";
-        decisionSupportFourAhp.title = "Available";
-        decisionSupportFourAhp.name = "by MKO";
-        decisionSupportFourAhp.feature = "4 Criterias";
+        decisionSupportFourAhp.imageUrl = "https://i.hizliresim.com/e5z2m9l.png";
+        decisionSupportFourAhp.title = "Kullanılabilir";
+        decisionSupportFourAhp.name = "MKO";
+        decisionSupportFourAhp.feature = "4 Kriterli";
         decisionSupports.add(decisionSupportFourAhp);
 
         DecisionSupport decisionSupportFiveAhp = new DecisionSupport();
-        decisionSupportFiveAhp.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportFiveAhp.imageUrl = "https://i.hizliresim.com/e5z2m9l.png";
         decisionSupportFiveAhp.title = "Premium";
         decisionSupportFiveAhp.name = "by MKO";
         decisionSupportFiveAhp.feature = "5 Kriterli";
         decisionSupports.add(decisionSupportFiveAhp);
 
         DecisionSupport decisionSupportSixAhp = new DecisionSupport();
-        decisionSupportSixAhp.imageUrl = "https://i.hizliresim.com/538Xmp.png";
+        decisionSupportSixAhp.imageUrl = "https://i.hizliresim.com/e5z2m9l.png";
         decisionSupportSixAhp.title = "Premium";
         decisionSupportSixAhp.name = "by MKO";
         decisionSupportSixAhp.feature = "6 Kriterli";
@@ -83,12 +82,9 @@ public class AhpFragment extends Fragment {
 
         CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
-        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
-            @Override
-            public void transformPage(@NonNull View page, float position) {
-                float r = 1 - Math.abs(position);
-                page.setScaleY(0.95f + r * 0.05f);
-            }
+        compositePageTransformer.addTransformer((page, position) -> {
+            float r = 1 - Math.abs(position);
+            page.setScaleY(0.95f + r * 0.05f);
         });
 
         decisionViewPager.setPageTransformer(compositePageTransformer);
@@ -99,41 +95,29 @@ public class AhpFragment extends Fragment {
     }
 
     private void setOnClickListener() {
-        listener = new DecisionSupportAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View v, int position) {
-                if (position == 0){
-                    Intent intent = new Intent(getActivity(), AhpThreeCriteriaActivity.class);
+        listener = (v, position) -> {
+            if (position == 0){
+                Intent intent = new Intent(getActivity(), AhpThreeCriteriaActivity.class);
+                startActivity(intent);
+            }else if (position == 1){
+                Intent intent = new Intent(getActivity(), AhpFourCriteriaActivity.class);
+                startActivity(intent);
+            }else{
+                AlertDialog.Builder builder=new AlertDialog.Builder(requireActivity(),R.style.AlertDialogTheme);
+                final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.premium_popup,layoutDialogContainer);
+                builder.setView(viewView);
+
+                alertDialog = builder.create();
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog.show();
+
+                viewView.findViewById(R.id.premiumQuit).setOnClickListener(view -> alertDialog.dismiss());
+
+                viewView.findViewById(R.id.premiumGo).setOnClickListener(view -> {
+                    Intent intent = new Intent(getActivity(), PremiumActivity.class);
                     startActivity(intent);
-                }else if (position == 1){
-                    Intent intent = new Intent(getActivity(), AhpFourCriteriaActivity.class);
-                    startActivity(intent);
-                }else{
-                    AlertDialog.Builder builder=new AlertDialog.Builder(requireActivity(),R.style.AlertDialogTheme);
-                    final View viewView = LayoutInflater.from(getContext()).inflate(R.layout.premium_popup,layoutDialogContainer);
-                    builder.setView(viewView);
-
-                    alertDialog = builder.create();
-                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    alertDialog.show();
-
-                    viewView.findViewById(R.id.premiumQuit).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            alertDialog.dismiss();
-
-                        }
-                    });
-
-                    viewView.findViewById(R.id.premiumGo).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), PremiumActivity.class);
-                            startActivity(intent);
-                            alertDialog.dismiss();
-                        }
-                    });
-                }
+                    alertDialog.dismiss();
+                });
             }
         };
     }

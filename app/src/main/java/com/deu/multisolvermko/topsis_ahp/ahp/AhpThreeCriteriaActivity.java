@@ -93,19 +93,19 @@ public class AhpThreeCriteriaActivity extends AppCompatActivity {
 
                 if (result < 0.10) {
                     threeText.setTextColor(Color.parseColor("#32CD32"));
-                    threeText.setText("Feasible");
-                    explanationText.setText("The " + result + " found according to the values you entered is less than 0.10.");
+                    threeText.setText("Olurlu");
+                    explanationText.setText("Girdiğiniz değerlere göre bulunan sonuç: " + result + " değeri " + "0.10 değerinden küçüktür.");
                 } else {
                     threeText.setTextColor(Color.parseColor("#CC0000"));
-                    threeText.setText("Unfeasible");
-                    explanationText.setText("The " + result +" found according to the values you entered is greater than 0.10.");
+                    threeText.setText("Olursuz");
+                    explanationText.setText("Girdiğiniz değerlere göre bulunan sonuç: " + result + " değeri " + "0.10 değerinden büyüktür.");
 
                 }
             }else{
-                Toast.makeText(this, "Please be sure to enter all data!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Lütfen tüm verileri girdiğinizden emin olun!", Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(this, "After entering the values, click the Complete Table button.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Tüm verileri girdikten sonra, Tabloyu Tamamla butonuna dokununuz.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -131,7 +131,7 @@ public class AhpThreeCriteriaActivity extends AppCompatActivity {
             threeOne.setText(df.format(three_one));
             threeTwo.setText(df.format(three_two));
         }else{
-            Toast.makeText(this, "Please be sure to enter all data!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Lütfen tüm verileri girdiğinizden emin olun!", Toast.LENGTH_SHORT).show();
         }
     }
 }

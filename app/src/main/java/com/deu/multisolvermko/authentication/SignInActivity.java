@@ -1,6 +1,5 @@
 package com.deu.multisolvermko.authentication;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import android.content.Intent;
@@ -18,9 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.deu.multisolvermko.R;
 import com.deu.multisolvermko.homepage.HomepageActivity;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -53,12 +49,9 @@ public class SignInActivity extends AppCompatActivity {
             finish();
         }
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
-                startActivity(intent);
-            }
+        signUp.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
+            startActivity(intent);
         });
 
         animationStart();
@@ -88,25 +81,18 @@ public class SignInActivity extends AppCompatActivity {
             String email = emailTextSignIn.getText().toString();
             String password = passwordTextSignIn.getText().toString();
 
-            firebaseAuth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-
-                @Override
-                public void onSuccess(AuthResult authResult) {
-                    passwordTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
-                    emailTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
-                    Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    showFirebaseError();
-                    passwordTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
-                    emailTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
-                    onShakeBoth();
-                    onShakeSignText();
-                }
+            firebaseAuth.signInWithEmailAndPassword(email,password).addOnSuccessListener(authResult -> {
+                passwordTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+                emailTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+                Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
+                startActivity(intent);
+                finish();
+            }).addOnFailureListener(e -> {
+                showFirebaseError();
+                passwordTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
+                emailTextSignIn.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
+                onShakeBoth();
+                onShakeSignText();
             });
         }
     }

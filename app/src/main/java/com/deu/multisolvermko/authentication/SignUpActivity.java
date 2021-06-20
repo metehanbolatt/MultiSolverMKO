@@ -1,6 +1,5 @@
 package com.deu.multisolvermko.authentication;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import android.content.Intent;
@@ -8,16 +7,12 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.deu.multisolvermko.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -220,42 +215,36 @@ public class SignUpActivity extends AppCompatActivity {
             data.put("surname",surname);
             data.put("urlfoto", "null" );
 
-            firebaseAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {
+            firebaseAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(authResult -> {
 
-                    firebaseFirestore.collection("Users").document(signUpEmail.getText().toString()).set(data);
-                    signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+                firebaseFirestore.collection("Users").document(signUpEmail.getText().toString()).set(data);
+                signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+                signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+                signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+                signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+                Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
+                startActivity(intent);
+                finish();
+
+            }).addOnFailureListener(e -> {
+                if (Objects.equals(e.getLocalizedMessage(), "Geçerli formatta email adresi giriniz.")){
+
+                    showFirebaseEmailError();
+                    signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
                     signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
                     signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
                     signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
-                    Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
-                    startActivity(intent);
-                    finish();
+                    onShakeEmail();
 
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    if (Objects.equals(e.getLocalizedMessage(), "The email address is badly formatted.")){
+                }else if(signUpPassword.getText().length() < 6){
 
-                        showFirebaseEmailError();
-                        signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
-                        signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
-                        signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
-                        signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
-                        onShakeEmail();
+                    showFirebasePasswordError();
+                    signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
+                    signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
+                    signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+                    signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
+                    onShakePassword();
 
-                    }else if(signUpPassword.getText().length() < 6){
-
-                        showFirebasePasswordError();
-                        signUpPassword.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
-                        signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border,null));
-                        signUpName.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
-                        signUpSurname.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.round_border, null));
-                        onShakePassword();
-
-                    }
                 }
             });
         }
@@ -284,7 +273,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void showEmailToast(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_email, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_email, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -293,7 +282,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showPasswordToast(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_password, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_password, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -302,7 +291,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showEmailPasswordToast(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_email_password, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_email_password, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -311,7 +300,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showFirebaseEmailError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -320,7 +309,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showFirebasePasswordError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -329,7 +318,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showNameError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_name_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_name_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -338,7 +327,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showSurnameError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_surname_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_surname_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -347,7 +336,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showEmailNameError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_name, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_name, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -356,7 +345,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showAllError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_all_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_all_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -365,7 +354,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showEmailSurnameError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_surname_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_surname_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -374,7 +363,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showNameSurnameError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_name_surname_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_name_surname_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -383,7 +372,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showPasswordNameError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_name_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_name_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -392,7 +381,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showPasswordSurnameError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_surname_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_surname_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -401,7 +390,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showExceptEmail(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_except_empty, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_email_except_empty, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -410,7 +399,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showExceptPassword(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_except_empty, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_password_except_empty, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -419,7 +408,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showExceptName(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_name_except_empty, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_name_except_empty, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -428,12 +417,11 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void showExceptSurname(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_signup_firebase_surname_except_empty, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_signup_firebase_surname_except_empty, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();
     }
-
 }

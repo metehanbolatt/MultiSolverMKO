@@ -43,12 +43,7 @@ public class LibraryFragment extends Fragment implements LibraryListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_library,container,false);
         imageAddLibraryMain = viewGroup.findViewById(R.id.imageAddLibraryMain);
-        imageAddLibraryMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(getActivity(), CreateLibraryActivity.class), REQUEST_CODE_ADD_LIBRARY);
-            }
-        });
+        imageAddLibraryMain.setOnClickListener(v -> startActivityForResult(new Intent(getActivity(), CreateLibraryActivity.class), REQUEST_CODE_ADD_LIBRARY));
 
         libraryRecyclerView = viewGroup.findViewById(R.id.libraryRecyclerView);
         libraryRecyclerView.setLayoutManager(

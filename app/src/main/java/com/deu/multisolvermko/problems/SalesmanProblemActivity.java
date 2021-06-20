@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -28,41 +27,27 @@ public class SalesmanProblemActivity extends AppCompatActivity {
         dialog = new Dialog(this);
 
 
-        manuelCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        manuelCard.setOnClickListener(v -> {
 
-                Intent intent = new Intent(getApplicationContext(), TravellingSalesmanManuel.class);
-                startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), TravellingSalesmanManuel.class);
+            startActivity(intent);
 
-            }
         });
 
-        manuelCard.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                openManuelDialog();
-                return false;
-            }
+        manuelCard.setOnLongClickListener(v -> {
+            openManuelDialog();
+            return false;
         });
 
-        automaticCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EntrySalesmanMapsActivity.class);
-                startActivity(intent);
-            }
+        automaticCard.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), EntrySalesmanMapsActivity.class);
+            startActivity(intent);
         });
 
-        automaticCard.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                openAutomaticDialog();
-                return false;
-            }
+        automaticCard.setOnLongClickListener(v -> {
+            openAutomaticDialog();
+            return false;
         });
-
-
     }
 
     private void openManuelDialog(){
@@ -70,12 +55,7 @@ public class SalesmanProblemActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         ImageView imageView  = dialog.findViewById(R.id.imageViewClose);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        imageView.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
 
     }
@@ -86,12 +66,7 @@ public class SalesmanProblemActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         ImageView imageView  = dialog.findViewById(R.id.imageViewClose);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        imageView.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
     }
 }

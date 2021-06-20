@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.deu.multisolvermko.R;
@@ -47,6 +45,7 @@ public class ThreeCriteriaTopsisActivity extends AppCompatActivity {
 
     int a = 0;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,42 +67,30 @@ public class ThreeCriteriaTopsisActivity extends AppCompatActivity {
 
         setRecyclerView();
 
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch1.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
-                if (isChecked){
-                    switch1.setText("Max");
-                }else{
-                    switch1.setText("Min");
-                }
+            if (isChecked){
+                switch1.setText("Max");
+            }else{
+                switch1.setText("Min");
             }
         });
 
-        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
-                if (isChecked){
-                    switch2.setText("Max");
-                }else{
-                    switch2.setText("Min");
-                }
+            if (isChecked){
+                switch2.setText("Max");
+            }else{
+                switch2.setText("Min");
             }
         });
 
-        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch3.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
-                if (isChecked){
-                    switch3.setText("Max");
-                }else{
-                    switch3.setText("Min");
-                }
+            if (isChecked){
+                switch3.setText("Max");
+            }else{
+                switch3.setText("Min");
             }
         });
     }
@@ -118,20 +105,17 @@ public class ThreeCriteriaTopsisActivity extends AppCompatActivity {
     private List<ThreeCriteriaTopsisModel> getList(){
         alternateList = new ArrayList<>();
 
-        buttonT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                a = 2;
-                if (editText1.getText().toString().equals("") || editText2.getText().toString().equals("") || editText3.getText().toString().equals("")){
-                    Toast.makeText(ThreeCriteriaTopsisActivity.this, "Please enter the correct value.", Toast.LENGTH_SHORT).show();
-                }else {
-                    alternateList.add(new ThreeCriteriaTopsisModel(editText1.getText().toString(), editText2.getText().toString(), editText3.getText().toString()));
-                }
-                editText1.setText("");
-                editText2.setText("");
-                editText3.setText("");
-
+        buttonT.setOnClickListener(v -> {
+            a = 2;
+            if (editText1.getText().toString().equals("") || editText2.getText().toString().equals("") || editText3.getText().toString().equals("")){
+                Toast.makeText(ThreeCriteriaTopsisActivity.this, "Please enter the correct value.", Toast.LENGTH_SHORT).show();
+            }else {
+                alternateList.add(new ThreeCriteriaTopsisModel(editText1.getText().toString(), editText2.getText().toString(), editText3.getText().toString()));
             }
+            editText1.setText("");
+            editText2.setText("");
+            editText3.setText("");
+
         });
 
         return alternateList;
@@ -150,13 +134,13 @@ public class ThreeCriteriaTopsisActivity extends AppCompatActivity {
             DecimalFormat df = new DecimalFormat("#.########");
             newResult = Double.parseDouble(df.format(result));
         }else{
-            Toast.makeText(this, "Please enter the weights", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Lütfen ağırlıkları giriniz..", Toast.LENGTH_SHORT).show();
         }
 
         if (a==0){
-            Toast.makeText(ThreeCriteriaTopsisActivity.this, "Please enter the correct value.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ThreeCriteriaTopsisActivity.this, "Lütfen geçerli değer giriniz.", Toast.LENGTH_SHORT).show();
         }else if ( newResult != 1.0){
-            Toast.makeText(ThreeCriteriaTopsisActivity.this, "Please enter values so that the sum of the weights is 1.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ThreeCriteriaTopsisActivity.this, "Lütfen ağırlıkları, toplamları 1 olacak şekilde giriniz.", Toast.LENGTH_SHORT).show();
         }
         else {
             normalDecisionMatrix();
@@ -269,7 +253,7 @@ public class ThreeCriteriaTopsisActivity extends AppCompatActivity {
         int idx = piValue.indexOf(Collections.max(piValue));
         result = idx + 1;
 
-        textViewTopsis.setText("You should choose: " + result);
+        textViewTopsis.setText("Seçmeniz gereken: " + result);
 
     }
 
@@ -279,10 +263,10 @@ public class ThreeCriteriaTopsisActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(ThreeCriteriaTopsisActivity.this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(ThreeCriteriaTopsisActivity.this).inflate(
                 R.layout.layout_success_dialog,
-                (ConstraintLayout)findViewById(R.id.layoutDialogContainer)
+                findViewById(R.id.layoutDialogContainer)
         );
         builder.setView(view);
-        ((TextView) view.findViewById(R.id.textTitle)).setText("You should choose: " + result);
+        ((TextView) view.findViewById(R.id.textTitle)).setText("Seçmeniz gereken: " + result);
 
         alternates = new ArrayList<>();
         ((BarChart) view.findViewById(R.id.barChart)).setData(null);
@@ -306,18 +290,10 @@ public class ThreeCriteriaTopsisActivity extends AppCompatActivity {
 
         final AlertDialog alertDialog = builder.create();
 
-        view.findViewById(R.id.buttonAction).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
+        view.findViewById(R.id.buttonAction).setOnClickListener(v -> alertDialog.dismiss());
         if (alertDialog.getWindow() != null){
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         }
         alertDialog.show();
-
-
     }
-
 }

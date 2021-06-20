@@ -1,7 +1,6 @@
 package com.deu.multisolvermko.fragments;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +16,7 @@ import com.deu.multisolvermko.fragments.adapters.UsersRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Timer;
@@ -95,32 +91,29 @@ public class UsersFragment extends Fragment {
             @Override
             public void run() {
                 collectionReference = firebaseFirestore.collection("Users");
-                collectionReference.whereEqualTo("name",searchKeyword).addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                collectionReference.whereEqualTo("name",searchKeyword).addSnapshotListener((value, error) -> {
 
-                        if (error != null) {
-                            Toast.makeText(requireContext().getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                        }
+                    if (error != null) {
+                        Toast.makeText(requireContext().getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                    }
 
-                        if (value != null) {
-                            for (DocumentSnapshot snapshot : value.getDocuments()) {
+                    if (value != null) {
+                        for (DocumentSnapshot snapshot : value.getDocuments()) {
 
-                                final Map<String, Object> data = snapshot.getData();
-                                assert data != null;
-                                String name = (String) data.get("name");
-                                String surname = (String) data.get("surname");
-                                String email = (String) data.get("useremail");
-                                String url = (String) data.get("urlfoto");
+                            final Map<String, Object> data = snapshot.getData();
+                            assert data != null;
+                            String name = (String) data.get("name");
+                            String surname = (String) data.get("surname");
+                            String email = (String) data.get("useremail");
+                            String url = (String) data.get("urlfoto");
 
-                                UsersNameList.add(name);
-                                UsersSurnameList.add(surname);
-                                UsersEmailList.add(email);
-                                UsersUrlList.add(url);
+                            UsersNameList.add(name);
+                            UsersSurnameList.add(surname);
+                            UsersEmailList.add(email);
+                            UsersUrlList.add(url);
 
-                                usersRecyclerAdapter.notifyDataSetChanged();
+                            usersRecyclerAdapter.notifyDataSetChanged();
 
-                            }
                         }
                     }
                 });
@@ -135,36 +128,33 @@ public class UsersFragment extends Fragment {
             @Override
             public void run() {
                 collectionReference = firebaseFirestore.collection("Users");
-                collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                collectionReference.addSnapshotListener((value, error) -> {
 
-                        if (error != null) {
-                            Toast.makeText(requireContext().getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                        }
+                    if (error != null) {
+                        Toast.makeText(requireContext().getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                    }
 
-                        if (value != null) {
-                            UsersUrlList.clear();
-                            UsersSurnameList.clear();
-                            UsersNameList.clear();
-                            UsersEmailList.clear();
+                    if (value != null) {
+                        UsersUrlList.clear();
+                        UsersSurnameList.clear();
+                        UsersNameList.clear();
+                        UsersEmailList.clear();
 
-                            for (DocumentSnapshot snapshot : value.getDocuments()) {
-                                final Map<String, Object> data = snapshot.getData();
-                                assert data != null;
-                                String name = (String) data.get("name");
-                                String surname = (String) data.get("surname");
-                                String email = (String) data.get("useremail");
-                                String url = (String) data.get("urlfoto");
+                        for (DocumentSnapshot snapshot : value.getDocuments()) {
+                            final Map<String, Object> data = snapshot.getData();
+                            assert data != null;
+                            String name = (String) data.get("name");
+                            String surname = (String) data.get("surname");
+                            String email = (String) data.get("useremail");
+                            String url = (String) data.get("urlfoto");
 
-                                UsersNameList.add(name);
-                                UsersSurnameList.add(surname);
-                                UsersEmailList.add(email);
-                                UsersUrlList.add(url);
+                            UsersNameList.add(name);
+                            UsersSurnameList.add(surname);
+                            UsersEmailList.add(email);
+                            UsersUrlList.add(url);
 
-                                usersRecyclerAdapter.notifyDataSetChanged();
+                            usersRecyclerAdapter.notifyDataSetChanged();
 
-                            }
                         }
                     }
                 });
@@ -177,6 +167,4 @@ public class UsersFragment extends Fragment {
             timer.cancel();
         }
     }
-
 }
-

@@ -35,7 +35,7 @@ public class ProgressBarAnimation extends Animation {
         textView.setText((int) value + " %");
 
         if (textView.getText().toString().equals("100 %")){
-            textView.setText("Solution has found. Calculating route...");
+            textView.setText("Çözüm bulundu. Rota hesaplanıyor...");
             progressBar.setVisibility(View.INVISIBLE);
             progressBar2.setVisibility(View.VISIBLE);
         }

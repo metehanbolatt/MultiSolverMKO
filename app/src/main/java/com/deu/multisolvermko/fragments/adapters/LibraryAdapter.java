@@ -49,12 +49,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.LibraryV
     @Override
     public void onBindViewHolder(@NonNull LibraryViewHolder holder, final int position) {
         holder.setLibrary(libraries.get(position));
-        holder.layoutLibrary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                libraryListener.onLibraryClicked(libraries.get(position), position);
-            }
-        });
+        holder.layoutLibrary.setOnClickListener(v -> libraryListener.onLibraryClicked(libraries.get(position), position));
     }
 
     @Override
@@ -124,12 +119,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.LibraryV
                     }
                     libraries = temp;
                 }
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        notifyDataSetChanged();
-                    }
-                });
+                new Handler(Looper.getMainLooper()).post(() -> notifyDataSetChanged());
             }
         },500);
     }
