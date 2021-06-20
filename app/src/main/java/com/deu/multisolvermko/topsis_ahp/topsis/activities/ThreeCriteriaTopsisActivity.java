@@ -108,7 +108,7 @@ public class ThreeCriteriaTopsisActivity extends AppCompatActivity {
         buttonT.setOnClickListener(v -> {
             a = 2;
             if (editText1.getText().toString().equals("") || editText2.getText().toString().equals("") || editText3.getText().toString().equals("")){
-                Toast.makeText(ThreeCriteriaTopsisActivity.this, "Please enter the correct value.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ThreeCriteriaTopsisActivity.this, "Lütfen geçerli değer giriniz.", Toast.LENGTH_SHORT).show();
             }else {
                 alternateList.add(new ThreeCriteriaTopsisModel(editText1.getText().toString(), editText2.getText().toString(), editText3.getText().toString()));
             }

@@ -143,7 +143,7 @@ public class SignInActivity extends AppCompatActivity {
     }
     public void showEmailToast(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_email, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_email, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -152,7 +152,7 @@ public class SignInActivity extends AppCompatActivity {
     }
     public void showPasswordToast(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_password, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_password, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -161,7 +161,7 @@ public class SignInActivity extends AppCompatActivity {
     }
     public void showEmailPasswordToast(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_email_password, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_email_password, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
@@ -170,7 +170,7 @@ public class SignInActivity extends AppCompatActivity {
     }
     public void showFirebaseError(){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_layout_firebase_error, (ViewGroup)findViewById(R.id.toast_root));
+        View layout = inflater.inflate(R.layout.toast_layout_firebase_error, findViewById(R.id.toast_root));
         Toast toast = new Toast(getApplicationContext());
         toast.setGravity(Gravity.BOTTOM,0,50);
         toast.setDuration(Toast.LENGTH_LONG);
