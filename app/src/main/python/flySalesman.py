@@ -80,5 +80,4 @@ def flyFunction(distancesFLY):
             objeniyi=obj
 
         iterasyon=iterasyon + 1
-
-    return "Best route for chosen location:\n"+str(cozumeniyi)+"\n"+"\n"+str(cozumeniyi)+" total distance required for this route:\n" +str(objeniyi)+" km" + " iterasyon: " +str(iterasyon)
+    return "Seçilen konumlar için en iyi rota:\n"+str(cozumeniyi)+"\n"+"\n"+str(cozumeniyi)+" rotası için hesaplanan mesafe: \n" +str(objeniyi)+" km"

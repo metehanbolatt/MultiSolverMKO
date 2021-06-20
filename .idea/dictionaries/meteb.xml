@@ -39,7 +39,11 @@
       <w>birlikte</w>
       <w>bizimle</w>
       <w>bolat</w>
+      <w>boyut</w>
+      <w>boyutflyone</w>
+      <w>boyutlu</w>
       <w>boyutta</w>
+      <w>boyuttflyone</w>
       <w>boyutu</w>
       <w>boyutunu</w>
       <w>boşlukları</w>
@@ -53,6 +57,8 @@
       <w>büyüktür</w>
       <w>cetinkurt</w>
       <w>contactus</w>
+      <w>cozum</w>
+      <w>cozumeniyi</w>
       <w>createlibrary</w>
       <w>daha</w>
       <w>dahil</w>
@@ -123,14 +129,17 @@
       <w>hesaplama</w>
       <w>hesaplamadan</w>
       <w>hesaplamak</w>
+      <w>hesaplanan</w>
       <w>ilerleyen</w>
       <w>iletişime</w>
+      <w>indeks</w>
       <w>instagram</w>
       <w>iptal</w>
       <w>isim</w>
       <w>istediğiniz</w>
       <w>istediğinize</w>
       <w>ister</w>
+      <w>iterasyon</w>
       <w>içermektedir</w>
       <w>için</w>
       <w>işaretlemeden</w>
@@ -142,12 +151,15 @@
       <w>i̇sim</w>
       <w>i̇çin</w>
       <w>kalan</w>
+      <w>kalansız</w>
       <w>karakterden</w>
       <w>karar</w>
       <w>karayolu</w>
       <w>kartlara</w>
       <w>kayıt</w>
+      <w>komsu</w>
       <w>konum</w>
+      <w>konumlar</w>
       <w>kriter</w>
       <w>kriterleriniz</w>
       <w>kriterli</w>
@@ -165,6 +177,7 @@
       <w>kısmına</w>
       <w>latdouble</w>
       <w>linkedin</w>
+      <w>liste</w>
       <w>listesi</w>
       <w>londouble</w>
       <w>lütfen</w>
@@ -172,6 +185,7 @@
       <w>matrisine</w>
       <w>menüde</w>
       <w>merhaba</w>
+      <w>mesafe</w>
       <w>metehan</w>
       <w>metnidir</w>
       <w>mevcut</w>
@@ -182,6 +196,9 @@
       <w>neler</w>
       <w>notu</w>
       <w>numarası</w>
+      <w>numpy</w>
+      <w>objeniyi</w>
+      <w>objit</w>
       <w>oguz</w>
       <w>olacak</w>
       <w>olacağınız</w>
@@ -193,6 +210,7 @@
       <w>olurlu</w>
       <w>olursuz</w>
       <w>oluşturacağınız</w>
+      <w>oluşturuldu</w>
       <w>oluşturur</w>
       <w>onboarding</w>
       <w>otomatik</w>
@@ -201,18 +219,24 @@
       <w>posta</w>
       <w>premiumu</w>
       <w>premiumun</w>
+      <w>printoptions</w>
       <w>problemi</w>
       <w>problemler</w>
       <w>problemleri</w>
       <w>profil</w>
       <w>pyobj</w>
+      <w>rotası</w>
       <w>sahip</w>
       <w>sahte</w>
+      <w>satir</w>
       <w>satıcı</w>
       <w>satın</w>
       <w>sayısını</w>
       <w>sayısının</w>
+      <w>sehir</w>
+      <w>sehirsayisi</w>
       <w>seçeceksiniz</w>
+      <w>seçilen</w>
       <w>seçmeniz</w>
       <w>silmek</w>
       <w>simetrik</w>
@@ -223,8 +247,10 @@
       <w>sorununuz</w>
       <w>soyad</w>
       <w>soyadı</w>
+      <w>sutun</w>
       <w>sıfırla</w>
       <w>sıfırlamak</w>
+      <w>sıfırlandı</w>
       <w>sıralamadan</w>
       <w>tabloyu</w>
       <w>tamam</w>
@@ -233,6 +259,7 @@
       <w>taraftan</w>
       <w>taşımacılığı</w>
       <w>tekrar</w>
+      <w>tekrarlama</w>
       <w>telefon</w>
       <w>teslim</w>
       <w>toplam</w>
@@ -263,9 +290,11 @@
       <w>yazan</w>
       <w>yedi</w>
       <w>yeni</w>
+      <w>yenidizi</w>
       <w>yerleri</w>
       <w>yolu</w>
       <w>çeti̇nkurt</w>
+      <w>çözüm</w>
       <w>çıkış</w>
       <w>özelliklerinden</w>
       <w>üzere</w>

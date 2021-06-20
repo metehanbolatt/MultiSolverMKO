@@ -13,7 +13,7 @@ def manual4():
     tekrarlama=-1
     indeks=-1
 
-    return "Matrix has been reset. Please enter a new matrix dimension."
+    return "Matris sıfırlandı. Lütfen yeni matris boyutunu giriniz."
 
 def manual3(number1):
 
@@ -31,7 +31,7 @@ def manual3(number1):
         for i in range(boyut):
                     for j in range(boyut):
                         a[i][j]=-1
-        return str(boyut)+" dimensional matrix is created."
+        return str(boyut)+" boyutlu matris oluşturuldu."
 
     if 0<tekrarlama<((boyut**2)+1):
         sutun=(tekrarlama-1)%boyut
@@ -116,4 +116,4 @@ def manual2():
 
         iterasyon=iterasyon + 1
 
-    return "Best solution: "+str(cozumeniyi)+"\n" +"Best value: " +str(objeniyi)
+    return "En iyi çözüm: "+str(cozumeniyi)+"\n" +"En iyi değer: " +str(objeniyi)

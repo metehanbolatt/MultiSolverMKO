@@ -227,7 +227,7 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
 
             }).addOnFailureListener(e -> {
-                if (Objects.equals(e.getLocalizedMessage(), "Geçerli formatta email adresi giriniz.")){
+                if (Objects.equals(e.getLocalizedMessage(), "The email address is badly formatted.")){
 
                     showFirebaseEmailError();
                     signUpEmail.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.round_border_red,null));
