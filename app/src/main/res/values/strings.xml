@@ -141,8 +141,8 @@
     <string name="notifications">Bildirimler</string>
     <string name="library">Kütüphane</string>
     <string name="users">Kullanıcılar</string>
-    <string name="problems">Problemler</string>
-    <string name="decision_support_systems">Karar Destek Sistemleri</string>
+    <string name="problems">Akıllı Çözücü</string>
+    <string name="decision_support_systems">Çok Kriterli Karar Verme</string>
     <string name="other">Diğer</string>
     <string name="contact_us">İletişim</string>
     <string name="user_guide">Kullanım Kılavuzu</string>

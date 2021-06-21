@@ -19,12 +19,12 @@
     <fragment
         android:id="@+id/menuProblems"
         android:name="com.deu.multisolvermko.fragments.ProblemFragment"
-        android:label="Problemler"
+        android:label="Akıllı Çözücü"
         tools:layout="@layout/fragment_problem" />
     <fragment
         android:id="@+id/menuTopsis"
         android:name="com.deu.multisolvermko.fragments.DssFragment"
-        android:label="Karar Destek Sistemleri"
+        android:label="Çok Kriterli Karar Verme"
         tools:layout="@layout/fragment_dss" />
     <fragment
         android:id="@+id/menuLogout"
