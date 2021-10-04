@@ -39,6 +39,9 @@ public class EntrySalesmanMapsActivity extends AppCompatActivity {
         });
 
         buttonRoad.setOnClickListener(v -> {
+
+            Toast.makeText(getBaseContext(), "Premium Özellik", Toast.LENGTH_SHORT).show();
+            /*
             if (editTextFly.getText().toString().equals("")){
                 extraValue();
             }else{
@@ -49,6 +52,7 @@ public class EntrySalesmanMapsActivity extends AppCompatActivity {
                 startActivity(intent);
 
             }
+             */
         });
     }
 

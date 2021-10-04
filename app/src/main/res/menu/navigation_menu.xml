@@ -13,7 +13,7 @@
         android:icon="@drawable/book"
         android:title="@string/library"/>
 
-    <item android:id="@+id/menuUsers"
+    <item android:id="@+id/menuUserss"
         android:icon="@drawable/profile"
         android:title="@string/users"/>
 

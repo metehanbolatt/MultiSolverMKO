@@ -50,7 +50,8 @@
         <activity
             android:name=".problems.travellingsalesmanmaps.EntrySalesmanMapsActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
-        <activity android:name=".splashscreen.SplashActivity">
+        <activity android:name=".splashscreen.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

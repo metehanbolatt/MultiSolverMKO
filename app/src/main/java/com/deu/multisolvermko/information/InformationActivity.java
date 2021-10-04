@@ -70,17 +70,17 @@ public class InformationActivity extends AppCompatActivity {
         InformationItem salesmanProblem = new InformationItem();
         salesmanProblem.setTitle("Gezgin Satıcı Problemi");
         salesmanProblem.setDescription("Bu problem uygulama ile birlikte gelmektedir. Detaylı bilgilendirme ilerleyen aşamalarda yapılacaktır.");
-        salesmanProblem.setImage(R.drawable.guide_image_1);
+        salesmanProblem.setImage(R.drawable.profile);
 
         InformationItem salesmanProblem2 = new InformationItem();
         salesmanProblem2.setTitle("Gezgin Satıcı Problemi (Manuel)");
         salesmanProblem2.setDescription("Bu problem uygulama ile birlikte gelmektedir. Detaylı bilgilendirme ilerleyen aşamalarda yapılacaktır.");
-        salesmanProblem2.setImage(R.drawable.guide_image_2);
+        salesmanProblem2.setImage(R.drawable.profile);
 
         InformationItem futureUpdates = new InformationItem();
         futureUpdates.setTitle("Gelecek Güncellemeler");
         futureUpdates.setDescription("Gelecek güncellemeler burada belirtilecektir.");
-        futureUpdates.setImage(R.drawable.guide_image_3);
+        futureUpdates.setImage(R.drawable.profile);
 
         informationItems.add(userProfile);
         informationItems.add(salesmanProblem);
